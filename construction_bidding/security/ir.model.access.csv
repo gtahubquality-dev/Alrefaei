@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_boq_user,construction.boq.user,model_construction_boq,project.group_project_user,1,1,1,1
+access_construction_boq_line_user,construction.boq.line.user,model_construction_boq_line,project.group_project_user,1,1,1,1
+access_construction_variation_order_user,construction.variation.order.user,model_construction_variation_order,project.group_project_user,1,1,1,1
+access_construction_variation_order_line_user,construction.variation.order.line.user,model_construction_variation_order_line,project.group_project_user,1,1,1,1
+access_construction_project_deduction_user,construction.project.deduction.user,model_construction_project_deduction,project.group_project_user,1,1,1,1
+access_construction_project_warehouse_wizard_user,construction.project.warehouse.wizard.user,model_construction_project_warehouse_wizard,project.group_project_user,1,1,1,1

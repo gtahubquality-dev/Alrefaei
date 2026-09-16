@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_variation_order_list" model="ir.ui.view">
+        <field name="name">construction.variation.order.list</field>
+        <field name="model">construction.variation.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="boq_id"/>
+                <field name="change_date"/>
+                <field name="changed_by_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_variation_order_form" model="ir.ui.view">
+        <field name="name">construction.variation.order.form</field>
+        <field name="model">construction.variation.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_apply" string="Apply" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,applied" readonly="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="boq_id"/>
+                        </group>
+                        <group>
+                            <field name="change_date"/>
+                            <field name="changed_by_id"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="change_type"/>
+                            <field name="boq_line_id" invisible="change_type != 'increase_quantity'"/>
+                            <field name="new_boq_line_id" readonly="1"/>
+                            <field name="item_type" invisible="change_type != 'new_item'"/>
+                            <field name="description"/>
+                            <field name="increase_quantity"/>
+                            <field name="original_quantity"/>
+                            <field name="new_quantity"/>
+                            <field name="uom_id"/>
+                            <field name="unit_cost"/>
+                            <field name="change_date"/>
+                            <field name="changed_by_id"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_variation_order_search" model="ir.ui.view">
+        <field name="name">construction.variation.order.search</field>
+        <field name="model">construction.variation.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="boq_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Applied" name="applied" domain="[('state', '=', 'applied')]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="BOQ" name="group_boq" context="{'group_by': 'boq_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_construction_variation_order" model="ir.actions.act_window">
+        <field name="name">Variation Orders</field>
+        <field name="res_model">construction.variation.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_bidding_variation_order" name="Variation Orders" parent="menu_boq_variation_root" action="action_construction_variation_order" sequence="20"/>
+</odoo>

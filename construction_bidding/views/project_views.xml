@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_form_bidding" model="ir.ui.view">
+        <field name="name">project.project.form.bidding</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_create_boq" string="Create BOQ" type="object" class="btn-primary"
+                        groups="construction_bidding.group_boq_creation"
+                        invisible="bidding_state == 'completed'"/>
+                <button name="action_approve_bidding_project" string="Approve" type="object"
+                        invisible="bidding_state != 'draft'"/>
+                <button name="action_set_in_progress" string="Start" type="object"
+                        invisible="bidding_state != 'approved'"/>
+                <button name="action_set_completed" string="Complete" type="object"
+                        invisible="bidding_state != 'in_progress'"/>
+                <field name="bidding_state" widget="statusbar" statusbar_visible="draft,approved,in_progress,completed" readonly="1"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" name="action_view_boqs" type="object" icon="fa-list">
+                    <field name="boq_count" widget="statinfo" string="BOQs"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="bidding_contract" string="Bidding">
+                    <group>
+                        <group string="Contract Details">
+                            <field name="project_code"/>
+                            <field name="partner_id" string="Customer"/>
+                            <field name="project_owner_id"/>
+                            <field name="consultant_id"/>
+                        </group>
+                        <group string="Dates">
+                            <field name="date_start" string="Start Date"/>
+                            <field name="project_duration_months"/>
+                            <field name="scheduled_end_date"/>
+                            <field name="date" string="End Date"/>
+                            <field name="project_handover_date"/>
+                        </group>
+                    </group>
+                    <group string="Financial Information">
+                        <group>
+                            <field name="account_id" string="Cost Center"/>
+                            <field name="warehouse_id"/>
+                        </group>
+                        <group>
+                            <field name="final_insurance"/>
+                            <field name="retention_percentage"/>
+                            <field name="advance_payment"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="deductions" string="Deductions">
+                            <field name="deduction_line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_id"/>
+                                    <field name="price_unit"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+{
+    "name": "Construction Bidding",
+    "summary": "Manage bidding projects, BOQs, and variation orders",
+    "version": "19.0.1.0.0",
+    "category": "Project",
+    "author": "Mahmoud Gaber",
+    "license": "LGPL-3",
+    "depends": ["project", "stock", "purchase", "account"],
+    "data": [
+        "security/res_groups.xml",
+        "security/ir.model.access.csv",
+        "data/ir_sequence.xml",
+        "views/bidding_menus.xml",
+        "views/project_views.xml",
+        "views/boq_views.xml",
+        "views/variation_order_views.xml",
+        "wizard/project_warehouse_wizard_views.xml",
+    ],
+    "application": True,
+    "installable": True,
+}

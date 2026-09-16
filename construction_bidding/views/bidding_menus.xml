@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_construction_bidding_root"
+        name="Bidding"
+        sequence="45"
+        web_icon="construction_bidding,static/description/icon.png"
+    />
+
+    <record id="action_bidding_projects" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_bidding_projects" name="Projects" parent="menu_construction_bidding_root" action="action_bidding_projects" sequence="10"/>
+
+    <menuitem id="menu_boq_variation_root" name="BOQ &amp; Variation Orders" parent="menu_construction_bidding_root" sequence="20"/>
+
+    <menuitem id="menu_bidding_configuration" name="Configuration" parent="menu_construction_bidding_root" sequence="90" groups="project.group_project_manager"/>
+
+    <menuitem id="menu_bidding_config_products" name="Products" parent="menu_bidding_configuration" action="product.product_normal_action_sell" sequence="10"/>
+    <menuitem id="menu_bidding_config_uom" name="Units of Measure" parent="menu_bidding_configuration" action="uom.product_uom_form_action" sequence="20"/>
+    <menuitem id="menu_bidding_config_analytic_accounts" name="Analytic Accounts" parent="menu_bidding_configuration" action="analytic.action_account_analytic_account_form" sequence="30"/>
+    <menuitem id="menu_bidding_config_warehouses" name="Warehouses" parent="menu_bidding_configuration" action="stock.action_warehouse_form" sequence="40"/>
+</odoo>
