@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="sale_order_enhancemnt.InventoryLocationOnhandButtons">
+        <t t-foreach="buttons" t-as="button" t-key="button.location_id">
+            <button type="button"
+                    class="oe_stat_button"
+                    t-on-click.stop.prevent="() => this.openLocation(button)">
+                <i class="fa fa-map-marker o_button_icon"/>
+                <div class="o_stat_info">
+                    <span class="o_stat_value" t-esc="button.quantity"/>
+                    <span class="o_stat_text" t-esc="button.location_name"/>
+                </div>
+            </button>
+        </t>
+    </t>
+</templates>
