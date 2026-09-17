@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_sale_order_enhancemnt" model="ir.ui.view">
+        <field name="name">sale.order.form.sale.order.enhancemnt</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="free_customizations_enabled" invisible="1"/>
+            </field>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_inventory_total_onhand"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-cubes"
+                        invisible="not free_customizations_enabled or not inventory_product_id">
+                    <field name="inventory_total_onhand_qty" widget="statinfo" string="On Hand All"/>
+                </button>
+                <field name="inventory_location_button_data" widget="inventory_location_onhand_buttons" nolabel="1" invisible="not free_customizations_enabled"/>
+            </xpath>
+            <xpath expr="//group[@name='partner_details']/field[@name='partner_id']" position="after">
+                <field name="partner_phone" invisible="not free_customizations_enabled"/>
+                <field name="partner_credit_limit" invisible="not free_customizations_enabled"/>
+                <field name="partner_total_receivable" widget="monetary" invisible="not free_customizations_enabled"/>
+                <field name="user_id" widget="many2one_avatar_user" invisible="not free_customizations_enabled"/>
+                <field name="team_id" context="{'kanban_view_ref': 'sales_team.crm_team_view_kanban'}" options="{'no_create': True}" invisible="not free_customizations_enabled"/>
+            </xpath>
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <label for="inventory_product_id" invisible="not free_customizations_enabled"/>
+                <div class="o_row" invisible="not free_customizations_enabled">
+                    <field name="inventory_product_id"/>
+                    <field name="inventory_product_qty" class="oe_inline"/>
+                    <button name="action_add_inventory_product_line"
+                            type="object"
+                            string="Add"
+                            class="btn btn-secondary"
+                            invisible="not inventory_product_id"/>
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='order_details']/field[@name='payment_term_id']" position="after">
+                <field name="warehouse_id" options="{'no_create': True}" force_save="1" readonly="state == 'sale'" invisible="not free_customizations_enabled"/>
+                <field name="inventory_location_ids" widget="many2many_tags" readonly="1" invisible="not free_customizations_enabled"/>
+                <field name="inventory_total_onhand_qty" readonly="1" invisible="not free_customizations_enabled"/>
+                <field name="positive_inventory_location_ids" invisible="1"/>
+                <field name="inventory_location_id" options="{'no_create': True}" domain="[('id', 'in', inventory_location_ids)]" invisible="not free_customizations_enabled"/>
+                <field name="location_onhand_qty" readonly="1" invisible="not free_customizations_enabled"/>
+            </xpath>
+            <xpath expr="//page[@name='other_information']//group[@name='sales_person']/field[@name='user_id']" position="attributes">
+                <attribute name="invisible">free_customizations_enabled</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']//group[@name='sales_person']/field[@name='team_id']" position="attributes">
+                <attribute name="invisible">free_customizations_enabled</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']//group[@name='sale_shipping']/field[@name='warehouse_id']" position="attributes">
+                <attribute name="invisible">free_customizations_enabled</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

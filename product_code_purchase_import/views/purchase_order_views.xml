@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_view_product_code" model="ir.ui.view">
+        <field name="name">purchase.order.form.product.code</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="free_customizations_enabled" invisible="1"/>
+            </field>
+            <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="before">
+                <field name="free_customizations_enabled" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="before">
+                <field name="product_code" optional="show" column_invisible="not parent.free_customizations_enabled"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

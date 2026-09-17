@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_product_code" model="ir.ui.view">
+        <field name="name">product.template.form.product.code</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="after">
+                <field name="free_customizations_enabled" invisible="1"/>
+                <field name="product_code" invisible="not free_customizations_enabled or product_variant_count &gt; 1"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_line_compare_tree_optional_fields" model="ir.ui.view">
+        <field name="name">purchase.order.line.compare.list.optional.fields</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase_requisition.purchase_order_line_compare_tree"/>
+        <field name="arch" type="xml">
+            <field name="order_id" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="state" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="date_planned" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="product_qty" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="product_qty" position="after">
+                <field name="free_customizations_enabled" invisible="1"/>
+                <field name="reorder_min_qty" optional="show" invisible="not free_customizations_enabled"/>
+            </field>
+            <field name="product_uom_id" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="price_unit" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="price_unit" position="after">
+                <field name="vendor_last_discount" optional="show" invisible="not free_customizations_enabled"/>
+                <field name="weighted_discount" optional="show" invisible="not free_customizations_enabled"/>
+            </field>
+            <field name="price_subtotal" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="price_total_cc" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
