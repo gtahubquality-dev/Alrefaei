@@ -12,7 +12,7 @@ class PurchaseOrderLine(models.Model):
         related="product_id.weighted_discount",
         string="Weighted Discount (%)",
         digits="Discount",
-        readonly=True,
+        readonly=False,
     )
     reorder_min_qty = fields.Float(
         string="Min Quantity",

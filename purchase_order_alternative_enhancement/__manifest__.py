@@ -1,7 +1,7 @@
 {
     "name": "Purchase Order Alternative Enhancement",
     "summary": "Enhance alternative purchase order comparison.",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Purchase",
     "license": "LGPL-3",
     "depends": [
