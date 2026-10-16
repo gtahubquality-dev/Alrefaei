@@ -2,10 +2,8 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, api, fields, models
+from odoo import Command, _, api, fields, models
 from odoo.exceptions import UserError
-
-from .boq_common import form_action
 
 
 class ProjectProject(models.Model):
@@ -153,19 +151,23 @@ class ProjectProject(models.Model):
         return True
 
     def action_create_boq(self):
-        """Create a BOQ and approve the project when needed."""
+        """Create a BOQ from the project in any bidding status."""
         self.ensure_one()
-        if self.bidding_state == "completed":
-            raise UserError(_("You cannot create a BOQ for a completed project."))
-        if self.bidding_state == "draft":
-            approval_result = self.with_context(
-                create_boq_after_approval=True
-            ).action_approve_bidding_project()
-            if isinstance(approval_result, dict):
-                return approval_result
         boq = self.env["construction.boq"].create({
             "name": _("BOQ - %s", self.name),
             "project_id": self.id,
+            "partner_id": self.partner_id.id,
+            "planned_date": self.date_start,
+            "user_id": self.user_id.id,
+            "final_insurance": self.final_insurance,
+            "retention_percentage": self.retention_percentage,
+            "advance_payment": self.advance_payment,
+            "deduction_line_ids": [Command.create({
+                "sequence": line.sequence,
+                "product_id": line.product_id.id,
+                "product_uom_id": line.product_uom_id.id,
+                "price_unit": line.price_unit,
+            }) for line in self.deduction_line_ids],
         })
         return {
             "type": "ir.actions.act_window",
@@ -186,38 +188,3 @@ class ProjectProject(models.Model):
             "domain": [("project_id", "=", self.id)],
             "context": {"default_project_id": self.id},
         }
-
-
-class ProjectDeduction(models.Model):
-    """Commercial deduction line linked to a project."""
-
-    _name = "construction.project.deduction"
-    _description = "Project Deduction"
-    _order = "sequence, id"
-
-    sequence = fields.Integer(default=10)
-    project_id = fields.Many2one("project.project", required=True, ondelete="cascade")
-    product_id = fields.Many2one("product.product", string="Product", required=True)
-    product_uom_id = fields.Many2one(
-        "uom.uom",
-        string="UoM",
-        required=True,
-    )
-    price_unit = fields.Float(string="Price")
-
-    @api.onchange("product_id")
-    def _onchange_product_id(self):
-        for line in self:
-            if line.product_id:
-                line.product_uom_id = line.product_id.uom_id
-                line.price_unit = line.product_id.lst_price
-
-    def action_open_product(self):
-        """Open the deduction product."""
-        self.ensure_one()
-        return form_action("Product", "product.product", self.product_id.id)
-
-    def action_open_project(self):
-        """Open the deduction project."""
-        self.ensure_one()
-        return form_action("Project", "project.project", self.project_id.id)

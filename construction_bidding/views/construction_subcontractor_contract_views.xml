@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_subcontractor_contract_list" model="ir.ui.view">
+        <field name="name">construction.subcontractor.contract.list</field>
+        <field name="model">construction.subcontractor.contract</field>
+        <field name="arch" type="xml">
+            <list create="0"><field name="partner_id"/><field name="project_id"/><field name="boq_id"/></list>
+        </field>
+    </record>
+    <record id="view_construction_subcontractor_contract_form" model="ir.ui.view">
+        <field name="name">construction.subcontractor.contract.form</field>
+        <field name="model">construction.subcontractor.contract</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <group><field name="partner_id"/><field name="project_id"/><field name="boq_id"/><field name="subcontractor_boq_id"/></group>
+                    <field name="line_ids">
+                        <list>
+                            <field name="finished_product_id"/>
+                            <field name="product_id"/>
+                            <field name="description"/>
+                            <field name="quantity"/>
+                            <field name="uom_id"/>
+                            <field name="price_unit"/>
+                            <field name="subtotal"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
