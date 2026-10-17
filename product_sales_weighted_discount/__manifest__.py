@@ -1,6 +1,6 @@
 {
     'name': 'Product Sales Weighted Discount',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'category': 'Sales/Sales',
     'summary': 'Product sales discount based on recent purchase discounts',
     'author': 'Mahmoud Gaber',

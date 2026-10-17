@@ -58,7 +58,7 @@ class ProductProduct(models.Model):
                 ('company_id.enable_free_customizations', '=', True),
                 ('order_id.state', 'in', ('purchase', 'done')),
                 ('display_type', '=', False),
-            ], order='order_id.date_order desc, id desc', limit=2)
+            ], order='date_order desc, id desc', limit=2)
             if not purchase_lines:
                 continue
             weighted_discount = (
