@@ -6,6 +6,10 @@ from odoo import api, fields, models
 class PurchaseRequisition(models.Model):
     _inherit = "purchase.requisition"
 
+    free_customizations_enabled = fields.Boolean(
+        related="company_id.enable_free_customizations",
+    )
+
     weighted_discount = fields.Float(
         string="Weighted Discount (%)",
         digits="Discount",
@@ -31,6 +35,8 @@ class PurchaseRequisition(models.Model):
 
     def _inverse_weighted_discount(self):
         for requisition in self:
+            if not requisition.free_customizations_enabled:
+                continue
             requisition.line_ids.mapped("product_id").write({
                 "weighted_discount": requisition.weighted_discount,
             })

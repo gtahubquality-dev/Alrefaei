@@ -25,8 +25,9 @@
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="weighted_discount" optional="show"/>
-                <field name="vendor_last_discount" optional="show"/>
+                <field name="free_customizations_enabled" column_invisible="1"/>
+                <field name="weighted_discount" optional="show" invisible="not free_customizations_enabled"/>
+                <field name="vendor_last_discount" optional="show" invisible="not free_customizations_enabled"/>
             </field>
         </field>
     </record>

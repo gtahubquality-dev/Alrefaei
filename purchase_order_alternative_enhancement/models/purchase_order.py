@@ -39,6 +39,8 @@ class PurchaseOrder(models.Model):
 
     def _inverse_weighted_discount(self):
         for order in self:
+            if not order.free_customizations_enabled:
+                continue
             products = order.order_line.filtered(lambda line: not line.display_type).mapped("product_id")
             products.write({"weighted_discount": order.weighted_discount})
 

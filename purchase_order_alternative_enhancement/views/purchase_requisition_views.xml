@@ -5,13 +5,16 @@
         <field name="model">purchase.requisition</field>
         <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <field name="free_customizations_enabled" invisible="1"/>
+            </xpath>
             <xpath expr="//field[@name='line_ids']/list/field[@name='price_unit']" position="after">
-                <field name="weighted_discount" optional="show"/>
-                <field name="vendor_last_discount" optional="show"/>
+                <field name="weighted_discount" optional="show" column_invisible="not parent.free_customizations_enabled"/>
+                <field name="vendor_last_discount" optional="show" column_invisible="not parent.free_customizations_enabled"/>
             </xpath>
             <xpath expr="//field[@name='line_ids']/form//field[@name='product_id']" position="after">
-                <field name="weighted_discount"/>
-                <field name="vendor_last_discount"/>
+                <field name="weighted_discount" invisible="not parent.free_customizations_enabled"/>
+                <field name="vendor_last_discount" invisible="not parent.free_customizations_enabled"/>
             </xpath>
         </field>
     </record>
@@ -22,8 +25,9 @@
         <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree"/>
         <field name="arch" type="xml">
             <field name="vendor_id" position="after">
-                <field name="weighted_discount" optional="show"/>
-                <field name="vendor_last_discount" optional="show"/>
+                <field name="free_customizations_enabled" column_invisible="1"/>
+                <field name="weighted_discount" optional="show" invisible="not free_customizations_enabled"/>
+                <field name="vendor_last_discount" optional="show" invisible="not free_customizations_enabled"/>
             </field>
         </field>
     </record>
