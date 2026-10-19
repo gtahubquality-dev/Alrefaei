@@ -17,7 +17,12 @@
                         invisible="not free_customizations_enabled or not inventory_product_id">
                     <field name="inventory_total_onhand_qty" widget="statinfo" string="On Hand All"/>
                 </button>
-                <field name="inventory_location_button_data" widget="inventory_location_onhand_buttons" nolabel="1" invisible="not free_customizations_enabled"/>
+                <field name="inventory_location_button_data"
+                       widget="inventory_location_onhand_buttons"
+                       class="w-auto"
+                       nolabel="1"
+                       readonly="1"
+                       invisible="not free_customizations_enabled or not inventory_product_id"/>
             </xpath>
             <xpath expr="//group[@name='partner_details']/field[@name='partner_id']" position="after">
                 <field name="partner_phone" invisible="not free_customizations_enabled"/>

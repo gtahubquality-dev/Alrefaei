@@ -16,6 +16,19 @@ class PurchaseOrder(models.Model):
         compute="_compute_weighted_discount",
         inverse="_inverse_weighted_discount",
     )
+    vendor_last_discount = fields.Float(
+        string="Last Vendor Discount (%)",
+        digits="Discount",
+        compute="_compute_vendor_last_discount",
+        help="Common last vendor discount across product lines; zero when the values differ.",
+    )
+
+    @api.depends("order_line.vendor_last_discount", "order_line.display_type", "order_line.product_id")
+    def _compute_vendor_last_discount(self):
+        for order in self:
+            lines = order.order_line.filtered(lambda line: not line.display_type and line.product_id)
+            discounts = set(lines.mapped("vendor_last_discount"))
+            order.vendor_last_discount = discounts.pop() if len(discounts) == 1 else 0.0
 
     @api.depends("order_line.product_id.weighted_discount")
     def _compute_weighted_discount(self):

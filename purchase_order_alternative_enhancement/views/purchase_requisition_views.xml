@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_requisition_form_discount_history" model="ir.ui.view">
+        <field name="name">purchase.requisition.form.discount.history</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']/list/field[@name='price_unit']" position="after">
+                <field name="weighted_discount" optional="show"/>
+                <field name="vendor_last_discount" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/form//field[@name='product_id']" position="after">
+                <field name="weighted_discount"/>
+                <field name="vendor_last_discount"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_requisition_tree_discount_history" model="ir.ui.view">
+        <field name="name">purchase.requisition.list.discount.history</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree"/>
+        <field name="arch" type="xml">
+            <field name="vendor_id" position="after">
+                <field name="weighted_discount" optional="show"/>
+                <field name="vendor_last_discount" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

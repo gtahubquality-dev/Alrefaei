@@ -10,6 +10,9 @@
         "stock",
     ],
     "data": [
+        "views/purchase_order_views.xml",
+        "views/purchase_requisition_views.xml",
+        "views/product_supplierinfo_views.xml",
         "views/purchase_order_line_compare_views.xml",
     ],
     "assets": {

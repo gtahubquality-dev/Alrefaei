@@ -1,7 +1,7 @@
 {
     "name": "Sale Order Enhancement",
     "summary": "Enhance sale order customer credit details.",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.4",
     "category": "Sales",
     "license": "LGPL-3",
     "depends": [
