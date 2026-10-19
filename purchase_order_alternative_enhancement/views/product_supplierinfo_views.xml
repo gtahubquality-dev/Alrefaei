@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_supplierinfo_tree_discount_history" model="ir.ui.view">
+        <field name="name">product.supplierinfo.list.discount.history</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="discount" position="after">
+                <field name="free_customizations_enabled" column_invisible="1"/>
+                <field name="weighted_discount" optional="show" invisible="not free_customizations_enabled"/>
+                <field name="vendor_last_discount" optional="show" invisible="not free_customizations_enabled"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_supplierinfo_form_discount_history" model="ir.ui.view">
+        <field name="name">product.supplierinfo.form.discount.history</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <field name="discount" position="after">
+                <field name="free_customizations_enabled" invisible="1"/>
+                <field name="weighted_discount" invisible="not free_customizations_enabled"/>
+                <field name="vendor_last_discount" invisible="not free_customizations_enabled"/>
+            </field>
+        </field>
+    </record>
+</odoo>

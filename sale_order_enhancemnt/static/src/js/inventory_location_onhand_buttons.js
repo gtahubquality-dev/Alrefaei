@@ -24,7 +24,9 @@ class InventoryLocationOnhandButtons extends Component {
             domain: [
                 ["product_id", "=", button.product_id],
                 ["location_id", "=", button.location_id],
-                ["quantity", ">", 0],
+                ["company_id", "=", button.company_id],
+                ["location_id.usage", "=", "internal"],
+                ["quantity", "!=", 0],
             ],
             context: {
                 search_default_internal_loc: 1,
@@ -37,4 +39,5 @@ class InventoryLocationOnhandButtons extends Component {
 
 registry.category("fields").add("inventory_location_onhand_buttons", {
     component: InventoryLocationOnhandButtons,
+    supportedTypes: ["json"],
 });

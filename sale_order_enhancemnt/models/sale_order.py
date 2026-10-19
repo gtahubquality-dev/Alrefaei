@@ -46,7 +46,7 @@ class SaleOrder(models.Model):
         "order_id",
         "location_id",
         string="Inventory Locations",
-        compute="_compute_inventory_location_ids",
+        compute="_compute_inventory_stock",
     )
     positive_inventory_location_ids = fields.Many2many(
         "stock.location",
@@ -54,7 +54,7 @@ class SaleOrder(models.Model):
         "order_id",
         "location_id",
         string="Available Locations",
-        compute="_compute_positive_inventory_locations",
+        compute="_compute_inventory_stock",
     )
     inventory_location_id = fields.Many2one(
         "stock.location",
@@ -66,7 +66,7 @@ class SaleOrder(models.Model):
     )
     inventory_total_onhand_qty = fields.Float(
         string="Total On Hand",
-        compute="_compute_inventory_total_onhand_qty",
+        compute="_compute_inventory_stock",
         digits="Product Unit",
     )
     location_onhand_qty = fields.Float(
@@ -75,67 +75,64 @@ class SaleOrder(models.Model):
         digits="Product Unit",
     )
     inventory_location_button_data = fields.Json(
-        compute="_compute_inventory_location_button_data",
+        compute="_compute_inventory_stock",
     )
 
-    def get_location_available_quantity(self, product, location):
-        """Return available product quantity below a stock location."""
+    def _get_inventory_quant_domain(self, product):
+        """Keep stock figures within the order company and internal locations."""
+        self.ensure_one()
+        return [
+            ("product_id", "=", product.id),
+            ("company_id", "=", self.company_id.id),
+            ("location_id.usage", "=", "internal"),
+        ]
+
+    def get_location_onhand_quantity(self, product, location):
+        """Return physical stock at one location, including reserved units."""
         self.ensure_one()
         if not self.free_customizations_enabled:
             return 0.0
-        quants = self.env["stock.quant"].sudo().search([
-            ("product_id", "=", product.id),
-            ("location_id", "child_of", location.id),
-        ])
-        quantity = sum(quants.mapped("quantity")) - sum(quants.mapped("reserved_quantity"))
-        return max(quantity, 0.0)
+        quants = self.env["stock.quant"].sudo().search(
+            self._get_inventory_quant_domain(product) + [("location_id", "=", location.id)]
+        )
+        return sum(quants.mapped("quantity"))
 
-    @api.depends("inventory_product_id", "warehouse_id", "company_id")
-    def _compute_inventory_location_ids(self):
-        location_model = self.env["stock.location"].sudo()
+    @api.depends("inventory_product_id", "company_id", "free_customizations_enabled")
+    def _compute_inventory_stock(self):
+        """Refresh all-location stock and button payload together on product onchange."""
         for order in self:
+            order.inventory_total_onhand_qty = 0.0
+            order.inventory_location_ids = False
+            order.positive_inventory_location_ids = False
+            order.inventory_location_button_data = []
             if not order.free_customizations_enabled or not order.inventory_product_id:
-                order.inventory_location_ids = False
-                continue
-
-            domain = [
-                ("usage", "=", "internal"),
-                "|",
-                ("company_id", "=", False),
-                ("company_id", "=", order.company_id.id),
-            ]
-            if order.warehouse_id and order.warehouse_id.lot_stock_id:
-                domain.append(("id", "child_of", order.warehouse_id.lot_stock_id.id))
-            product = order.inventory_product_id.with_company(order.company_id)
-            positive_locations = self.env["stock.location"]
-            for location in location_model.search(domain):
-                quantity = order.get_location_available_quantity(product, location)
-                if quantity > 0:
-                    positive_locations |= location
-            order.inventory_location_ids = positive_locations
-
-    @api.depends("inventory_product_id", "inventory_location_ids", "company_id")
-    def _compute_positive_inventory_locations(self):
-        for order in self:
-            order.positive_inventory_location_ids = order.inventory_location_ids
-
-    @api.depends("inventory_product_id", "warehouse_id", "company_id")
-    def _compute_inventory_total_onhand_qty(self):
-        for order in self:
-            if not order.free_customizations_enabled or not order.inventory_product_id:
-                order.inventory_total_onhand_qty = 0.0
                 continue
 
             product = order.inventory_product_id.with_company(order.company_id)
-            if order.warehouse_id and order.warehouse_id.lot_stock_id:
-                order.inventory_total_onhand_qty = order.get_location_available_quantity(
-                    product,
-                    order.warehouse_id.lot_stock_id,
-                )
-            else:
-                order.inventory_total_onhand_qty = product.qty_available
+            quantities = self.env["stock.quant"].sudo()._read_group(
+                order._get_inventory_quant_domain(product),
+                ["location_id"],
+                ["quantity:sum"],
+            )
+            order.inventory_total_onhand_qty = sum(quantity for _location, quantity in quantities)
+            location_ids = []
+            buttons = []
+            for location, quantity in quantities:
+                if quantity <= 0:
+                    continue
+                location_ids.append(location.id)
+                buttons.append({
+                    "location_id": location.id,
+                    "location_name": location.display_name,
+                    "product_id": product.id,
+                    "company_id": order.company_id.id,
+                    "quantity": quantity,
+                })
+            order.inventory_location_ids = location_ids
+            order.positive_inventory_location_ids = location_ids
+            order.inventory_location_button_data = buttons
 
-    @api.depends("inventory_product_id", "inventory_location_id", "warehouse_id", "company_id")
+    @api.depends("inventory_product_id", "inventory_location_id", "inventory_total_onhand_qty", "company_id", "free_customizations_enabled")
     def _compute_location_onhand_qty(self):
         for order in self:
             if not order.free_customizations_enabled or not order.inventory_product_id:
@@ -144,46 +141,21 @@ class SaleOrder(models.Model):
 
             product = order.inventory_product_id.with_company(order.company_id)
             if order.inventory_location_id:
-                order.location_onhand_qty = order.get_location_available_quantity(
+                order.location_onhand_qty = order.get_location_onhand_quantity(
                     product,
                     order.inventory_location_id,
                 )
-            elif order.warehouse_id and order.warehouse_id.lot_stock_id:
-                order.location_onhand_qty = order.get_location_available_quantity(
-                    product,
-                    order.warehouse_id.lot_stock_id,
-                )
             else:
-                order.location_onhand_qty = product.qty_available
+                order.location_onhand_qty = order.inventory_total_onhand_qty
 
-    @api.depends("inventory_product_id", "positive_inventory_location_ids", "company_id")
-    def _compute_inventory_location_button_data(self):
-        for order in self:
-            if not order.free_customizations_enabled or not order.inventory_product_id:
-                order.inventory_location_button_data = []
-                continue
-
-            product = order.inventory_product_id.with_company(order.company_id)
-            buttons = []
-            for location in order.positive_inventory_location_ids:
-                quantity = order.get_location_available_quantity(product, location)
-                if quantity > 0:
-                    buttons.append({
-                        "location_id": location.id,
-                        "location_name": location.display_name,
-                        "product_id": product.id,
-                        "quantity": quantity,
-                    })
-            order.inventory_location_button_data = buttons
-
-    @api.onchange("warehouse_id")
+    @api.onchange("inventory_product_id", "warehouse_id", "company_id")
     def _onchange_warehouse_id_clear_inventory_location(self):
-        """Clear selected stock location when the warehouse changes."""
+        """Clear stale location choices when the stock selection changes."""
         for order in self:
             order.inventory_location_id = False
 
     def action_view_inventory_total_onhand(self):
-        """Open positive stock quants for the selected product in all locations."""
+        """Open physical stock for the selected product in all internal locations."""
         self.ensure_one()
         if not self.free_customizations_enabled:
             raise UserError(self.env._("This customization is not enabled for this company."))
@@ -191,10 +163,8 @@ class SaleOrder(models.Model):
             raise UserError(self.env._("Please choose a product first."))
         action = self.env.ref("stock.stock_quant_action").sudo().read()[0]
         product_id = getattr(self.inventory_product_id, "id", False)
-        action["domain"] = [
-            ("product_id", "=", product_id),
-            ("location_id", "in", self.inventory_location_ids.ids),
-            ("quantity", ">", 0),
+        action["domain"] = self._get_inventory_quant_domain(self.inventory_product_id) + [
+            ("quantity", "!=", 0),
         ]
         action["context"] = {
             "search_default_internal_loc": 1,
@@ -214,10 +184,9 @@ class SaleOrder(models.Model):
         action = self.env.ref("stock.stock_quant_action").sudo().read()[0]
         product_id = getattr(self.inventory_product_id, "id", False)
         location_id = getattr(self.inventory_location_id, "id", False)
-        action["domain"] = [
-            ("product_id", "=", product_id),
+        action["domain"] = self._get_inventory_quant_domain(self.inventory_product_id) + [
             ("location_id", "=", location_id),
-            ("quantity", ">", 0),
+            ("quantity", "!=", 0),
         ]
         action["context"] = {
             "search_default_internal_loc": 1,
