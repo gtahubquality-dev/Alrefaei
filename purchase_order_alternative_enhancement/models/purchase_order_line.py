@@ -4,16 +4,10 @@ from odoo import api, fields, models
 
 
 class PurchaseOrderLine(models.Model):
-    """Extend purchase order lines with comparison-only values."""
+    """Extend purchase order lines with comparison helper values."""
 
     _inherit = "purchase.order.line"
 
-    weighted_discount = fields.Float(
-        related="product_id.weighted_discount",
-        string="Weighted Discount (%)",
-        digits="Discount",
-        readonly=False,
-    )
     reorder_min_qty = fields.Float(
         string="Min Quantity",
         compute="_compute_reorder_stock_fields",
