@@ -14,6 +14,29 @@ class SaleOrderLine(models.Model):
         help='Copied from the product sales discount and editable per sale order line.',
     )
 
+    @api.depends('sales_discount', 'free_customizations_enabled')
+    def _compute_amount(self):
+        """Recompute standard amounts when the custom discount changes."""
+        return super()._compute_amount()
+
+    def _prepare_base_line_for_taxes_computation(self, **kwargs):
+        """Apply the sales discount before Odoo's standard discount and taxes."""
+        base_line = super()._prepare_base_line_for_taxes_computation(**kwargs)
+        if self.free_customizations_enabled and not self.display_type:
+            base_line['price_unit'] *= 1 - self.sales_discount / 100
+        return base_line
+
+    def _prepare_invoice_line(self, **optional_values):
+        """Carry the sales discount into the invoice's unit price."""
+        vals = super()._prepare_invoice_line(**optional_values)
+        if (
+            self.free_customizations_enabled
+            and not self.display_type
+            and 'price_unit' in vals
+        ):
+            vals['price_unit'] *= 1 - self.sales_discount / 100
+        return vals
+
     @api.onchange('product_id')
     def onchange_product_id_sales_discount(self):
         """Copy product sales discount when changing the line product."""

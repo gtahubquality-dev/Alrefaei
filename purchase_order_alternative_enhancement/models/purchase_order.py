@@ -30,19 +30,21 @@ class PurchaseOrder(models.Model):
             discounts = set(lines.mapped("vendor_last_discount"))
             order.vendor_last_discount = discounts.pop() if len(discounts) == 1 else 0.0
 
-    @api.depends("order_line.product_id.weighted_discount")
+    @api.depends("order_line.weighted_discount", "order_line.display_type")
     def _compute_weighted_discount(self):
         for order in self:
-            products = order.order_line.filtered(lambda line: not line.display_type).mapped("product_id")
-            discounts = set(products.mapped("weighted_discount"))
+            lines = order.order_line.filtered(lambda line: not line.display_type and line.product_id)
+            discounts = set(lines.mapped("weighted_discount"))
             order.weighted_discount = discounts.pop() if len(discounts) == 1 else 0.0
 
     def _inverse_weighted_discount(self):
         for order in self:
             if not order.free_customizations_enabled:
                 continue
-            products = order.order_line.filtered(lambda line: not line.display_type).mapped("product_id")
-            products.write({"weighted_discount": order.weighted_discount})
+            lines = order.order_line.filtered(lambda line: not line.display_type and line.product_id)
+            discount = order.weighted_discount
+            lines.write({"weighted_discount": discount})
+            lines.mapped("product_id").write({"weighted_discount": discount})
 
     def get_tender_best_weighted_discount_lines(self):
         """Return alternative line ids with the highest weighted discount per product."""
