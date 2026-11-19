@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_construction_equipment" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.construction.equipment</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="construction_management.res_config_settings_view_form_construction"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='construction_subcontract_setting_container']" position="after">
+                <block title="Equipment" name="construction_equipment_setting_container">
+                    <setting id="construction_equipment_expense_account" string="Equipment Usage Expense" company_dependent="1" help="Project expense for equipment operating hours.">
+                        <field name="construction_equipment_expense_account_id"/>
+                    </setting>
+                    <setting id="construction_equipment_income_account" string="Equipment Allocation Income" company_dependent="1" help="Income of the equipment cost center when its cost is charged to projects.">
+                        <field name="construction_equipment_income_account_id"/>
+                    </setting>
+                    <setting id="construction_equipment_cost_account" string="Maintenance / Rental Expense" company_dependent="1" help="Expense account for equipment maintenance, repair, rental and fuel bills.">
+                        <field name="construction_equipment_cost_account_id"/>
+                    </setting>
+                    <setting id="construction_equipment_warehouse" string="Equipment Main Yard" company_dependent="1" help="Warehouse where company equipment is stored when not on a project site. Equipment movements are made as inventory transfers.">
+                        <field name="construction_equipment_warehouse_id"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

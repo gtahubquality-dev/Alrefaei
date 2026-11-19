@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bidding_boq_component_list" model="ir.ui.view">
+        <field name="name">bidding.boq.component.list</field>
+        <field name="model">bidding.boq.component</field>
+        <field name="arch" type="xml">
+            <list string="Cost Components" create="0">
+                <field name="tender_id"/>
+                <field name="item_id"/>
+                <field name="component_type"/>
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="quantity"/>
+                <field name="uom_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_cost"/>
+                <field name="total_cost" sum="Total"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_bidding_boq_component_pivot" model="ir.ui.view">
+        <field name="name">bidding.boq.component.pivot</field>
+        <field name="model">bidding.boq.component</field>
+        <field name="arch" type="xml">
+            <pivot string="Cost Components Analysis">
+                <field name="component_type" type="row"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="view_bidding_boq_component_search" model="ir.ui.view">
+        <field name="name">bidding.boq.component.search</field>
+        <field name="model">bidding.boq.component</field>
+        <field name="arch" type="xml">
+            <search string="Search Cost Components">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="item_id"/>
+                <field name="tender_id"/>
+                <filter string="Materials" name="material" domain="[('component_type', '=', 'material')]"/>
+                <filter string="Equipment" name="equipment" domain="[('component_type', '=', 'equipment')]"/>
+                <filter string="Subcontractors" name="subcontract" domain="[('component_type', '=', 'subcontract')]"/>
+                <filter string="External Labor" name="labor" domain="[('component_type', '=', 'labor')]"/>
+                <group>
+                    <filter string="Component Type" name="group_type" context="{'group_by': 'component_type'}"/>
+                    <filter string="Tender" name="group_tender" context="{'group_by': 'tender_id'}"/>
+                    <filter string="Product" name="group_product" context="{'group_by': 'product_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_bidding_boq_component" model="ir.actions.act_window">
+        <field name="name">Cost Components</field>
+        <field name="res_model">bidding.boq.component</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="context">{'search_default_group_type': 1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_construction_analysis">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page o_construction_analysis_pdf" t-att-dir="'rtl' if o._is_rtl() else 'ltr'">
+                        <style>
+                            .o_construction_analysis_pdf table { font-size: 10px; page-break-inside: auto; }
+                            .o_construction_analysis_pdf tr { page-break-inside: avoid; }
+                            .o_construction_analysis_pdf thead { display: table-header-group; }
+                            .o_construction_analysis_pdf h5 { margin-top: 12px; }
+                            .o_construction_analysis_pdf[dir="rtl"] td:first-child, .o_construction_analysis_pdf[dir="rtl"] th:first-child { padding-right: 10px !important; }
+                        </style>
+                        <t t-out="o._get_pdf_html()"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

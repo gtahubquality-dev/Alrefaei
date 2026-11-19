@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_usage_list" model="ir.ui.view">
+        <field name="name">construction.equipment.usage.list</field>
+        <field name="model">construction.equipment.usage</field>
+        <field name="arch" type="xml">
+            <list string="Equipment Usage" editable="top" decoration-muted="state == 'posted'">
+                <header>
+                    <button name="action_post" type="object" string="Allocate Costs" class="btn-primary"/>
+                </header>
+                <field name="date" readonly="state == 'posted'"/>
+                <field name="equipment_id" readonly="state == 'posted'"/>
+                <field name="project_id" readonly="state == 'posted'"/>
+                <field name="hours" sum="Hours" readonly="state == 'posted'"/>
+                <field name="request_id" optional="show" readonly="state == 'posted'" options="{'no_create': True}"/>
+                <field name="note" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="operating_rate" optional="hide" readonly="state == 'posted'"/>
+                <field name="depreciation_rate" optional="hide" readonly="state == 'posted'"/>
+                <field name="diesel_rate" optional="hide" readonly="state == 'posted'"/>
+                <field name="diesel_price" optional="hide" readonly="state == 'posted'"/>
+                <field name="diesel_liters" sum="Diesel"/>
+                <field name="operating_cost" optional="hide" sum="Operating"/>
+                <field name="depreciation_cost" optional="hide" sum="Depreciation"/>
+                <field name="diesel_cost" optional="hide" sum="Diesel Cost"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="move_id" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_equipment_usage_search" model="ir.ui.view">
+        <field name="name">construction.equipment.usage.search</field>
+        <field name="model">construction.equipment.usage</field>
+        <field name="arch" type="xml">
+            <search string="Search Usage">
+                <field name="equipment_id"/>
+                <field name="project_id"/>
+                <filter string="To Allocate" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Allocated" name="posted" domain="[('state', '=', 'posted')]"/>
+                <separator/>
+                <filter string="Date" name="filter_date" date="date"/>
+                <group>
+                    <filter string="Equipment" name="group_equipment" context="{'group_by': 'equipment_id'}"/>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Month" name="group_month" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_construction_equipment_usage_pivot" model="ir.ui.view">
+        <field name="name">construction.equipment.usage.pivot</field>
+        <field name="model">construction.equipment.usage</field>
+        <field name="arch" type="xml">
+            <pivot string="Equipment Utilization">
+                <field name="equipment_id" type="row"/>
+                <field name="project_id" type="col"/>
+                <field name="hours" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="action_construction_equipment_usage" model="ir.actions.act_window">
+        <field name="name">Equipment Usage &amp; Utilization</field>
+        <field name="res_model">construction.equipment.usage</field>
+        <field name="view_mode">list,pivot</field>
+    </record>
+</odoo>

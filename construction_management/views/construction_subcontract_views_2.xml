@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_subcontract_list" model="ir.ui.view">
+        <field name="name">construction.subcontract.list</field>
+        <field name="model">construction.subcontract</field>
+        <field name="arch" type="xml">
+            <list string="Subcontractor Contracts">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="date_start"/>
+                <field name="date_end" optional="show"/>
+                <field name="guarantee_percent" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="state" widget="badge" decoration-success="state == 'active'" decoration-warning="state == 'to_approve'" decoration-muted="state in ('closed', 'cancelled')"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_subcontract_search" model="ir.ui.view">
+        <field name="name">construction.subcontract.search</field>
+        <field name="model">construction.subcontract</field>
+        <field name="arch" type="xml">
+            <search string="Search Subcontracts">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <filter string="Requests" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Waiting Management" name="to_approve" domain="[('state', '=', 'to_approve')]"/>
+                <filter string="Active" name="active_contracts" domain="[('state', '=', 'active')]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Subcontractor" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_subcontract" model="ir.actions.act_window">
+        <field name="name">Subcontractor Contracts</field>
+        <field name="res_model">construction.subcontract</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Request a subcontractor</p>
+            <p>Site engineers request subcontractors for BOQ items or part of their quantities. Senior Management approves the contract.</p>
+        </field>
+    </record>
+</odoo>

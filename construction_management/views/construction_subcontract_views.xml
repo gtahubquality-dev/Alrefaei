@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_subcontract_form" model="ir.ui.view">
+        <field name="name">construction.subcontract.form</field>
+        <field name="model">construction.subcontract</field>
+        <field name="arch" type="xml">
+            <form string="Subcontractor Contract">
+                <header>
+                    <button name="action_submit" type="object" string="Submit to Management" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve Contract" class="btn-primary" invisible="state != 'to_approve'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_reject" type="object" string="Return to Request" invisible="state != 'to_approve'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_pay_advance" type="object" string="Register Advance Payment" invisible="state != 'active' or advance_move_id or advance_amount &lt;= 0" groups="construction_management.group_construction_finance"/>
+                    <button name="action_create_invoice" type="object" string="Create Invoice" class="btn-primary" invisible="state != 'active'"/>
+                    <button name="action_new_amendment" type="object" string="New Amendment" invisible="state != 'active'"/>
+                    <button name="action_close" type="object" string="Close Contract" invisible="state != 'active'" groups="construction_management.group_construction_manager" confirm="The work guarantee balance will be refunded to the subcontractor automatically. Continue?"/>
+                    <button name="action_refund_guarantee" type="object" string="Refund Work Guarantee" invisible="state not in ('active', 'closed') or guarantee_balance &lt;= 0" groups="construction_management.group_construction_finance"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('closed', 'cancelled')" groups="construction_management.group_construction_manager"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Request" invisible="state != 'cancelled'" groups="construction_management.group_construction_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,active,closed"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-danger" role="alert" invisible="not has_boq_excess or state != 'draft'">
+                        <strong>The lines in red exceed the BOQ</strong> (quantity above the available BOQ quantity or unit price above the BOQ subcontract unit cost). The contract will need the approval of Senior Management.
+                        <field name="has_boq_excess" invisible="1"/>
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="not exceeds_boq">
+                        <strong>Exceeds the BOQ - Senior Management approval required</strong>
+                        <field name="boq_exceed_note" nolabel="1" class="d-block"/>
+                        <field name="exceeds_boq" invisible="1"/>
+                    </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoices" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                        <button name="action_view_amendments" type="object" class="oe_stat_button" icon="fa-pencil">
+                            <field name="amendment_count" widget="statinfo" string="Amendments"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Contract">
+                            <field name="project_id" readonly="state != 'draft'"/>
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="date_start" readonly="state not in ('draft', 'to_approve')"/>
+                            <field name="duration_months" readonly="state not in ('draft', 'to_approve')"/>
+                            <field name="date_end"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Financial Terms">
+                            <field name="guarantee_percent" readonly="state != 'draft'"/>
+                            <field name="advance_amount" readonly="state != 'draft'"/>
+                            <field name="advance_deduction_percent" readonly="state != 'draft'"/>
+                            <field name="advance_journal_id" readonly="advance_move_id"/>
+                            <field name="advance_move_id" invisible="not advance_move_id"/>
+                            <field name="advance_payment_move_id" invisible="not advance_payment_move_id"/>
+                        </group>
+                        <group string="Approval">
+                            <field name="requested_by_id"/>
+                            <field name="approved_by_id"/>
+                            <field name="approved_date"/>
+                        </group>
+                        <group string="Balances">
+                            <field name="amount_total"/>
+                            <field name="invoiced_amount"/>
+                            <field name="guarantee_held"/>
+                            <field name="advance_deducted"/>
+                            <field name="advance_balance"/>
+                            <field name="deductions_total"/>
+                            <field name="guarantee_refunded"/>
+                            <field name="guarantee_balance"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Assigned BOQ Items" name="lines">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <list editable="bottom" decoration-danger="exceeds_quantity or exceeds_price">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="project_id" column_invisible="True"/>
+                                    <field name="exceeds_quantity" column_invisible="True"/>
+                                    <field name="exceeds_price" column_invisible="True"/>
+                                    <field name="boq_item_id" options="{'no_create': True}"/>
+                                    <field name="boq_component_id" options="{'no_create': True}" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="boq_quantity"/>
+                                    <field name="available_quantity" optional="show"/>
+                                    <field name="quantity" decoration-bf="exceeds_quantity"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="boq_unit_cost" optional="show"/>
+                                    <field name="unit_price" decoration-bf="exceeds_price"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="executed_quantity" optional="show"/>
+                                    <field name="invoiced_quantity"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Deductions &amp; Suspense Amounts" name="deductions">
+                            <button name="action_load_project_deductions" type="object" string="Load Project Deduction Policy" icon="fa-download" class="btn-link" invisible="state not in ('draft', 'to_approve')"/>
+                            <field name="deduction_ids" readonly="state not in ('draft', 'to_approve')" context="{'default_contract_id': id}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="type_id"/>
+                                    <field name="project_deduction_id" optional="hide"/>
+                                    <field name="name"/>
+                                    <field name="kind"/>
+                                    <field name="calculation"/>
+                                    <field name="value"/>
+                                    <field name="frequency"/>
+                                    <field name="account_id"/>
+                                    <field name="refundable"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="deducted_amount"/>
+                                    <field name="refunded_amount"/>
+                                    <field name="balance"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                    <button name="action_refund" type="object" string="Refund" icon="fa-undo" invisible="not refundable or balance &lt;= 0" groups="construction_management.group_construction_finance"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Guarantees Received" name="guarantees">
+                            <field name="guarantee_ids" context="{'default_subcontract_id': id, 'default_project_id': project_id, 'default_direction': 'received'}">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="guarantee_type"/>
+                                    <field name="guarantee_form"/>
+                                    <field name="bank_id"/>
+                                    <field name="reference"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="expiry_date"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Refunds" name="refunds">
+                            <field name="operation_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="operation_type"/>
+                                    <field name="name"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="move_id"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Terms &amp; Conditions" name="terms">
+                            <field name="terms"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

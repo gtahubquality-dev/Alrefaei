@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_form_asset" model="ir.ui.view">
+        <field name="name">construction.equipment.form.asset</field>
+        <field name="model">construction.equipment</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_asset" type="object" class="oe_stat_button" icon="fa-building" invisible="not asset_id" groups="account.group_account_invoice">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="asset_book_value" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </span>
+                        <span class="o_stat_text">Book Value</span>
+                    </div>
+                </button>
+            </xpath>
+            <field name="ownership" position="after">
+                <label for="asset_id" invisible="ownership != 'owned'"/>
+                <div class="o_row" invisible="ownership != 'owned'">
+                    <field name="asset_id" required="ownership == 'owned'" options="{'no_quick_create': True}" context="{'default_name': name, 'default_original_value': purchase_value, 'default_acquisition_date': acquisition_date, 'default_company_id': company_id}"/>
+                </div>
+            </field>
+            <field name="purchase_value" position="after">
+                <field name="asset_original_value" invisible="not asset_id"/>
+                <field name="asset_book_value" invisible="not asset_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_construction_equipment_list_asset" model="ir.ui.view">
+        <field name="name">construction.equipment.list.asset</field>
+        <field name="model">construction.equipment</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_list"/>
+        <field name="arch" type="xml">
+            <field name="ownership" position="after">
+                <field name="asset_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_construction_equipment_search_asset" model="ir.ui.view">
+        <field name="name">construction.equipment.search.asset</field>
+        <field name="model">construction.equipment</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_search"/>
+        <field name="arch" type="xml">
+            <filter name="rented" position="after">
+                <filter string="Owned without Asset" name="owned_no_asset" domain="[('ownership', '=', 'owned'), ('asset_id', '=', False)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

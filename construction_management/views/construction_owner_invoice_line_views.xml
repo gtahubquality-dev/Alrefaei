@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_owner_invoice_line_list" model="ir.ui.view">
+        <field name="name">construction.owner.invoice.line.list</field>
+        <field name="model">construction.owner.invoice.line</field>
+        <field name="arch" type="xml">
+            <list string="Owner Invoice Lines" create="0" edit="0">
+                <field name="invoice_id"/>
+                <field name="project_id"/>
+                <field name="boq_item_id"/>
+                <field name="uom_id"/>
+                <field name="boq_quantity"/>
+                <field name="previous_quantity"/>
+                <field name="current_quantity"/>
+                <field name="remaining_quantity"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_price"/>
+                <field name="amount_current" sum="Total"/>
+                <field name="invoice_state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+</odoo>

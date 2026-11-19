@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_form" model="ir.ui.view">
+        <field name="name">construction.equipment.form</field>
+        <field name="model">construction.equipment</field>
+        <field name="arch" type="xml">
+            <form string="Equipment">
+                <header>
+                    <button name="action_set_maintenance" type="object" string="Send to Maintenance" invisible="state in ('maintenance', 'inactive')" groups="construction_management.group_construction_transport"/>
+                    <button name="action_set_available" type="object" string="Back to Service" class="btn-primary" invisible="state not in ('maintenance', 'inactive')" groups="construction_management.group_construction_transport"/>
+                    <button name="action_set_inactive" type="object" string="Out of Service" invisible="state == 'inactive'" groups="construction_management.group_construction_transport"/>
+                    <field name="state" widget="statusbar" statusbar_visible="available,in_use,maintenance"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_analytic_lines" type="object" class="oe_stat_button" icon="fa-bar-chart" string="Cost Center" groups="account.group_account_invoice"/>
+                        <button name="action_view_rentals" type="object" class="oe_stat_button" icon="fa-handshake-o" invisible="ownership != 'rented'">
+                            <field name="rental_contract_count" widget="statinfo" string="Rentals"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Excavator CAT 320"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Identification">
+                            <field name="code"/>
+                            <field name="category"/>
+                            <field name="is_vehicle" invisible="1"/>
+                            <field name="equipment_type"/>
+                            <field name="serial_number" invisible="is_vehicle"/>
+                            <field name="ownership"/>
+                            <field name="acquisition_date"/>
+                            <field name="rental_vendor_id" invisible="ownership != 'rented'"/>
+                            <field name="rental_end_date" invisible="ownership != 'rented'"/>
+                            <field name="running_rental_id" invisible="ownership != 'rented' or not running_rental_id"/>
+                            <field name="responsible_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Vehicle" invisible="not is_vehicle">
+                            <field name="license_plate" required="is_vehicle"/>
+                            <field name="vin_number"/>
+                            <field name="color"/>
+                            <field name="model_year"/>
+                        </group>
+                        <group string="Location">
+                            <field name="current_project_id"/>
+                            <field name="location_note"/>
+                            <field name="analytic_account_id"/>
+                        </group>
+                        <group string="Costing">
+                            <field name="purchase_value" invisible="ownership != 'owned'"/>
+                            <field name="depreciation_amount" invisible="ownership != 'owned'"/>
+                            <field name="depreciation_per_hour" invisible="ownership != 'owned'"/>
+                            <field name="operating_cost_per_hour"/>
+                            <field name="diesel_per_hour"/>
+                            <field name="diesel_price"/>
+                            <field name="hourly_rate" class="fw-bold"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_equipment_list" model="ir.ui.view">
+        <field name="name">construction.equipment.list</field>
+        <field name="model">construction.equipment</field>
+        <field name="arch" type="xml">
+            <list string="Equipment">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="license_plate" optional="show"/>
+                <field name="equipment_type" optional="hide"/>
+                <field name="ownership"/>
+                <field name="current_project_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="hourly_rate" optional="show"/>
+                <field name="diesel_per_hour" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'available'" decoration-info="state == 'in_use'" decoration-warning="state == 'maintenance'" decoration-muted="state == 'inactive'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_equipment_kanban" model="ir.ui.view">
+        <field name="name">construction.equipment.kanban</field>
+        <field name="model">construction.equipment</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="current_project_id">
+                <templates>
+                    <t t-name="card">
+                        <field name="name" class="fw-bold"/>
+                        <field name="code" class="text-muted small"/>
+                        <field name="equipment_type"/>
+                        <field name="state" widget="badge"/>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_construction_equipment_search" model="ir.ui.view">
+        <field name="name">construction.equipment.search</field>
+        <field name="model">construction.equipment</field>
+        <field name="arch" type="xml">
+            <search string="Search Equipment">
+                <field name="name" filter_domain="['|', '|', '|', '|', ('name', 'ilike', self), ('code', 'ilike', self), ('serial_number', 'ilike', self), ('license_plate', 'ilike', self), ('vin_number', 'ilike', self)]"/>
+                <field name="current_project_id"/>
+                <filter string="Available" name="available" domain="[('state', '=', 'available')]"/>
+                <filter string="On Site" name="in_use" domain="[('state', '=', 'in_use')]"/>
+                <filter string="Under Maintenance" name="maintenance" domain="[('state', '=', 'maintenance')]"/>
+                <separator/>
+                <filter string="Vehicles" name="vehicles" domain="[('is_vehicle', '=', True)]"/>
+                <filter string="Machines &amp; Equipment" name="machines" domain="[('is_vehicle', '=', False)]"/>
+                <separator/>
+                <filter string="Company Owned" name="owned" domain="[('ownership', '=', 'owned')]"/>
+                <filter string="Rented" name="rented" domain="[('ownership', '=', 'rented')]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter string="Current Project" name="group_project" context="{'group_by': 'current_project_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Ownership" name="group_ownership" context="{'group_by': 'ownership'}"/>
+                    <filter string="Type" name="group_category" context="{'group_by': 'category'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_equipment" model="ir.actions.act_window">
+        <field name="name">Equipment</field>
+        <field name="res_model">construction.equipment</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Register your equipment</p>
+            <p>Track company-owned and rented equipment, their location, hourly costs and expenses.</p>
+        </field>
+    </record>
+</odoo>

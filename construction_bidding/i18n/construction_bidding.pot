@@ -1,0 +1,963 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-16 18:20+0000\n"
+"PO-Revision-Date: 2026-11-16 18:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "%s (copy)"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_boq.py:0
+msgid "A product is required for material component %s."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "An awarded tender cannot be cancelled."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.ui.menu,name:construction_bidding.menu_bidding_analysis
+msgid "Analysis"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__awarded
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Awarded"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__item_id
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "BOQ Item"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__boq_item_ids
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_list
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "BOQ Items"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__boq_item_count
+msgid "BOQ Items Count"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.ui.menu,name:construction_bidding.menu_bidding_root
+#: model:res.groups.privilege,name:construction_bidding.res_groups_privilege_bidding
+msgid "Bidding"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model,name:construction_bidding.model_bidding_boq_component
+msgid "Bidding BOQ Cost Component"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model,name:construction_bidding.model_bidding_boq_item
+msgid "Bidding Estimated BOQ Item"
+msgstr ""
+
+#. module: construction_bidding
+#: model:res.groups,name:construction_bidding.group_bidding_manager
+msgid "Bidding Manager"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__reference
+msgid "Bidding Reference"
+msgstr ""
+
+#. module: construction_bidding
+#: model:res.groups,comment:construction_bidding.group_bidding_user
+msgid "Can prepare tenders and estimated BOQs."
+msgstr ""
+
+#. module: construction_bidding
+#: model:res.groups,comment:construction_bidding.group_bidding_manager
+msgid "Can review costs, submit, award and delete tenders."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Cancel"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__company_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__company_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__company_id
+msgid "Company"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__component_type
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+msgid "Component Type"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.module.category,name:construction_bidding.module_category_construction
+msgid "Construction"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model,name:construction_bidding.model_construction_auto_repair
+msgid "Construction Suite Auto Repair"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__consultant_id
+msgid "Consultant"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Contractual description of the item..."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_boq_item__weight_percent
+msgid "Contribution of this item to the overall project execution progress."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_list
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Cost %"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Cost & Financial Analysis"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Cost Analysis"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+#: model:ir.actions.act_window,name:construction_bidding.action_bidding_boq_component
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__component_ids
+#: model:ir.ui.menu,name:construction_bidding.menu_bidding_components
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_list
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Cost Components"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_pivot
+msgid "Cost Components Analysis"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__cost_percent
+msgid "Cost Percentage (%)"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Cost Summary"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.actions.act_window,help:construction_bidding.action_bidding_tender
+msgid "Create your first tender"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__create_uid
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__create_uid
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__create_date
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__create_date
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__currency_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__currency_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__partner_id
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Customer"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Dates"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__name
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__description
+msgid "Description"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__display_name
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__display_name
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__display_name
+#: model:ir.model.fields,field_description:construction_bidding.field_construction_auto_repair__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__draft
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Draft"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__equipment_ids
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_boq_component__component_type__equipment
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Equipment"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Equipment / Machinery"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__equipment_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__equipment_cost
+msgid "Equipment Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Estimated BOQ"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Estimated Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Estimated Cost Breakdown"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Estimated Operating Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__quantity
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Estimated Quantity"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__estimated_cost
+msgid "Estimated Total Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__amount_total
+msgid "Estimated Total Price"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__unit_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__unit_cost
+msgid "Estimated Unit Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__unit_price
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Estimated Unit Price"
+msgstr ""
+
+#. module: construction_bidding
+#: model:res.groups,name:construction_bidding.group_bidding_user
+msgid "Estimator"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__duration_months
+msgid "Expected Duration (Months)"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__end_date
+msgid "Expected End Date"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__profit_amount
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__profit_amount
+msgid "Expected Profit"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__start_date
+msgid "Expected Start Date"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__labor_ids
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_boq_component__component_type__labor
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "External Labor"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__labor_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__labor_cost
+msgid "External Labor Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__id
+#: model:ir.model.fields,field_description:construction_bidding.field_construction_auto_repair__id
+msgid "ID"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__message_has_error
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Item"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__code
+msgid "Item Code"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__name
+msgid "Item Name"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__weight_percent
+msgid "Item Weight (%)"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_boq_item__cost_percent
+msgid "Item estimated cost compared to the total estimated BOQ cost."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_boq.py:0
+msgid "Item weight of %s must be between 0 and 100."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Labor"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Labor Description"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__write_uid
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__write_uid
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__write_date
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__write_date
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__lost
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Lost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Mark as Awarded"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Mark as Lost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__material_ids
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_boq_component__component_type__material
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Materials"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__material_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__material_cost
+msgid "Materials Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "My Tenders"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "New"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__notes
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Notes"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__offer_amount
+msgid "Offer Amount"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "Only draft or under-study tenders can be submitted."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "Only draft tenders can be moved to study."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "Only lost, cancelled or under-study tenders can be reset to draft."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "Only submitted tenders can be awarded."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "Only submitted tenders can be marked as lost."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Operating Hours / Quantity"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Parties"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+msgid "Product"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__product_id
+msgid "Product / Material"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__profit_percent
+msgid "Profit Margin (%)"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Profitability"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__owner_id
+msgid "Project Owner"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__quantity
+msgid "Quantity / Hours"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_boq.py:0
+msgid "Quantity and cost of component %s cannot be negative."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_boq.py:0
+msgid "Quantity and unit price of BOQ item %s cannot be negative."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.actions.act_window,help:construction_bidding.action_bidding_tender
+msgid ""
+"Register tenders, prepare the estimated BOQ and review the expected cost and"
+" profit before submitting your offer."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Required Quantity"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__user_id
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Responsible"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_search
+msgid "Search BOQ Items"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+msgid "Search Cost Components"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Search Tenders"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__sequence
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__specifications
+msgid "Specifications"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Start Study"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Status"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__subcontract_ids
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_boq_component__component_type__subcontract
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Subcontractors"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__subcontract_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__subcontract_cost
+msgid "Subcontractors Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Submission Date"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Submission Month"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Submit Offer"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__submitted
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Submitted"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__tender_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__tender_id
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_search
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Tender"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model,name:construction_bidding.model_bidding_tender
+msgid "Tender / Bidding"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__name
+msgid "Tender / Project Name"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_pivot
+msgid "Tender Analysis"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__tender_state
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__state
+msgid "Tender Status"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__submission_date
+msgid "Tender Submission Date"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Tender notes, conditions, clarifications..."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.actions.act_window,name:construction_bidding.action_bidding_tender
+#: model:ir.ui.menu,name:construction_bidding.menu_bidding_tenders
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_list
+msgid "Tenders"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.constraint,message:construction_bidding.constraint_bidding_tender_reference_company_uniq
+msgid "The bidding reference must be unique per company."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "The expected duration cannot be negative."
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid ""
+"The total weight of BOQ items in tender %(tender)s cannot exceed 100%% "
+"(current: %(weight)s%%)."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_component_list
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_list
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Total"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_list
+msgid "Total Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__total_cost
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__total_cost
+msgid "Total Estimated Cost"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_list
+msgid "Total Offer"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__total_weight
+msgid "Total Weight (%)"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields.selection,name:construction_bidding.selection__bidding_tender__state__in_progress
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_search
+msgid "Under Study"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Unit Price"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_component__uom_id
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_boq_item__uom_id
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_search
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,field_description:construction_bidding.field_bidding_tender__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: construction_bidding
+#: model:ir.model.fields,help:construction_bidding.field_bidding_tender__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "Weight"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "Work Description"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "You cannot submit tender %s without BOQ items."
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_tender_form
+msgid "e.g. Administrative Building Construction"
+msgstr ""
+
+#. module: construction_bidding
+#: model_terms:ir.ui.view,arch_db:construction_bidding.view_bidding_boq_item_form
+msgid "e.g. Reinforced concrete for foundations"
+msgstr ""
+
+#. module: construction_bidding
+#. odoo-python
+#: code:addons/construction_bidding/models/bidding_tender.py:0
+msgid "tender_id"
+msgstr ""

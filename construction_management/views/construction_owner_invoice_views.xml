@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_owner_invoice_form" model="ir.ui.view">
+        <field name="name">construction.owner.invoice.form</field>
+        <field name="model">construction.owner.invoice</field>
+        <field name="arch" type="xml">
+            <form string="Owner Invoice">
+                <header>
+                    <button name="action_generate_lines" type="object" string="Load BOQ Items" class="btn-primary" invisible="state != 'draft' or line_ids or invoice_type != 'progress'"/>
+                    <button name="action_refresh" type="object" string="Refresh Quantities &amp; Deductions" invisible="state != 'draft' or invoice_type != 'progress'"/>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve_senior" type="object" string="Approve (Senior Management)" class="btn-primary" invisible="state != 'to_approve'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_approve_exceptional" type="object" string="Exceptional Approval" class="btn-primary" invisible="state != 'to_approve_exceptional'" groups="construction_management.group_construction_executive"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state not in ('to_approve', 'to_approve_exceptional', 'approved')" groups="construction_management.group_construction_manager"/>
+                    <button name="action_create_invoice" type="object" string="Confirm &amp; Create Customer Invoice" class="btn-primary" invisible="state != 'approved'" groups="construction_management.group_construction_finance,construction_management.group_construction_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state == 'cancelled'"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,invoiced"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_move" type="object" class="oe_stat_button" icon="fa-pencil-square-o" string="Customer Invoice" invisible="not move_id"/>
+                    </div>
+                    <div class="alert alert-warning mb-2" role="alert" invisible="approval_level != 'senior' or state not in ('draft', 'to_approve')">
+                        Unit prices are increased by up to 25% compared to the contract: Senior Management approval is required.
+                    </div>
+                    <div class="alert alert-danger mb-2" role="alert" invisible="approval_level != 'exceptional' or state not in ('draft', 'to_approve_exceptional')">
+                        Unit prices are increased by more than 25% compared to the contract: an exceptional approval is required.
+                    </div>
+                    <div class="alert alert-info mb-2" role="alert" invisible="invoice_type != 'advance' or state != 'draft'">
+                        Advance payment invoice: the advance of the customer contract is invoiced to the owner. It is recovered on the next progress invoices at the advance deduction rate.
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <field name="invoice_type" widget="radio" options="{'horizontal': true}" readonly="state != 'draft' or line_ids"/>
+                    <group>
+                        <group>
+                            <field name="project_id" readonly="state != 'draft' or line_ids"/>
+                            <field name="partner_id"/>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <label for="period_start" string="Period"/>
+                            <div class="o_row">
+                                <field name="period_start" readonly="state != 'draft'"/>
+                                <span>to</span>
+                                <field name="period_end" readonly="state != 'draft'"/>
+                            </div>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                        <group string="Advance Payment" invisible="invoice_type != 'advance'">
+                            <field name="advance_amount" readonly="state != 'draft'" class="fw-bold"/>
+                            <field name="move_id" invisible="not move_id"/>
+                            <field name="payment_state" invisible="not move_id"/>
+                        </group>
+                        <group string="Contract Deductions" invisible="invoice_type != 'progress'">
+                            <field name="advance_deduction_percent" readonly="state != 'draft'"/>
+                            <field name="available_advance" invisible="state != 'draft'"/>
+                            <field name="retention_percent" readonly="state != 'draft'"/>
+                            <field name="insurance_percent" readonly="state != 'draft'"/>
+                            <field name="remaining_insurance" invisible="state != 'draft'"/>
+                            <field name="max_price_increase"/>
+                            <field name="approval_level"/>
+                            <field name="move_id" invisible="not move_id"/>
+                            <field name="payment_state" invisible="not move_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Executed Quantities" name="lines" invisible="invoice_type != 'progress'">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <list editable="bottom" create="0" decoration-danger="remaining_quantity &lt; 0" decoration-warning="price_increase_percent &gt; 0">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="boq_item_id" readonly="1" force_save="1"/>
+                                    <field name="uom_id"/>
+                                    <field name="boq_quantity"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="contract_price" optional="show"/>
+                                    <field name="unit_price"/>
+                                    <field name="price_increase_percent" optional="show"/>
+                                    <field name="previous_quantity"/>
+                                    <field name="current_quantity"/>
+                                    <field name="cumulative_quantity" optional="show"/>
+                                    <field name="remaining_quantity"/>
+                                    <field name="previous_amount" optional="hide" sum="Previous"/>
+                                    <field name="amount_current" sum="Current"/>
+                                    <field name="amount_cumulative" optional="show" sum="Cumulative"/>
+                                </list>
+                            </field>
+                            <group>
+                                <group string="Deductions">
+                                    <field name="deduction_ids" nolabel="1" colspan="2" readonly="state != 'draft'">
+                                        <list editable="bottom" create="0">
+                                            <field name="name"/>
+                                            <field name="kind" optional="show"/>
+                                            <field name="account_id"/>
+                                            <field name="currency_id" column_invisible="True"/>
+                                            <field name="amount" sum="Total"/>
+                                        </list>
+                                    </field>
+                                </group>
+                                <group class="oe_subtotal_footer">
+                                    <field name="previous_amount"/>
+                                    <field name="gross_amount"/>
+                                    <field name="cumulative_amount"/>
+                                    <field name="advance_deduction_amount"/>
+                                    <field name="retention_amount"/>
+                                    <field name="insurance_amount"/>
+                                    <field name="deduction_total"/>
+                                    <field name="net_amount" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Approvals" name="approvals">
+                            <group>
+                                <group string="Submission">
+                                    <field name="submitted_by_id"/>
+                                </group>
+                                <group string="Senior Management">
+                                    <field name="senior_approved_by_id"/>
+                                    <field name="senior_approved_date"/>
+                                </group>
+                                <group string="Exceptional Approval">
+                                    <field name="exceptional_approved_by_id"/>
+                                    <field name="exceptional_approved_date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" placeholder="Notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_owner_invoice_list" model="ir.ui.view">
+        <field name="name">construction.owner.invoice.list</field>
+        <field name="model">construction.owner.invoice</field>
+        <field name="arch" type="xml">
+            <list string="Owner Invoices">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id" optional="show"/>
+                <field name="date"/>
+                <field name="invoice_type" optional="show"/>
+                <field name="period_end" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="gross_amount" sum="Current"/>
+                <field name="cumulative_amount" optional="show"/>
+                <field name="retention_amount" optional="hide" sum="Retention"/>
+                <field name="advance_deduction_amount" optional="hide" sum="Advance"/>
+                <field name="insurance_amount" optional="hide" sum="Insurance"/>
+                <field name="net_amount" sum="Net"/>
+                <field name="approval_level" optional="show"/>
+                <field name="payment_state" optional="show" widget="badge"/>
+                <field name="state" widget="badge" decoration-success="state == 'invoiced'" decoration-warning="state in ('to_approve', 'to_approve_exceptional')" decoration-info="state == 'approved'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_owner_invoice_search" model="ir.ui.view">
+        <field name="name">construction.owner.invoice.search</field>
+        <field name="model">construction.owner.invoice</field>
+        <field name="arch" type="xml">
+            <search string="Search Owner Invoices">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Waiting Senior Management" name="to_approve" domain="[('state', '=', 'to_approve')]"/>
+                <filter string="Waiting Exceptional Approval" name="to_approve_exceptional" domain="[('state', '=', 'to_approve_exceptional')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Invoiced" name="invoiced" domain="[('state', '=', 'invoiced')]"/>
+                <separator/>
+                <filter string="Advance Payment Invoices" name="advance" domain="[('invoice_type', '=', 'advance')]"/>
+                <filter string="Progress Invoices" name="progress" domain="[('invoice_type', '=', 'progress')]"/>
+                <separator/>
+                <filter string="Invoice Date" name="filter_date" date="date"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Month" name="group_month" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_owner_invoice" model="ir.actions.act_window">
+        <field name="name">Owner Invoices</field>
+        <field name="res_model">construction.owner.invoice</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create an owner invoice</p>
+            <p>Select a project, load its BOQ items and enter the quantities executed in the period. Previous, cumulative and remaining quantities are calculated automatically.</p>
+        </field>
+    </record>
+</odoo>

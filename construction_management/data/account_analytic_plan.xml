@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="analytic_plan_construction_projects" model="account.analytic.plan">
+            <field name="name">Construction Projects</field>
+        </record>
+        <record id="analytic_plan_construction_equipment" model="account.analytic.plan">
+            <field name="name">Construction Equipment</field>
+        </record>
+    </data>
+</odoo>

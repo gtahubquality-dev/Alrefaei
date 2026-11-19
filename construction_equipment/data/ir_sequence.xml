@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_construction_equipment_movement" model="ir.sequence">
+            <field name="name">Equipment Movement</field>
+            <field name="code">construction.equipment.movement</field>
+            <field name="prefix">EQM/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_construction_equipment_expense" model="ir.sequence">
+            <field name="name">Equipment Expense</field>
+            <field name="code">construction.equipment.expense</field>
+            <field name="prefix">EQE/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

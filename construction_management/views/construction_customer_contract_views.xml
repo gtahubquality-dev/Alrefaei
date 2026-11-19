@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_customer_contract_form" model="ir.ui.view">
+        <field name="name">construction.customer.contract.form</field>
+        <field name="model">construction.customer.contract</field>
+        <field name="arch" type="xml">
+            <form string="Customer Contract" create="0" edit="0" delete="0">
+                <header>
+                    <button name="action_sign" type="object" string="Sign Contract" class="btn-primary" invisible="state != 'draft'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_close" type="object" string="Close" invisible="state != 'signed'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('closed', 'cancelled')" groups="construction_management.group_construction_manager"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,signed,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_project" type="object" class="oe_stat_button" icon="fa-building">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Project</span>
+                            </div>
+                        </button>
+                        <button name="action_view_owner_invoices" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="owner_invoice_count" widget="statinfo" string="Owner Invoices"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Signed" bg_color="text-bg-success" invisible="state != 'signed'"/>
+                    <widget name="web_ribbon" title="Cancelled" bg_color="text-bg-danger" invisible="state != 'cancelled'"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Parties">
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                            <field name="owner_id"/>
+                            <field name="consultant_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Dates">
+                            <field name="date"/>
+                            <field name="start_date"/>
+                            <field name="duration_months"/>
+                            <field name="end_date"/>
+                            <field name="signed_date" invisible="not signed_date"/>
+                            <field name="signed_by_id" invisible="not signed_by_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Contract Value">
+                            <field name="original_amount"/>
+                            <field name="change_order_amount"/>
+                            <field name="contract_amount"/>
+                            <field name="signed_amount" invisible="state == 'draft'"/>
+                            <field name="invoiced_amount"/>
+                        </group>
+                        <group string="Commercial Terms">
+                            <field name="advance_payment_percent"/>
+                            <field name="advance_payment_amount"/>
+                            <field name="advance_deduction_percent"/>
+                            <field name="guarantee_percent"/>
+                            <field name="final_insurance_percent"/>
+                            <field name="final_insurance_amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Bill of Quantities" name="boq">
+                            <field name="boq_item_ids" readonly="1">
+                                <list>
+                                    <field name="code"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="total_quantity"/>
+                                    <field name="unit_price"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount_total" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Deduction Policy" name="deductions">
+                            <field name="deduction_ids">
+                                <list>
+                                    <field name="applies_to"/>
+                                    <field name="type_id"/>
+                                    <field name="name"/>
+                                    <field name="kind"/>
+                                    <field name="calculation"/>
+                                    <field name="value"/>
+                                    <field name="frequency"/>
+                                    <field name="account_id"/>
+                                    <field name="refundable"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Terms &amp; Conditions" name="terms">
+                            <field name="terms"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_customer_contract_list" model="ir.ui.view">
+        <field name="name">construction.customer.contract.list</field>
+        <field name="model">construction.customer.contract</field>
+        <field name="arch" type="xml">
+            <list string="Customer Contracts" create="0" delete="0" decoration-muted="state == 'cancelled'" decoration-info="state == 'draft'">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="signed_date" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="signed_amount" sum="Total" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'signed'" decoration-info="state == 'draft'" decoration-danger="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_customer_contract_search" model="ir.ui.view">
+        <field name="name">construction.customer.contract.search</field>
+        <field name="model">construction.customer.contract</field>
+        <field name="arch" type="xml">
+            <search string="Customer Contracts">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Signed" name="signed" domain="[('state', '=', 'signed')]"/>
+                <filter string="Closed" name="closed" domain="[('state', '=', 'closed')]"/>
+                <separator/>
+                <filter string="Cancelled" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <group>
+                    <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_customer_contract" model="ir.actions.act_window">
+        <field name="name">Customer Contracts</field>
+        <field name="res_model">construction.customer.contract</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_construction_customer_contract_search"/>
+        <field name="context">{'search_default_draft': 1, 'search_default_signed': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">No customer contract yet</p>
+            <p>Customer contracts are created from the projects (automatically when the option is enabled in the settings). The terms are maintained on the project.</p>
+        </field>
+    </record>
+</odoo>

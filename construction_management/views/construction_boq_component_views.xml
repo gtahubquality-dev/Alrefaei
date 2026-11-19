@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_boq_component_list" model="ir.ui.view">
+        <field name="name">construction.boq.component.list</field>
+        <field name="model">construction.boq.component</field>
+        <field name="arch" type="xml">
+            <list string="BOQ Cost Components" create="0" edit="0">
+                <field name="project_id"/>
+                <field name="item_id"/>
+                <field name="component_type"/>
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="effective_quantity"/>
+                <field name="uom_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_cost"/>
+                <field name="effective_cost" sum="Total"/>
+                <field name="requested_quantity" optional="show" invisible="component_type == 'labor'"/>
+                <field name="consumed_quantity" optional="show" invisible="component_type == 'labor'"/>
+                <field name="remaining_consumption" optional="show" invisible="component_type == 'labor'" decoration-danger="remaining_consumption &lt; 0"/>
+                <field name="consumption_percent" widget="progressbar" optional="show" invisible="component_type == 'labor'"/>
+                <field name="actual_cost" optional="show" sum="Actual"/>
+                <field name="cost_variance" optional="show" sum="Variance"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_boq_component_pivot" model="ir.ui.view">
+        <field name="name">construction.boq.component.pivot</field>
+        <field name="model">construction.boq.component</field>
+        <field name="arch" type="xml">
+            <pivot string="BOQ Cost Analysis">
+                <field name="item_id" type="row"/>
+                <field name="component_type" type="col"/>
+                <field name="effective_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="view_construction_boq_component_search" model="ir.ui.view">
+        <field name="name">construction.boq.component.search</field>
+        <field name="model">construction.boq.component</field>
+        <field name="arch" type="xml">
+            <search string="Search Cost Components">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="project_id"/>
+                <field name="item_id"/>
+                <filter string="Materials" name="material" domain="[('component_type', '=', 'material')]"/>
+                <filter string="Equipment" name="equipment" domain="[('component_type', '=', 'equipment')]"/>
+                <filter string="Subcontractors" name="subcontract" domain="[('component_type', '=', 'subcontract')]"/>
+                <filter string="External Labor" name="labor" domain="[('component_type', '=', 'labor')]"/>
+                <group>
+                    <filter string="Component Type" name="group_type" context="{'group_by': 'component_type'}"/>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_construction_boq_component_consumption_list" model="ir.ui.view">
+        <field name="name">construction.boq.component.consumption.list</field>
+        <field name="model">construction.boq.component</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <list string="BOQ Consumption" create="0" edit="0" delete="0" decoration-danger="remaining_consumption &lt; 0">
+                <field name="item_id" optional="hide"/>
+                <field name="component_type"/>
+                <field name="product_id" optional="show"/>
+                <field name="name"/>
+                <field name="uom_id"/>
+                <field name="effective_quantity" string="BOQ Quantity"/>
+                <field name="requested_quantity" invisible="component_type == 'labor'"/>
+                <field name="consumed_quantity" invisible="component_type == 'labor'" decoration-bf="1"/>
+                <field name="remaining_consumption" invisible="component_type == 'labor'"/>
+                <field name="consumption_percent" widget="progressbar" invisible="component_type == 'labor'"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="effective_cost" string="Estimated Cost" sum="Estimated"/>
+                <field name="actual_cost" sum="Actual"/>
+                <field name="cost_variance" sum="Variance"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_construction_boq_component" model="ir.actions.act_window">
+        <field name="name">BOQ Cost Components</field>
+        <field name="res_model">construction.boq.component</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="view_id" ref="view_construction_boq_component_list"/>
+        <field name="context">{'search_default_group_project': 1, 'search_default_group_type': 1}</field>
+    </record>
+</odoo>

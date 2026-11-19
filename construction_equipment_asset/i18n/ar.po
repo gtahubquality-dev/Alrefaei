@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 22:07+0000\n"
+"PO-Revision-Date: 2026-11-05 22:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: construction_equipment_asset
+#. odoo-python
+#: code:addons/construction_equipment_asset/models/construction_equipment.py:0
+msgid "%s is linked to a fixed asset: it cannot be rented."
+msgstr "%s مربوطة بأصل ثابت: لا يمكن أن تكون مؤجرة."
+
+#. module: construction_equipment_asset
+#: model_terms:ir.ui.view,arch_db:construction_equipment_asset.view_construction_equipment_form_asset
+msgid "<span class=\"o_stat_text\">Book Value</span>"
+msgstr "<span class=\"o_stat_text\">القيمة الدفترية</span>"
+
+#. module: construction_equipment_asset
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_construction_equipment__asset_original_value
+msgid "Asset Value"
+msgstr "قيمة الأصل"
+
+#. module: construction_equipment_asset
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_construction_equipment__asset_book_value
+msgid "Book Value"
+msgstr "القيمة الدفترية"
+
+#. module: construction_equipment_asset
+#. odoo-python
+#: code:addons/construction_equipment_asset/models/construction_equipment.py:0
+msgid ""
+"Company owned equipment must be linked to its fixed asset (%s). Rented "
+"equipment is registered with a rental contract."
+msgstr ""
+"المعدات المملوكة للشركة يجب ربطها بالأصل الثابت الخاص بها (%s). المعدات "
+"المؤجرة تُسجل بعقد إيجار."
+
+#. module: construction_equipment_asset
+#: model:ir.model,name:construction_equipment_asset.model_construction_equipment
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_account_asset__construction_equipment_ids
+msgid "Construction Equipment"
+msgstr "معدات المقاولات"
+
+#. module: construction_equipment_asset
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_account_asset__display_name
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_construction_equipment__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: construction_equipment_asset
+#. odoo-python
+#: code:addons/construction_equipment_asset/models/construction_equipment.py:0
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_construction_equipment__asset_id
+msgid "Fixed Asset"
+msgstr "الأصل الثابت"
+
+#. module: construction_equipment_asset
+#: model:ir.model.fields,help:construction_equipment_asset.field_construction_equipment__asset_id
+msgid ""
+"Fixed asset of the company owned equipment in Accounting. Rented equipment "
+"has no asset."
+msgstr ""
+"الأصل الثابت للمعدة المملوكة للشركة في المحاسبة. المعدات المؤجرة ليس لها "
+"أصل."
+
+#. module: construction_equipment_asset
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_account_asset__id
+#: model:ir.model.fields,field_description:construction_equipment_asset.field_construction_equipment__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: construction_equipment_asset
+#: model_terms:ir.ui.view,arch_db:construction_equipment_asset.view_construction_equipment_search_asset
+msgid "Owned without Asset"
+msgstr "مملوكة بدون أصل"
+
+#. module: construction_equipment_asset
+#. odoo-python
+#: code:addons/construction_equipment_asset/models/construction_equipment.py:0
+msgid "The fixed asset of %s belongs to another company."
+msgstr "الأصل الثابت لـ %s تابع لشركة أخرى."
+
+#. module: construction_equipment_asset
+#: model:ir.model.constraint,message:construction_equipment_asset.constraint_construction_equipment_asset_uniq
+msgid "This fixed asset is already linked to another equipment."
+msgstr "هذا الأصل الثابت مربوط بمعدة أخرى بالفعل."

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_subcontract_line_boq_list" model="ir.ui.view">
+        <field name="name">construction.subcontract.line.boq.list</field>
+        <field name="model">construction.subcontract.line</field>
+        <field name="arch" type="xml">
+            <list string="Subcontract Lines" create="0" edit="0" delete="0">
+                <field name="contract_id"/>
+                <field name="contract_state" widget="badge"/>
+                <field name="boq_item_id"/>
+                <field name="boq_component_id" optional="show"/>
+                <field name="name"/>
+                <field name="quantity" sum="Assigned"/>
+                <field name="executed_quantity" sum="Executed"/>
+                <field name="invoiced_quantity" sum="Audited"/>
+                <field name="uom_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_price"/>
+                <field name="amount" sum="Total"/>
+            </list>
+        </field>
+    </record>
+</odoo>

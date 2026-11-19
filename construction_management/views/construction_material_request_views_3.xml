@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_construction_material_request_purchase" model="ir.actions.act_window">
+        <field name="name">Project Material Requests</field>
+        <field name="res_model">construction.material.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('request_type', '=', 'purchase')]</field>
+        <field name="context">{'create': False, 'search_default_approved': 1}</field>
+    </record>
+</odoo>

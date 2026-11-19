@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_project_employee_form" model="ir.ui.view">
+        <field name="name">construction.project.employee.form</field>
+        <field name="model">construction.project.employee</field>
+        <field name="arch" type="xml">
+            <form string="Project Workforce">
+                <header>
+                    <button name="action_release" type="object" string="Release from Project" invisible="state == 'ended'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Employee or worker name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Identification">
+                            <field name="project_id"/>
+                            <field name="worker_type" widget="radio"/>
+                            <field name="employee_id" invisible="worker_type != 'staff'" options="{'no_create': True}"/>
+                            <field name="labor_supplier_id" invisible="worker_type != 'external'"/>
+                            <field name="identification_no"/>
+                            <field name="nationality_id"/>
+                            <field name="phone"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Assignment">
+                            <field name="project_role"/>
+                            <field name="boq_component_id" options="{'no_create': True}"/>
+                            <field name="job_title"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="days_on_project"/>
+                        </group>
+                        <group string="Cost">
+                            <field name="cost_basis"/>
+                            <field name="rate"/>
+                            <field name="estimated_cost"/>
+                            <field name="allocated_cost"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Allocated Costs" name="costs">
+                            <field name="cost_line_ids" readonly="1">
+                                <list>
+                                    <field name="date_from"/>
+                                    <field name="date_to"/>
+                                    <field name="days"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="move_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_project_employee_list" model="ir.ui.view">
+        <field name="name">construction.project.employee.list</field>
+        <field name="model">construction.project.employee</field>
+        <field name="arch" type="xml">
+            <list string="Project Workforce" decoration-muted="state == 'ended'" decoration-info="state == 'planned'">
+                <field name="project_id" optional="show"/>
+                <field name="name"/>
+                <field name="worker_type" optional="show"/>
+                <field name="project_role"/>
+                <field name="job_title" optional="show"/>
+                <field name="identification_no" optional="hide"/>
+                <field name="nationality_id" optional="hide"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="cost_basis" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="rate" optional="show"/>
+                <field name="estimated_cost" optional="show"/>
+                <field name="allocated_cost" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'active'" decoration-info="state == 'planned'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_project_employee_search" model="ir.ui.view">
+        <field name="name">construction.project.employee.search</field>
+        <field name="model">construction.project.employee</field>
+        <field name="arch" type="xml">
+            <search string="Search Workforce">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('identification_no', 'ilike', self)]"/>
+                <field name="project_id"/>
+                <field name="employee_id"/>
+                <field name="labor_supplier_id"/>
+                <filter string="On Project" name="active_assignments" domain="[('state', '=', 'active')]"/>
+                <filter string="Released" name="ended" domain="[('state', '=', 'ended')]"/>
+                <separator/>
+                <filter string="Company Employees" name="staff" domain="[('worker_type', '=', 'staff')]"/>
+                <filter string="External Labor" name="external" domain="[('worker_type', '=', 'external')]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Role" name="group_role" context="{'group_by': 'project_role'}"/>
+                    <filter string="Labor Supplier" name="group_supplier" context="{'group_by': 'labor_supplier_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_project_employee" model="ir.actions.act_window">
+        <field name="name">Project Workforce</field>
+        <field name="res_model">construction.project.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active_assignments': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Register the people working on your projects</p>
+            <p>Record company employees and external workers assigned to each project, their role, assignment period and cost, then allocate their cost to the project cost center.</p>
+        </field>
+    </record>
+</odoo>

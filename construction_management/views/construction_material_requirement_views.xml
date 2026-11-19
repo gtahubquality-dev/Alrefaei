@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_material_requirement_list" model="ir.ui.view">
+        <field name="name">construction.material.requirement.list</field>
+        <field name="model">construction.material.requirement</field>
+        <field name="arch" type="xml">
+            <list string="Material Requirements" editable="bottom" create="0" delete="0" decoration-danger="remaining_quantity &lt; 0" decoration-muted="remaining_quantity == 0">
+                <header>
+                    <button name="action_create_material_request" type="object" string="Request Materials" class="btn-primary"/>
+                </header>
+                <field name="project_id" readonly="1" optional="show"/>
+                <field name="product_id" readonly="1"/>
+                <field name="description" optional="hide"/>
+                <field name="uom_id" readonly="1"/>
+                <field name="boq_quantity"/>
+                <field name="transferred_quantity"/>
+                <field name="purchased_quantity"/>
+                <field name="received_quantity" optional="show"/>
+                <field name="pending_quantity" optional="show"/>
+                <field name="remaining_quantity"/>
+                <field name="available_quantity" optional="show"/>
+                <field name="request_quantity"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_material_requirement_search" model="ir.ui.view">
+        <field name="name">construction.material.requirement.search</field>
+        <field name="model">construction.material.requirement</field>
+        <field name="arch" type="xml">
+            <search string="Search Material Requirements">
+                <field name="product_id"/>
+                <field name="project_id"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_material_requirement" model="ir.actions.act_window">
+        <field name="name">Material Requirements</field>
+        <field name="res_model">construction.material.requirement</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'search_default_group_project': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No materials yet</p>
+            <p>Materials are loaded from the approved BOQ when a project starts or when a change order is approved.</p>
+        </field>
+    </record>
+</odoo>

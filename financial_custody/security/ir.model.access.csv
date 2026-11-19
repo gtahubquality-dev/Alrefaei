@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custody_request_user,custody.request.user,model_custody_request,group_custody_user,1,1,1,1
+access_custody_request_manager,custody.request.manager,model_custody_request,group_custody_manager,1,1,1,1
+access_custody_settlement_user,custody.settlement.user,model_custody_settlement,group_custody_user,1,1,1,1
+access_custody_settlement_manager,custody.settlement.manager,model_custody_settlement,group_custody_manager,1,1,1,1
+access_custody_settlement_line_user,custody.settlement.line.user,model_custody_settlement_line,group_custody_user,1,1,1,1
+access_custody_settlement_line_manager,custody.settlement.line.manager,model_custody_settlement_line,group_custody_manager,1,1,1,1
+access_custody_settlement_return_user,custody.settlement.return.user,model_custody_settlement_return,group_custody_user,1,1,1,1
+access_custody_settlement_return_manager,custody.settlement.return.manager,model_custody_settlement_return,group_custody_manager,1,1,1,1

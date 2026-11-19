@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_equipment_app_root" name="Machines &amp; Equipment" sequence="47" web_icon="construction_equipment,static/description/icon.png" groups="construction_management.group_construction_user"/>
+    <menuitem id="menu_construction_equipment_dashboard" name="Dashboard" parent="menu_equipment_app_root" action="action_construction_equipment_dashboard" sequence="5" groups="construction_management.group_construction_transport,construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_equipment_app_operations" name="Equipment" parent="menu_equipment_app_root" sequence="10"/>
+    <menuitem id="menu_equipment_app_register" name="Machines &amp; Equipment" parent="menu_equipment_app_operations" action="action_equipment_machines" sequence="10"/>
+    <menuitem id="menu_equipment_app_rentals" name="Rental Contracts" parent="menu_equipment_app_operations" action="action_equipment_machine_rentals" sequence="20"/>
+    <menuitem id="menu_construction_equipment_movements" name="Movements" parent="menu_equipment_app_operations" action="action_construction_equipment_movement" sequence="30"/>
+    <menuitem id="menu_construction_equipment_usage" name="Usage &amp; Utilization" parent="menu_equipment_app_operations" action="action_construction_equipment_usage" sequence="40"/>
+    <menuitem id="menu_construction_equipment_expenses" name="Expenses" parent="menu_equipment_app_operations" action="action_construction_equipment_expense" sequence="50"/>
+    <menuitem id="menu_equipment_app_config" name="Configuration" parent="menu_equipment_app_root" sequence="90" groups="construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_equipment_app_settings" name="Settings" parent="menu_equipment_app_config" action="construction_management.action_construction_config_settings" sequence="5" groups="base.group_system"/>
+</odoo>

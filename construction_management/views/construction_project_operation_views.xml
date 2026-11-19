@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_project_operation_form" model="ir.ui.view">
+        <field name="name">construction.project.operation.form</field>
+        <field name="model">construction.project.operation</field>
+        <field name="arch" type="xml">
+            <form string="Financial Operation">
+                <header>
+                    <button name="action_post" type="object" string="Post" class="btn-primary" invisible="state != 'draft'" groups="construction_management.group_construction_finance"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_move" type="object" class="oe_stat_button" icon="fa-book" string="Journal Entry" invisible="not move_id"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id" readonly="state != 'draft'"/>
+                            <field name="partner_id"/>
+                            <field name="operation_type" readonly="state != 'draft'"/>
+                            <field name="name" readonly="state != 'draft'"/>
+                            <field name="deduction_id" invisible="operation_type != 'suspense_refund'" required="operation_type == 'suspense_refund'" readonly="state != 'draft'"/>
+                            <field name="subcontract_id" invisible="operation_type not in ('sub_retention_refund', 'sub_suspense_refund')" required="operation_type in ('sub_retention_refund', 'sub_suspense_refund')" readonly="state != 'draft'"/>
+                            <field name="sub_deduction_id" invisible="operation_type != 'sub_suspense_refund'" required="operation_type == 'sub_suspense_refund'" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="amount" readonly="state != 'draft'"/>
+                            <field name="journal_id" readonly="state != 'draft'" required="operation_type in ('advance_received', 'insurance_payment')"/>
+                            <field name="move_id" invisible="not move_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_project_operation_list" model="ir.ui.view">
+        <field name="name">construction.project.operation.list</field>
+        <field name="model">construction.project.operation</field>
+        <field name="arch" type="xml">
+            <list string="Financial Operations">
+                <field name="date"/>
+                <field name="project_id"/>
+                <field name="operation_type"/>
+                <field name="name"/>
+                <field name="journal_id" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount" sum="Total"/>
+                <field name="move_id" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'" decoration-muted="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_project_operation_search" model="ir.ui.view">
+        <field name="name">construction.project.operation.search</field>
+        <field name="model">construction.project.operation</field>
+        <field name="arch" type="xml">
+            <search string="Search Financial Operations">
+                <field name="name"/>
+                <field name="project_id"/>
+                <filter string="Advance Payments" name="advance" domain="[('operation_type', '=', 'advance_received')]"/>
+                <filter string="Final Insurance" name="insurance" domain="[('operation_type', 'in', ('insurance_payment', 'insurance_refund'))]"/>
+                <filter string="Refunds" name="refunds" domain="[('operation_type', 'in', ('retention_refund', 'insurance_refund', 'suspense_refund'))]"/>
+                <separator/>
+                <filter string="Posted" name="posted" domain="[('state', '=', 'posted')]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Operation" name="group_type" context="{'group_by': 'operation_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_project_operation" model="ir.actions.act_window">
+        <field name="name">Guarantees, Advances &amp; Refunds</field>
+        <field name="res_model">construction.project.operation</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Record a financial operation</p>
+            <p>Record advance payments received, final insurance paid and refunds. Retention and insurance refunds are generated automatically at handover.</p>
+        </field>
+    </record>
+</odoo>

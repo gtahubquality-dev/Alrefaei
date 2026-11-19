@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_construction" model="ir.ui.view">
+        <field name="name">purchase.order.form.construction</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ref']" position="after">
+                <field name="construction_project_id" readonly="state in ('purchase', 'done', 'cancel')"/>
+                <field name="construction_material_request_id" invisible="not construction_material_request_id"/>
+                <field name="construction_equipment_request_id" invisible="not construction_equipment_request_id"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_qty']" position="before">
+                <field name="construction_boq_item_id" optional="show" column_invisible="not parent.construction_material_request_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="purchase_order_search_construction" model="ir.ui.view">
+        <field name="name">purchase.order.search.construction</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="construction_project_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

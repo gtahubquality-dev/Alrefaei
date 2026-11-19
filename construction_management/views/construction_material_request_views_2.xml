@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_material_request_list" model="ir.ui.view">
+        <field name="name">construction.material.request.list</field>
+        <field name="model">construction.material.request</field>
+        <field name="arch" type="xml">
+            <list string="Material Requests">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="date"/>
+                <field name="request_type"/>
+                <field name="requested_by_id" optional="show"/>
+                <field name="exceeds_boq" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-warning="state == 'to_approve'" decoration-info="state == 'approved'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_material_request_search" model="ir.ui.view">
+        <field name="name">construction.material.request.search</field>
+        <field name="model">construction.material.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Material Requests">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="requested_by_id"/>
+                <filter string="My Requests" name="my_requests" domain="[('requested_by_id', '=', uid)]"/>
+                <filter string="Waiting Approval" name="to_approve" domain="[('state', '=', 'to_approve')]"/>
+                <filter string="To Process" name="approved" domain="[('state', '=', 'approved')]"/>
+                <separator/>
+                <filter string="Issue from Warehouse" name="transfer" domain="[('request_type', '=', 'transfer')]"/>
+                <filter string="Direct Purchase" name="purchase" domain="[('request_type', '=', 'purchase')]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_material_request" model="ir.actions.act_window">
+        <field name="name">Material Requests</field>
+        <field name="res_model">construction.material.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Request materials</p>
+            <p>Select BOQ materials and quantities, then issue them from an existing warehouse or buy them directly. Quantities above the BOQ limit need official approval.</p>
+        </field>
+    </record>
+</odoo>

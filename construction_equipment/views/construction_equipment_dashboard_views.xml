@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_dashboard_form" model="ir.ui.view">
+        <field name="name">construction.equipment.dashboard.form</field>
+        <field name="model">construction.equipment.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Machines &amp; Equipment Dashboard" create="0" delete="0" duplicate="0" class="o_eq_dashboard_form">
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="approval_request_count" invisible="1"/>
+                <field name="draft_usage_count" invisible="1"/>
+                <sheet>
+                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                        <div>
+                            <h1 class="mb-0">Machines &amp; Equipment Dashboard</h1>
+                            <div class="text-muted">Status of the machines and equipment, work and costs of the period</div>
+                        </div>
+                        <button name="action_refresh" type="object" string="Refresh" icon="fa-refresh" class="btn-secondary"/>
+                    </div>
+                    <group class="mb-0">
+                        <group>
+                            <label for="date_from" string="Period"/>
+                            <div class="o_row">
+                                <field name="date_from" class="oe_inline"/>
+                                <i class="oi oi-arrow-right mx-2" title="to"/>
+                                <field name="date_to" class="oe_inline"/>
+                            </div>
+                            <field name="project_id" options="{'no_create': True, 'no_open': True}" placeholder="All projects and the main yard"/>
+                        </group>
+                        <group>
+                            <field name="category" placeholder="All types"/>
+                            <field name="ownership" placeholder="Owned and rented"/>
+                        </group>
+                    </group>
+                    <div class="o_eq_section_title">Equipment Status</div>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_dark">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-cubes o_eq_kpi_icon me-2" title="All Equipment"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="total_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">All Equipment</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_success" context="{'dashboard_state': 'available'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-check-circle o_eq_kpi_icon me-2" title="Available"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="available_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Available in Yard</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_primary" context="{'dashboard_state': 'in_use'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-map-marker o_eq_kpi_icon me-2" title="On Site"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="on_site_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">On Project Sites</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_movements" type="object" class="btn o_eq_kpi o_eq_info">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-truck o_eq_kpi_icon me-2" title="In Transit"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="in_transit_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">In Transit</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_warning" context="{'dashboard_state': 'maintenance'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-wrench o_eq_kpi_icon me-2" title="Maintenance"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="maintenance_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Under Maintenance</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi" context="{'dashboard_state': 'inactive'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-ban o_eq_kpi_icon me-2" title="Out of Service"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="inactive_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Out of Service</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="o_eq_section_title">Ownership &amp; To Do</div>
+                    <div class="row g-2">
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_dark" context="{'dashboard_ownership': 'owned'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-building o_eq_kpi_icon me-2" title="Owned"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="owned_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Company Owned</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_dark" context="{'dashboard_ownership': 'rented'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-handshake-o o_eq_kpi_icon me-2" title="Rented"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="rented_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Rented</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_equipment" type="object" class="btn o_eq_kpi o_eq_warning" context="{'dashboard_rental_alert': True}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-calendar-times-o o_eq_kpi_icon me-2" title="Rentals Ending"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="rental_alert_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Rentals Ending (7 days)</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_requests" type="object" class="btn o_eq_kpi o_eq_danger">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-inbox o_eq_kpi_icon me-2" title="Requests"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="pending_request_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Requests to Process</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_requests" type="object" class="btn o_eq_kpi o_eq_danger" context="{'dashboard_request_state': 'to_approve'}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-gavel o_eq_kpi_icon me-2" title="Approval"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="approval_request_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Waiting Senior Management</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-2">
+                            <button name="action_open_expenses" type="object" class="btn o_eq_kpi o_eq_danger">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-file-text-o o_eq_kpi_icon me-2" title="Expenses"/>
+                                    <div>
+                                        <div class="o_eq_kpi_value">
+                                            <field name="pending_expense_count"/>
+                                        </div>
+                                        <div class="o_eq_kpi_label">Expenses for the Accountant</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="o_eq_section_title">Period Performance</div>
+                    <div class="row g-3">
+                        <div class="col-lg-4">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-tachometer me-2" title="Utilization"/>Utilization</span>
+                                    <button name="action_open_usage" type="object" string="Analysis" icon="fa-bar-chart" class="btn-link"/>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <div class="o_eq_metric">
+                                        <span>Operating Hours</span>
+                                        <span class="o_eq_metric_value">
+                                            <field name="period_hours"/>
+                                        </span>
+                                    </div>
+                                    <div class="o_eq_metric">
+                                        <span>Utilization</span>
+                                        <span class="o_eq_metric_value w-50">
+                                            <field name="utilization_percent" widget="progressbar"/>
+                                        </span>
+                                    </div>
+                                    <div class="o_eq_metric">
+                                        <span>Total Cost</span>
+                                        <span class="o_eq_metric_value">
+                                            <field name="period_cost"/>
+                                        </span>
+                                    </div>
+                                    <div class="o_eq_metric border-bottom-0">
+                                        <span>Cost per Hour</span>
+                                        <span class="o_eq_metric_value">
+                                            <field name="cost_per_hour"/>
+                                        </span>
+                                    </div>
+                                    <div class="text-muted small mt-2">Utilization: operating hours compared to 8 hours per day for every equipment available or on site.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-pie-chart me-2" title="Costs"/>Costs of the Period</span>
+                                    <button name="action_open_expenses" type="object" string="Expenses" icon="fa-list" class="btn-link" context="{'dashboard_period': True}"/>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <field name="cost_html" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-0">
+                        <div class="col-lg-7">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-th-large me-2" title="Types"/>By Type</span>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <field name="type_html" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-sort-amount-desc me-2" title="Top"/>Highest Costs (Top 5)</span>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <field name="top_html" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-0">
+                        <div class="col-lg-8">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-map me-2" title="Locations"/>Distribution by Location</span>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <field name="location_html" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="o_eq_card">
+                                <div class="o_eq_card_header">
+                                    <span>
+                                        <i class="fa fa-bell me-2" title="Alerts"/>Alerts</span>
+                                </div>
+                                <div class="o_eq_card_body">
+                                    <field name="alert_html" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

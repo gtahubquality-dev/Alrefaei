@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_stock_construction_material_transfers" name="Project Material Transfers" parent="stock.menu_stock_warehouse_mgmt" action="action_construction_material_request_transfer" sequence="20" groups="stock.group_stock_user"/>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bidding_tender_form_construction" model="ir.ui.view">
+        <field name="name">bidding.tender.form.construction</field>
+        <field name="model">bidding.tender</field>
+        <field name="inherit_id" ref="construction_bidding.view_bidding_tender_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='state']" position="before">
+                <field name="has_construction_project" invisible="1"/>
+                <button name="action_create_construction_project" type="object" string="Create Construction Project" class="btn-primary" invisible="state != 'awarded' or has_construction_project" groups="construction_management.group_construction_manager" confirm="The tender data and the approved BOQ will be transferred to a new construction project. Continue?"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_construction_project" type="object" class="oe_stat_button" icon="fa-building" string="Construction Project" invisible="not has_construction_project" groups="construction_management.group_construction_user"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,1263 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-02 09:49+0000\n"
+"PO-Revision-Date: 2026-11-02 09:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "A disbursed custody cannot be cancelled. Settle it instead."
+msgstr "لا يمكن إلغاء عهدة تم صرفها. قم بتسويتها بدلاً من ذلك."
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_res_company__custody_account_id
+#: model:ir.model.fields,help:financial_custody.field_res_config_settings__custody_account_id
+msgid ""
+"Account holding the cash advanced to employees until it is settled (employee"
+" custody receivable)."
+msgstr ""
+"الحساب الذي يحتفظ بالمبالغ المصروفة للموظفين حتى تسويتها (ذمم عهد الموظفين)."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Account holding the cash advanced to employees until settlement."
+msgstr "الحساب الذي يحتفظ بالمبالغ المصروفة للموظفين حتى التسوية."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_needaction
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_needaction
+msgid "Action Needed"
+msgstr "إجراء مطلوب"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_state
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_type_icon
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__amount
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_res_company__custody_settlement_threshold
+#: model:ir.model.fields,help:financial_custody.field_res_config_settings__custody_settlement_threshold
+msgid ""
+"An employee cannot request a new custody while the previous one is settled "
+"below this percentage."
+msgstr ""
+"لا يمكن للموظف طلب عهدة جديدة إذا كانت تسوية العهدة السابقة أقل من هذه "
+"النسبة."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "التوزيع التحليلي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__analytic_precision
+msgid "Analytic Precision"
+msgstr "دقة التحليل"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__approved_date
+msgid "Approval Date"
+msgstr "تاريخ الاعتماد"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__approved
+msgid "Approved"
+msgstr "معتمد"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__approved_by_id
+msgid "Approved By"
+msgstr "اعتمده"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_attachment_count
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__cancelled
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__cancelled
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Cash"
+msgstr "نقدي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__cash_journal_id
+msgid "Cash Return Journal"
+msgstr "دفتر رد النقدية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__cash_returned
+msgid "Cash Returned"
+msgstr "النقدية المردودة"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Cash returned - %s"
+msgstr "نقدية مردودة - %s"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_res_company
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_res_config_settings
+msgid "Config Settings"
+msgstr "إعدادات التهيئة"
+
+#. module: financial_custody
+#: model:ir.ui.menu,name:financial_custody.menu_custody_config
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Confirm Disbursement"
+msgstr "تأكيد صرف العهدة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__currency_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__currency_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: financial_custody
+#: model:ir.ui.menu,name:financial_custody.menu_custody_requests
+msgid "Custodies"
+msgstr "العهد"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_id
+#: model:ir.ui.menu,name:financial_custody.menu_custody_root
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Custody"
+msgstr "العهد"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Custody %(ref)s - %(employee)s"
+msgstr "عهدة %(ref)s - %(employee)s"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Custody %s is not open for settlement."
+msgstr "العهدة %s غير متاحة للتسوية."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_account_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_account_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Custody Account"
+msgstr "حساب العهد"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_amount
+msgid "Custody Amount"
+msgstr "مبلغ العهدة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_balance
+msgid "Custody Balance"
+msgstr "رصيد العهدة"
+
+#. module: financial_custody
+#: model:res.groups,name:financial_custody.group_custody_manager
+msgid "Custody Manager"
+msgstr "مسؤول العهد"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: model:ir.model,name:financial_custody.model_custody_settlement
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__custody_settlement_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Custody Settlement"
+msgstr "تسوية العهدة"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_line
+msgid "Custody Settlement Expense"
+msgstr "مصروف تسوية العهدة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_settlement_journal_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_settlement_journal_id
+msgid "Custody Settlement Journal"
+msgstr "دفتر تسوية العهد"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_return
+msgid "Custody Settlement Returned Item"
+msgstr "صنف مرتجع في تسوية العهدة"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Custody Settlements"
+msgstr "تسويات العهد"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Custody refused by %(user)s. Reason: %(reason)s"
+msgstr "تم رفض العهدة بواسطة %(user)s. السبب: %(reason)s"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Custody settlement %s"
+msgstr "تسوية عهدة %s"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_journal_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_journal_id
+msgid "Default Disbursement Journal"
+msgstr "دفتر الصرف الافتراضي"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Default bank or cash journal used to pay custodies."
+msgstr "دفتر البنك أو الصندوق الافتراضي لصرف العهد."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__paid
+msgid "Disbursed"
+msgstr "تم الصرف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__paid_by_id
+msgid "Disbursed By"
+msgstr "صرفها"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__payment_date
+msgid "Disbursement Date"
+msgstr "تاريخ الصرف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__move_id
+msgid "Disbursement Entry"
+msgstr "قيد الصرف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__journal_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Disbursement Journal"
+msgstr "دفتر الصرف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_lock_mixin__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr "الحساب التحليلي للتوزيع"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__draft
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__employee_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__employee_id
+#: model:res.groups,name:financial_custody.group_custody_user
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"Employee %s has no contact. Please set the employee contact on the custody."
+msgstr "الموظف %s ليس له جهة اتصال. يرجى تحديد جهة اتصال الموظف في العهدة."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__partner_id
+msgid "Employee Contact"
+msgstr "جهة اتصال الموظف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__account_id
+msgid "Expense Account"
+msgstr "حساب المصروف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__date
+msgid "Expense Date"
+msgstr "تاريخ المصروف"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Expense amounts must be positive (%s)."
+msgstr "يجب أن تكون مبالغ المصروفات موجبة (%s)."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__line_ids
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Expenses"
+msgstr "المصروفات"
+
+#. module: financial_custody
+#: model_terms:ir.actions.act_window,help:financial_custody.action_custody_request
+msgid ""
+"Explain the purpose of the custody and submit it to your manager. A new "
+"custody can only be requested once at least 50% of the previous one is "
+"settled."
+msgstr ""
+"وضّح الغرض من العهدة وأرسلها للمسؤول. لا يمكن طلب عهدة جديدة إلا بعد تسوية "
+"50% على الأقل من العهدة السابقة."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Explain why the custody is needed..."
+msgstr "وضّح الغرض من العهدة..."
+
+#. module: financial_custody
+#: model:ir.actions.act_window,name:financial_custody.action_custody_request
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_list
+msgid "Financial Custodies"
+msgstr "العهد المالية"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_request
+#: model:ir.module.category,name:financial_custody.module_category_custody
+#: model:res.groups.privilege,name:financial_custody.res_groups_privilege_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Financial Custody"
+msgstr "العهد المالية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_follower_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_partner_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_type_icon
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "أيقونة Font Awesome مثل fa-tasks"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__has_message
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__has_message
+msgid "Has Message"
+msgstr "يحتوي على رسالة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_lock_mixin__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__id
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__id
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_exception_icon
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_exception_icon
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "أيقونة تشير إلى نشاط استثنائي."
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_needaction
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا كان محدداً، فهناك رسائل جديدة تحتاج لانتباهك."
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_error
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_sms_error
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_error
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا كان محدداً، فبعض الرسائل بها خطأ في التسليم."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__attachment
+msgid "Invoice Copy"
+msgstr "نسخة الفاتورة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__invoice_date
+msgid "Invoice Date"
+msgstr "تاريخ المستخلص"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__attachment_name
+msgid "Invoice File Name"
+msgstr "اسم ملف الفاتورة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__invoice_ref
+msgid "Invoice Number"
+msgstr "رقم الفاتورة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_is_follower
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement_return__product_id
+msgid ""
+"Item returned to the warehouse, e.g. the old brake pads that were replaced."
+msgstr "الصنف المرتجع للمخزن، مثل تيل الفرامل القديم الذي تم تغييره."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Journal Entry"
+msgstr "قيد يومية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Lines of a posted settlement cannot be modified."
+msgstr "لا يمكن تعديل بنود تسوية مرحّلة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"Lines of a submitted settlement can only be modified by the custody manager."
+msgstr "لا يمكن تعديل بنود تسوية مرسلة إلا بواسطة مسؤول العهد."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_error
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Minimum Settlement Before New Custody"
+msgstr "الحد الأدنى للتسوية قبل عهدة جديدة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_settlement_threshold
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_settlement_threshold
+msgid "Minimum Settlement Before New Custody (%)"
+msgstr "الحد الأدنى للتسوية قبل عهدة جديدة (%)"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Miscellaneous journal of settlement entries."
+msgstr "دفتر القيود المتنوعة لقيود التسوية."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "موعد نشاطي النهائي"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "My Custodies"
+msgstr "عهدي"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "New"
+msgstr "جديد"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_date_deadline
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_summary
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_type_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__note
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_needaction_counter
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_error_counter
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_needaction_counter
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب إجراءً"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_error_counter
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only approved custodies can be disbursed."
+msgstr "لا يمكن صرف إلا العهد المعتمدة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only custodies waiting for review or disbursement can be refused."
+msgstr "لا يمكن رفض إلا العهد بانتظار المراجعة أو الصرف."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only disbursed custodies can be settled."
+msgstr "لا يمكن تسوية إلا العهد المصروفة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only draft custodies can be submitted."
+msgstr "لا يمكن إرسال إلا العهد المسودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only draft or cancelled settlements can be deleted."
+msgstr "لا يمكن حذف إلا التسويات المسودة أو الملغاة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only draft settlements can be submitted."
+msgstr "لا يمكن إرسال إلا التسويات المسودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only draft, refused or cancelled custodies can be deleted."
+msgstr "لا يمكن حذف إلا العهد المسودة أو المرفوضة أو الملغاة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only refused or cancelled custodies can be reset to draft."
+msgstr "لا يمكن إعادة إلا العهد المرفوضة أو الملغاة إلى مسودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only submitted custodies can be approved."
+msgstr "لا يمكن اعتماد إلا العهد المرسلة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only submitted or cancelled settlements can be reset to draft."
+msgstr "لا يمكن إعادة إلا التسويات المرسلة أو الملغاة إلى مسودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only submitted settlements can be validated."
+msgstr "لا يمكن اعتماد إلا التسويات المرسلة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only the custody manager can change the employee contact of a custody."
+msgstr "مسؤول العهد فقط يمكنه تغيير جهة اتصال الموظف في العهدة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only the custody manager can review and disburse custodies."
+msgstr "مسؤول العهد فقط يمكنه مراجعة العهد وصرفها."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only the custody manager can validate settlements."
+msgstr "مسؤول العهد فقط يمكنه اعتماد التسويات."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Open (Disbursed)"
+msgstr "مفتوحة (مصروفة)"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__partner_id
+msgid "Partner used on the accounting entries of the custody."
+msgstr "الشريك المستخدم في القيود المحاسبية للعهدة."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid ""
+"Percentage of the previous custody that must be settled before a new "
+"request."
+msgstr "نسبة العهدة السابقة الواجب تسويتها قبل طلب جديد."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Please configure the custody account in Financial Custody settings."
+msgstr "يرجى ضبط حساب العهد في إعدادات العهد المالية."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please configure the custody settlement journal."
+msgstr "يرجى ضبط دفتر تسوية العهد."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please enter the expenses or the cash returned."
+msgstr "يرجى إدخال المصروفات أو النقدية المردودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please enter the invoice number or attach the invoice for expense \"%s\"."
+msgstr "يرجى إدخال رقم الفاتورة أو إرفاق الفاتورة للمصروف \"%s\"."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Please select a bank or cash journal with a default account."
+msgstr "يرجى اختيار دفتر بنك أو صندوق له حساب افتراضي."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please select the journal receiving the cash returned."
+msgstr "يرجى اختيار الدفتر المستلم للنقدية المردودة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please set the expense account of \"%s\"."
+msgstr "يرجى تحديد حساب المصروف لـ \"%s\"."
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__posted
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Posted"
+msgstr "مرحّل"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"Posted settlements cannot be cancelled. Reverse the journal entry from "
+"Accounting."
+msgstr "لا يمكن إلغاء التسويات المرحّلة. اعكس القيد من المحاسبة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Product %s has no inventory adjustment location."
+msgstr "الصنف %s ليس له موقع تسوية مخزون."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__purpose
+msgid "Purpose"
+msgstr "الغرض"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__quantity
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__rating_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__rating_ids
+msgid "Ratings"
+msgstr "التقييمات"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Reason for refusal..."
+msgstr "سبب الرفض..."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__name
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refusal"
+msgstr "الرفض"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__refuse_reason
+msgid "Refusal Reason"
+msgstr "سبب الرفض"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__refused
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refused"
+msgstr "مرفوضة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__balance
+msgid "Remaining Balance"
+msgstr "الرصيد المتبقي"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Request"
+msgstr "طلب"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__date
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: financial_custody
+#: model_terms:ir.actions.act_window,help:financial_custody.action_custody_request
+msgid "Request a financial custody"
+msgstr "اطلب عهدة مالية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__requested_by_id
+msgid "Requested By"
+msgstr "مقدم الطلب"
+
+#. module: financial_custody
+#: model:res.groups,comment:financial_custody.group_custody_user
+msgid "Requests custodies and submits their settlements."
+msgstr "يطلب العهد ويقدم تسوياتها."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Reset to Draft"
+msgstr "إعادة إلى مسودة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_user_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__warehouse_id
+msgid "Return to Warehouse"
+msgstr "الإرجاع إلى مخزن"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__product_id
+msgid "Returned Item"
+msgstr "الصنف المرتجع"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__return_line_ids
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Returned Items"
+msgstr "المرتجعات"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Returned quantities must be positive (%s)."
+msgstr "يجب أن تكون الكميات المرتجعة موجبة (%s)."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__picking_ids
+msgid "Returns"
+msgstr "المرتجعات"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Review & Disbursement"
+msgstr "المراجعة والصرف"
+
+#. module: financial_custody
+#: model:res.groups,comment:financial_custody.group_custody_manager
+msgid ""
+"Reviews custody requests, confirms disbursement and validates settlements."
+msgstr "يراجع طلبات العهد ويؤكد صرفها ويعتمد التسويات."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Rules"
+msgstr "القواعد"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_sms_error
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Search Custodies"
+msgstr "بحث في العهد"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Search Settlements"
+msgstr "بحث في التسويات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: financial_custody
+#: model:ir.actions.act_window,name:financial_custody.action_custody_config_settings
+#: model:ir.ui.menu,name:financial_custody.menu_custody_settings
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settle"
+msgstr "تسوية"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__closed
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Settled"
+msgstr "تمت التسوية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settled_percent
+msgid "Settled (%)"
+msgstr "نسبة التسوية (%)"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settled_amount
+msgid "Settled Amount"
+msgstr "المبلغ المسوى"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__settlement_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__settlement_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settlement"
+msgstr "التسوية"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Settlement %(ref)s of custody %(custody)s"
+msgstr "التسوية %(ref)s للعهدة %(custody)s"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__date
+msgid "Settlement Date"
+msgstr "تاريخ التسوية"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__move_id
+msgid "Settlement Entry"
+msgstr "قيد التسوية"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Settlement Journal"
+msgstr "دفتر التسوية"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: model:ir.actions.act_window,name:financial_custody.action_custody_settlement
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settlement_ids
+#: model:ir.ui.menu,name:financial_custody.menu_custody_settlements
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settlements"
+msgstr "التسويات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settlement_count
+msgid "Settlements Count"
+msgstr "عدد التسويات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__state
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__state
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_state
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة بناءً على الأنشطة\n"
+"متأخر: تجاوز تاريخ الاستحقاق\n"
+"اليوم: تاريخ النشاط هو اليوم\n"
+"مخطط: أنشطة مستقبلية."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Submit"
+msgstr "تقديم"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Submit Request"
+msgstr "إرسال الطلب"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__submitted_by_id
+msgid "Submitted By"
+msgstr "مقدم بواسطة"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"The amount and employee of custody %s cannot be changed after submission."
+msgstr "لا يمكن تغيير مبلغ وموظف العهدة %s بعد الإرسال."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The cash returned cannot be negative."
+msgstr "لا يمكن أن تكون النقدية المردودة سالبة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody amount must be positive."
+msgstr "يجب أن يكون مبلغ العهدة موجباً."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid ""
+"The custody amount will be paid to the employee and the accounting entry "
+"posted. Continue?"
+msgstr "سيتم صرف مبلغ العهدة للموظف وترحيل القيد المحاسبي. هل تريد المتابعة؟"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody has not been disbursed yet."
+msgstr "لم يتم صرف العهدة بعد."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody is fully settled."
+msgstr "تمت تسوية العهدة بالكامل."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The settlement has not been posted yet."
+msgstr "لم يتم ترحيل التسوية بعد."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"The settlement total (%(total)s) exceeds the remaining custody balance "
+"(%(available)s)."
+msgstr ""
+"إجمالي التسوية (%(total)s) يتجاوز الرصيد المتبقي من العهدة (%(available)s)."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"This employee already has a custody request waiting for review or "
+"disbursement."
+msgstr "هذا الموظف لديه طلب عهدة بانتظار المراجعة أو الصرف."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "To Disburse"
+msgstr "للصرف"
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_list
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__total_expenses
+msgid "Total Expenses"
+msgstr "إجمالي المصروفات"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__total_settled
+msgid "Total Settled"
+msgstr "إجمالي المسوى"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_stock_picking
+msgid "Transfer"
+msgstr "تحويل"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_exception_decoration
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع النشاط الاستثنائي في السجل."
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__uom_id
+msgid "Unit"
+msgstr "الوحدة"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__cash_returned
+msgid "Unused cash given back by the employee."
+msgstr "النقدية غير المستخدمة التي أعادها الموظف."
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Validate & Post"
+msgstr "اعتماد وترحيل"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__posted_by_id
+msgid "Validated By"
+msgstr "اعتمدها"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__vendor_id
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__submitted
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__submitted
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Waiting Review"
+msgstr "بانتظار المراجعة"
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__website_message_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__website_message_ids
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "You can only request a custody for yourself."
+msgstr "يمكنك طلب عهدة لنفسك فقط."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"You cannot request a new custody: custody %(ref)s is only %(pct)s%% settled."
+" At least %(min)s%% of the previous custody must be settled first."
+msgstr ""
+"لا يمكنك طلب عهدة جديدة: العهدة %(ref)s مسواة بنسبة %(pct)s%% فقط. يجب تسوية"
+" %(min)s%% على الأقل من العهدة السابقة أولاً."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "custody_id"
+msgstr "custody_id"
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_lock_mixin
+msgid "Custody Settlement Lines Lock"
+msgstr "قفل سطور تسوية العهدة"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The lines of a posted settlement cannot be changed."
+msgstr "لا يمكن تعديل سطور تسوية مرحّلة."
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"The lines of a submitted settlement can only be changed by the custody "
+"manager."
+msgstr "سطور التسوية المقدّمة لا يعدّلها إلا مدير العهد."

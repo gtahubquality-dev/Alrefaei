@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_request_form_inherit" model="ir.ui.view">
+        <field name="name">construction.equipment.request.form.equipment</field>
+        <field name="model">construction.equipment.request</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_request_form"/>
+        <field name="arch" type="xml">
+            <field name="source_project_id" position="replace">
+                <field name="movement_id" invisible="not movement_id"/>
+                <field name="return_movement_id" invisible="not return_movement_id"/>
+            </field>
+            <field name="unconsumed_quantity" position="after">
+                <button name="action_view_usage" type="object" string="Operating Hours" icon="fa-clock-o" class="btn-link" colspan="2" invisible="not equipment_id or state not in ('assigned', 'done')"/>
+            </field>
+        </field>
+    </record>
+</odoo>

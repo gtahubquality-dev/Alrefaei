@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_custody_request_form" model="ir.ui.view">
+        <field name="name">custody.request.form</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <form string="Financial Custody">
+                <header>
+                    <button name="action_submit" type="object" string="Submit Request" class="btn-primary" invisible="state not in ('draft', 'refused')"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary" invisible="state != 'submitted'" groups="financial_custody.group_custody_manager"/>
+                    <button name="action_pay" type="object" string="Confirm Disbursement" class="btn-primary" invisible="state != 'approved'" groups="financial_custody.group_custody_manager" confirm="The custody amount will be paid to the employee and the accounting entry posted. Continue?"/>
+                    <button name="action_refuse" type="object" string="Refuse" invisible="state not in ('submitted', 'approved')" groups="financial_custody.group_custody_manager"/>
+                    <button name="action_new_settlement" type="object" string="Settle" class="btn-primary" invisible="state != 'paid'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state not in ('draft', 'submitted', 'approved')"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state not in ('refused', 'cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,paid,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_settlements" type="object" class="oe_stat_button" icon="fa-list">
+                            <field name="settlement_count" widget="statinfo" string="Settlements"/>
+                        </button>
+                        <button name="action_view_move" type="object" class="oe_stat_button" icon="fa-book" string="Journal Entry" invisible="state not in ('paid', 'closed')" groups="financial_custody.group_custody_manager"/>
+                    </div>
+                    <widget name="web_ribbon" title="Settled" bg_color="text-bg-success" invisible="state != 'closed'"/>
+                    <widget name="web_ribbon" title="Refused" bg_color="text-bg-danger" invisible="state != 'refused'"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Request">
+                            <field name="employee_id" readonly="state not in ('draft', 'refused')" options="{'no_create': True}"/>
+                            <field name="partner_id" readonly="state not in ('draft', 'refused', 'submitted', 'approved')"/>
+                            <field name="date" readonly="state not in ('draft', 'refused')"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="amount" readonly="state not in ('draft', 'refused')"/>
+                            <field name="requested_by_id"/>
+                        </group>
+                        <group string="Settlement">
+                            <field name="settled_amount"/>
+                            <field name="balance"/>
+                            <field name="settled_percent" widget="progressbar"/>
+                        </group>
+                        <group string="Review &amp; Disbursement">
+                            <field name="approved_by_id"/>
+                            <field name="approved_date"/>
+                            <field name="journal_id" readonly="state in ('paid', 'closed')" groups="financial_custody.group_custody_manager"/>
+                            <field name="payment_date" readonly="state in ('paid', 'closed')" groups="financial_custody.group_custody_manager"/>
+                            <field name="paid_by_id"/>
+                            <field name="move_id" groups="financial_custody.group_custody_manager"/>
+                        </group>
+                    </group>
+                    <label for="purpose"/>
+                    <field name="purpose" readonly="state not in ('draft', 'refused')" placeholder="Explain why the custody is needed..."/>
+                    <notebook>
+                        <page string="Settlements" name="settlements">
+                            <field name="settlement_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="total_expenses" sum="Expenses"/>
+                                    <field name="cash_returned" sum="Cash"/>
+                                    <field name="total_settled" sum="Total"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'posted'" decoration-warning="state == 'submitted'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Refusal" name="refusal" invisible="state not in ('submitted', 'approved', 'refused')">
+                            <field name="refuse_reason" placeholder="Reason for refusal..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_custody_request_list" model="ir.ui.view">
+        <field name="name">custody.request.list</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <list string="Financial Custodies" decoration-muted="state in ('cancelled', 'refused')">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="date"/>
+                <field name="purpose" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount" sum="Total"/>
+                <field name="settled_amount" optional="show"/>
+                <field name="balance" optional="show"/>
+                <field name="settled_percent" widget="progressbar" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'closed'" decoration-info="state == 'paid'" decoration-warning="state in ('submitted', 'approved')" decoration-danger="state == 'refused'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_custody_request_search" model="ir.ui.view">
+        <field name="name">custody.request.search</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Custodies">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="purpose"/>
+                <filter string="My Custodies" name="my_custodies" domain="['|', ('requested_by_id', '=', uid), ('employee_id.user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Waiting Review" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter string="To Disburse" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Open (Disbursed)" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="Settled" name="closed" domain="[('state', '=', 'closed')]"/>
+                <separator/>
+                <filter string="Request Date" name="filter_date" date="date"/>
+                <group>
+                    <filter string="Employee" name="group_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_custody_request" model="ir.actions.act_window">
+        <field name="name">Financial Custodies</field>
+        <field name="res_model">custody.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Request a financial custody</p>
+            <p>Explain the purpose of the custody and submit it to your manager. A new custody can only be requested once at least 50% of the previous one is settled.</p>
+        </field>
+    </record>
+</odoo>

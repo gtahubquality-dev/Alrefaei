@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_boq_item_form" model="ir.ui.view">
+        <field name="name">construction.boq.item.form</field>
+        <field name="model">construction.boq.item</field>
+        <field name="arch" type="xml">
+            <form string="BOQ Item">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_consumption" type="object" class="oe_stat_button" icon="fa-tasks" invisible="not id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Consumption</span>
+                            </div>
+                        </button>
+                    </div>
+                    <field name="project_state" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <widget name="web_ribbon" title="Change Order" bg_color="text-bg-info" invisible="not is_change_order_item"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Item name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Contract">
+                            <field name="project_id" readonly="id"/>
+                            <field name="code"/>
+                            <field name="uom_id" readonly="project_state not in ('draft', False)"/>
+                            <field name="quantity" readonly="project_state not in ('draft', False)"/>
+                            <field name="change_quantity"/>
+                            <field name="total_quantity"/>
+                            <field name="unit_price" readonly="project_state not in ('draft', False)"/>
+                            <field name="original_amount"/>
+                            <field name="amount_total"/>
+                        </group>
+                        <group string="Execution &amp; Analysis">
+                            <field name="invoiced_quantity"/>
+                            <field name="remaining_quantity"/>
+                            <field name="subcontracted_quantity"/>
+                            <field name="estimated_cost"/>
+                            <field name="actual_cost"/>
+                            <field name="progress_percent" widget="progressbar"/>
+                            <field name="executed_percent" widget="progressbar"/>
+                            <field name="cost_consumed_percent" widget="progressbar"/>
+                            <field name="weight_percent"/>
+                            <field name="cost_ratio_percent"/>
+                            <field name="cost_percent" invisible="1"/>
+                            <field name="is_change_order_item"/>
+                            <field name="change_order_line_id" invisible="not change_order_line_id"/>
+                            <field name="bid_item_id" invisible="not bid_item_id"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Contractual description..."/>
+                    <notebook>
+                        <page string="Materials" name="materials">
+                            <field name="material_ids" readonly="project_state not in ('draft', False)" context="{'default_component_type': 'material'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="product_id" required="1"/>
+                                    <field name="name"/>
+                                    <field name="specifications" optional="hide"/>
+                                    <field name="quantity"/>
+                                    <field name="effective_quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="requested_quantity" optional="show"/>
+                                    <field name="requested_percent" widget="progressbar" optional="hide"/>
+                                    <field name="consumed_quantity" string="Delivered to Site" decoration-danger="remaining_consumption &lt; 0" decoration-bf="1"/>
+                                    <field name="remaining_consumption" decoration-danger="remaining_consumption &lt; 0" optional="show"/>
+                                    <field name="consumption_percent" widget="progressbar" optional="show"/>
+                                    <field name="unit_cost"/>
+                                    <field name="effective_cost" sum="Total"/>
+                                    <field name="actual_cost" sum="Actual" optional="show"/>
+                                    <field name="cost_variance" optional="hide"/>
+                                    <button name="action_view_material_requests" type="object" icon="fa-cubes" title="Material Requests" invisible="not id or not requested_quantity"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Equipment" name="equipment">
+                            <field name="equipment_ids" readonly="project_state not in ('draft', False)" context="{'default_component_type': 'equipment'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Equipment / Machinery"/>
+                                    <field name="quantity" string="Hours / Quantity"/>
+                                    <field name="effective_quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="requested_quantity" optional="show"/>
+                                    <field name="requested_percent" widget="progressbar" optional="hide"/>
+                                    <field name="consumed_quantity" decoration-danger="remaining_consumption &lt; 0" decoration-bf="1"/>
+                                    <field name="remaining_consumption" decoration-danger="remaining_consumption &lt; 0" optional="show"/>
+                                    <field name="consumption_percent" widget="progressbar" optional="show"/>
+                                    <field name="unit_cost" string="Operating Cost"/>
+                                    <field name="effective_cost" sum="Total"/>
+                                    <field name="actual_cost" sum="Actual" optional="show"/>
+                                    <field name="cost_variance" optional="hide"/>
+                                    <button name="action_view_equipment_requests" type="object" icon="fa-truck" title="Equipment Requests" invisible="not id or not requested_quantity"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Subcontractors" name="subcontractors">
+                            <field name="subcontract_ids" readonly="project_state not in ('draft', False)" context="{'default_component_type': 'subcontract'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Work Description"/>
+                                    <field name="quantity"/>
+                                    <field name="effective_quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="requested_quantity" string="Assigned" optional="show"/>
+                                    <field name="requested_percent" widget="progressbar" optional="hide"/>
+                                    <field name="consumed_quantity" string="Executed" decoration-danger="remaining_consumption &lt; 0" decoration-bf="1"/>
+                                    <field name="remaining_consumption" decoration-danger="remaining_consumption &lt; 0" optional="show"/>
+                                    <field name="consumption_percent" widget="progressbar" optional="show"/>
+                                    <field name="unit_cost" string="Unit Price"/>
+                                    <field name="effective_cost" sum="Total"/>
+                                    <field name="actual_cost" sum="Actual" optional="show"/>
+                                    <field name="cost_variance" optional="hide"/>
+                                    <button name="action_view_subcontract_lines" type="object" icon="fa-handshake-o" title="Subcontracts" invisible="not id or not requested_quantity"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="External Labor" name="labor">
+                            <field name="labor_ids" readonly="project_state not in ('draft', False)" context="{'default_component_type': 'labor'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Labor Description"/>
+                                    <field name="quantity"/>
+                                    <field name="effective_quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_cost" string="Estimated Cost"/>
+                                    <field name="effective_cost" sum="Total"/>
+                                    <field name="actual_cost" sum="Actual" optional="show"/>
+                                    <field name="cost_variance" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Change History" name="history">
+                            <field name="history_ids" readonly="1">
+                                <list>
+                                    <field name="change_datetime"/>
+                                    <field name="change_order_id"/>
+                                    <field name="change_type"/>
+                                    <field name="old_quantity"/>
+                                    <field name="new_quantity"/>
+                                    <field name="user_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_boq_item_list" model="ir.ui.view">
+        <field name="name">construction.boq.item.list</field>
+        <field name="model">construction.boq.item</field>
+        <field name="arch" type="xml">
+            <list string="BOQ Items" decoration-info="is_change_order_item">
+                <field name="project_id" optional="show"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="uom_id"/>
+                <field name="quantity" optional="hide"/>
+                <field name="change_quantity" optional="show"/>
+                <field name="total_quantity"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_price"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="material_cost" optional="hide" sum="Materials"/>
+                <field name="equipment_cost" optional="hide" sum="Equipment"/>
+                <field name="subcontract_cost" optional="hide" sum="Subcontractors"/>
+                <field name="labor_cost" optional="hide" sum="Labor"/>
+                <field name="estimated_cost" sum="Cost"/>
+                <field name="invoiced_quantity"/>
+                <field name="remaining_quantity"/>
+                <field name="progress_percent" widget="progressbar" optional="show"/>
+                <field name="executed_percent" widget="progressbar" optional="hide"/>
+                <field name="actual_cost" optional="show"/>
+                <field name="cost_consumed_percent" widget="progressbar" optional="show"/>
+                <field name="weight_percent" sum="Weight"/>
+                <field name="cost_ratio_percent" optional="show"/>
+                <field name="cost_percent" optional="hide"/>
+                <field name="is_change_order_item" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_boq_item_pivot" model="ir.ui.view">
+        <field name="name">construction.boq.item.pivot</field>
+        <field name="model">construction.boq.item</field>
+        <field name="arch" type="xml">
+            <pivot string="BOQ Analysis">
+                <field name="project_id" type="row"/>
+                <field name="amount_total" type="measure"/>
+                <field name="estimated_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="view_construction_boq_item_search" model="ir.ui.view">
+        <field name="name">construction.boq.item.search</field>
+        <field name="model">construction.boq.item</field>
+        <field name="arch" type="xml">
+            <search string="Search BOQ Items">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="project_id"/>
+                <filter string="Added by Change Order" name="change_order_items" domain="[('is_change_order_item', '=', True)]"/>
+                <filter string="Fully Invoiced" name="fully_invoiced" domain="[('remaining_quantity', '&lt;=', 0)]"/>
+                <group>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Unit of Measure" name="group_uom" context="{'group_by': 'uom_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_boq_item" model="ir.actions.act_window">
+        <field name="name">Approved BOQ</field>
+        <field name="res_model">construction.boq.item</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="context">{'search_default_group_project': 1}</field>
+    </record>
+</odoo>

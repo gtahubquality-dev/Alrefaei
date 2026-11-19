@@ -1,0 +1,1841 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-16 17:36+0000\n"
+"PO-Revision-Date: 2026-11-16 17:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(driver)s: %(document)s expired on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(driver)s: %(document)s expires on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(driver)s: driving license expired on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(driver)s: driving license expires on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "%(vehicle)s - %(expense)s - %(project)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "%(vehicle)s - %(type)s %(qty)s %(uom)s - %(project)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(vehicle)s: assigned driver %(driver)s is not available"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(vehicle)s: rental ended on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%(vehicle)s: rental ends on %(date)s"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%s company owned vehicle(s) not linked to a fixed asset"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%s custody sheet(s) wait for the settlement"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid ""
+"%s is a machine, not a vehicle. Driver custody sheets are for vehicles."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "%s is under maintenance"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-ban o_eq_kpi_icon me-2\" title=\"Out of Service\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid ""
+"<i class=\"fa fa-calendar-times-o o_eq_kpi_icon me-2\" title=\"Rentals "
+"Ending\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-car o_eq_kpi_icon me-2\" title=\"All Vehicles\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-check-circle o_eq_kpi_icon me-2\" title=\"Available\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-file-o o_eq_kpi_icon me-2\" title=\"Documents\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-id-card-o o_eq_kpi_icon me-2\" title=\"Licenses\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-map-marker o_eq_kpi_icon me-2\" title=\"On Site\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-money o_eq_kpi_icon me-2\" title=\"To Settle\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-pencil-square-o o_eq_kpi_icon me-2\" title=\"Draft Sheets\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-road o_eq_kpi_icon me-2\" title=\"In Transit\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-users o_eq_kpi_icon me-2\" title=\"Drivers\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"fa fa-wrench o_eq_kpi_icon me-2\" title=\"Maintenance\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<i class=\"oi oi-arrow-right mx-2\" title=\"to\"/>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span><i class=\"fa fa-bell me-2\" title=\"Alerts\"/>Alerts</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span><i class=\"fa fa-map me-2\" title=\"Projects\"/>Costs by Project</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid ""
+"<span><i class=\"fa fa-pie-chart me-2\" title=\"Costs\"/>Costs of the "
+"Period</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid ""
+"<span><i class=\"fa fa-sort-amount-desc me-2\" title=\"Top\"/>Highest Costs "
+"(Top 5)</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid ""
+"<span><i class=\"fa fa-th-large me-2\" title=\"Trip Types\"/>By Trip "
+"Type</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span><i class=\"fa fa-truck me-2\" title=\"Trips\"/>Trips</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Cost per Trip</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Number of Trips</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Other Expenses (custody sheets)</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Total Cost</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Trips Value</span>"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "<span>Vehicle Expenses (fuel, maintenance...)</span>"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_vehicle.py:0
+msgid "A driver must be assigned to vehicle %s."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_needaction
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__active
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__active
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver__employment_status__active
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_search
+msgid "Active"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__driver_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Active Drivers"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_exception_decoration
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_state
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_type_icon
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__distribute
+msgid "Add to Trips Cost"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__alert_html
+msgid "Alerts"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__vehicle_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "All Vehicles"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "All drivers"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "All projects"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "All vehicle types"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__amount
+msgid "Amount"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Analysis"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_search
+msgid "Archived"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_equipment__driver_id
+msgid "Assigned Driver"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__vehicle_ids
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Assigned Vehicles"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_attachment_count
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__available_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Available in Yard"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__project_html
+msgid "By Project"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__allocation_method__quantity
+msgid "By Transported Quantity"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__type_html
+msgid "By Trip Type"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__allocation_method__value
+msgid "By Trip Value"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Cancel"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__company_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__company_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__company_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__company_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__company_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__company_id
+msgid "Company"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__ownership__owned
+msgid "Company Owned"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_app_config
+msgid "Configuration"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_equipment
+msgid "Construction Equipment"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_project
+msgid "Construction Project"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__attachment
+msgid "Copy"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Cost"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__cost_html
+msgid "Cost Breakdown"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__cost_per_trip
+msgid "Cost per Trip"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__unit_cost
+msgid "Cost per Unit"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__create_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__create_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__currency_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__currency_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__currency_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Custody %(custody)s does not belong to driver %(driver)s."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Custody %s is not open for settlement."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__custody_balance
+msgid "Custody Balance"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__custody_amount
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Custody Received"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_custody_settlement
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__settlement_id
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Custody Settlement"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Custody Sheets in Draft"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid ""
+"Custody sheets submitted or settled, and the expenses recorded on the "
+"vehicles."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_dashboard
+msgid "Dashboard"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__date
+msgid "Date"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__document_ref
+msgid "Delivery Note / Invoice"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__name
+msgid "Description"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Details given by the driver..."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_equipment__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_project__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_line_mixin__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_custody_settlement__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_hr_employee_public__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_ir_ui_menu__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_res_company__display_name
+#: model:ir.model.fields,field_description:construction_fleet.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__allocation_method
+msgid "Distribute Other Expenses"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_list
+msgid "Distributed"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__allocated_amount
+msgid "Distributed Expenses"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet_expense__distribute
+msgid ""
+"Distributed on the trips of the sheet. Otherwise charged alone to the "
+"project where the vehicle was on the expense date."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__number
+msgid "Document Number"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__document_type
+msgid "Document Type"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__document_ids
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Documents"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__document_count
+msgid "Documents Count"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__document_alert_count
+msgid "Documents Expiring"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Documents Expiring (30 days)"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__state__draft
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Draft"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_driver
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__driver_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__driver_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__driver_id
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Driver"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__custody_id
+msgid "Driver Custody"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_driver_document
+msgid "Driver Document"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__employee_id
+msgid "Driver Employee"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__note
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Driver Notes"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_hr_employee_public__construction_driver_ids
+msgid "Driver Profiles"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Driver custody sheet %s"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Driver full name"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.actions.act_window,name:construction_fleet.action_construction_driver
+#: model:ir.ui.menu,name:construction_fleet.menu_construction_drivers
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_list
+msgid "Drivers"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Drivers &amp; To Do"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Driving License"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver_document__document_type__license
+msgid "Driving License Copy"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__license_number
+msgid "Driving License Number"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__dump_truck
+msgid "Dump Truck"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__employee_id
+msgid "Employee"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__employee_id
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__employee_id
+msgid "Employee record used for the driver custody."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__employment_status
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_search
+msgid "Employment Status"
+msgstr ""
+
+#. module: construction_fleet
+#: model:construction.transport.type,name:construction_fleet.transport_type_equipment
+msgid "Equipment Transport"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__expense_kind
+msgid "Expense Type"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_res_company__construction_transport_expense_account_id
+#: model:ir.model.fields,help:construction_fleet.field_res_config_settings__construction_transport_expense_account_id
+msgid ""
+"Expense account charged with the trips settled through the driver custody "
+"sheets."
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.res_config_settings_view_form_construction_fleet
+msgid ""
+"Expense account of trips settled through the driver custody sheets (falls "
+"back on the equipment maintenance / rental expense account)."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Expense amounts must be positive."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Expense dates must be within the sheet period."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__expiry_date
+msgid "Expiry Date"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver__employment_status__external
+msgid "External / Contracted"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__attachment_name
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__attachment_name
+msgid "File Name"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_equipment_app_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_app_root
+#: model_terms:ir.ui.view,arch_db:construction_fleet.res_config_settings_view_form_construction_fleet
+msgid "Fleet"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.actions.server,name:construction_fleet.action_construction_fleet_dashboard
+#: model:ir.model,name:construction_fleet.model_construction_fleet_dashboard
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Fleet Dashboard"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_follower_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_partner_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__activity_type_icon
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet_expense__expense_kind__freight
+msgid "Freight (Nawlon)"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__date_from
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__from_location
+msgid "From"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Fuel & Oil"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__name
+msgid "Full Name"
+msgstr ""
+
+#. module: construction_fleet
+#: model:construction.transport.type,name:construction_fleet.transport_type_gravel
+msgid "Gravel"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__has_message
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver_document__document_type__health_certificate
+msgid "Health Certificate"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_fleet_vehicles
+msgid ""
+"Heavy and light transport, trailers, sweepers, tractors, dump trucks and private cars, with plate,\n"
+"                chassis number, color, ownership (owned / rented) and their assigned driver."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__top_html
+msgid "Highest Costs"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_equipment__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_project__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_line_mixin__id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__id
+#: model:ir.model.fields,field_description:construction_fleet.field_custody_settlement__id
+#: model:ir.model.fields,field_description:construction_fleet.field_hr_employee_public__id
+#: model:ir.model.fields,field_description:construction_fleet.field_ir_ui_menu__id
+#: model:ir.model.fields,field_description:construction_fleet.field_res_company__id
+#: model:ir.model.fields,field_description:construction_fleet.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_exception_icon
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__activity_exception_icon
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Identity"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__message_needaction
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__message_has_error
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__message_has_sms_error
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__message_has_error
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__in_transit_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "In Transit"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_is_follower
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__issue_date
+msgid "Issue Date"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_construction_driver
+msgid ""
+"Keep each driver's license, identity, mobile, employment status and document"
+" copies, and assign a driver to every vehicle."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__write_uid
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver_document__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__write_date
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet_expense__date
+msgid "Leave empty for the end date of the sheet."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__license_type
+msgid "License Class"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__license_expired
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_search
+msgid "License Expired"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__license_expiry
+msgid "License Expiry"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__license_alert_count
+msgid "Licenses Expiring"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Licenses Expiring (30 days)"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet_expense__expense_kind__loading
+msgid "Loading / Unloading"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet_trip__equipment_id
+msgid "Machine or equipment carried on this trip (equipment transport)."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Main Yard"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Maintenance & Repair"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_ir_ui_menu
+msgid "Menu"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_has_error
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__mobile
+msgid "Mobile Number"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__my_activity_date_deadline
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver_document__document_type__national_id
+msgid "National ID / Iqama Copy"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__id_number
+msgid "National ID / Iqama Number"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "New"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_date_deadline
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_summary
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_type_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "No cost recorded in this period."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "No settlement has been created yet."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "No trip recorded in this period."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__note
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "Notes"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_needaction_counter
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_has_error_counter
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__message_needaction_counter
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__message_has_error_counter
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver__employment_status__on_leave
+msgid "On Leave"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__on_site_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "On Project Sites"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Only cancelled sheets can be reset to draft."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Only draft or cancelled sheets can be deleted."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Only draft sheets can be submitted."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver_document__document_type__other
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet_expense__expense_kind__other
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_list
+msgid "Other"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__other_expenses
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__expense_ids
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Other Expenses"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__other_amount
+msgid "Other Expenses Total"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Other Vehicle Expenses"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__allocation_method
+msgid ""
+"Other expenses added to the cost of the trips: share of each trip = its "
+"transported quantity (or value) divided by the total transported (or total "
+"value) of the sheet."
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid ""
+"Other expenses added to the trips cost are distributed on the trips in "
+"proportion to the quantity of each trip divided by the total transported "
+"quantity (or by value, see the sheet). Untick \"Add to Trips Cost\" to "
+"charge an expense alone to the project where the vehicle was on its date."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid ""
+"Other expenses are distributed on the trips: please enter at least one trip."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__inactive_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Out of Service"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Owned and rented"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__ownership
+msgid "Ownership"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Period"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__date_from
+msgid "Period From"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Period Performance"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__date_to
+msgid "Period To"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid ""
+"Please configure the vehicle transport cost account in Construction "
+"settings."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Please enter the trips and expenses of the driver."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Please select the driver custody."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Please select the project of every trip."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Please select the project of the expense \"%s\"."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__private_car
+msgid "Private Car"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__project_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__project_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__project_id
+msgid "Project"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_hr_employee_public
+msgid "Public Employee"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_list
+msgid "Quantity"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__quantity
+msgid "Quantity Transported"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__rating_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__invoice_ref
+msgid "Receipt / Invoice"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__attachment
+msgid "Receipt Copy"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_construction_vehicle_sheet
+msgid "Record a vehicle custody sheet"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__name
+msgid "Reference"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Refresh"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_fleet_vehicles
+msgid "Register the vehicles of the fleet"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_construction_driver
+msgid "Register your drivers"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Rental"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__rental_alert_count
+msgid "Rentals Ending"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Rentals Ending (7 days)"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__ownership__rented
+msgid "Rented"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_equipment_app_reporting
+msgid "Reporting"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__activity_user_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__message_has_sms_error
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: construction_fleet
+#: model:construction.transport.type,name:construction_fleet.transport_type_sand
+msgid "Sand"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_search
+msgid "Search Drivers"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Search Vehicle Custody Sheets"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.actions.act_window,help:construction_fleet.action_construction_vehicle_sheet
+msgid ""
+"Select the vehicle and driver, see the custody received, then enter the "
+"trips (e.g. gravel 60,000, sand 40,000) and other expenses (freight, "
+"tips...). Dates can be in the past."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_app_settings
+msgid "Settings"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__state__done
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Settled"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Settled sheets cannot be cancelled."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Settlement %s submitted to the custody manager."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_expense__sheet_id
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__sheet_id
+msgid "Sheet"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__draft_sheet_count
+msgid "Sheets in Draft"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__submitted_sheet_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Sheets to Settle"
+msgstr ""
+
+#. module: construction_fleet
+#: model:construction.transport.type,name:construction_fleet.transport_type_soil
+msgid "Soil / Excavation Removal"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__state
+msgid "Status"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__activity_state
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Submit for Settlement"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Submitted"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet__state__submitted
+msgid "Submitted for Settlement"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver__employment_status__suspended
+msgid "Suspended"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__sweeper
+msgid "Sweeper"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver__employment_status__terminated
+msgid "Terminated"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "The custody settlement was cancelled; the sheet is back to draft."
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_driver_form
+msgid "The driving license of this driver has expired."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "The end date cannot be before the start date."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.constraint,message:construction_fleet.constraint_construction_driver_license_company_uniq
+msgid "This driving license number is already registered."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet_expense__expense_kind__tips
+msgid "Tips"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__date_to
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__to_location
+msgid "To"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_vehicle_sheet_expense__expense_kind__tolls
+msgid "Tolls / Weighbridge"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_list
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_list
+msgid "Total"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__period_cost
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__total_amount
+msgid "Total Cost"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__trips_quantity
+msgid "Total Transported"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__total_cost
+msgid "Total Trip Cost"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Totals"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__tractor
+msgid "Tractor"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__trailer
+msgid "Trailer"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_transport_type
+msgid "Transport Type"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__equipment_id
+msgid "Transported Equipment"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__name
+msgid "Transported Material / Trip Type"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__transport_type_id
+msgid "Trip Type"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.actions.act_window,name:construction_fleet.action_construction_transport_type
+#: model:ir.ui.menu,name:construction_fleet.menu_construction_transport_types
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_transport_type_list
+msgid "Trip Types"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__amount
+msgid "Trip Value"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Trip dates must be within the sheet period."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Trip values and quantities cannot be negative."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__trip_count
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__trip_ids
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_list
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_list
+msgid "Trips"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.actions.act_window,name:construction_fleet.action_construction_vehicle_trip
+#: model:ir.ui.menu,name:construction_fleet.menu_construction_report_trips
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_pivot
+msgid "Trips Analysis"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__trips_value
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__trips_amount
+msgid "Trips Value"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_fleet_dashboard__project_id
+msgid ""
+"Trips and costs charged to this project, vehicles currently on its site."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "Trips and expenses can only be changed on draft vehicle sheets."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__truck_heavy
+msgid "Truck - Heavy Transport"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_fleet_dashboard__category__truck_light
+msgid "Truck - Light Transport"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__activity_exception_decoration
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__maintenance_count
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Under Maintenance"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet_trip__uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_transport_type__uom_id
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_trip_list
+msgid "Value"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__vehicle_id
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_search
+msgid "Vehicle"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Vehicle & Driver"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_custody_settlement__vehicle_sheet_id
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_form
+msgid "Vehicle Custody Sheet"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.actions.act_window,name:construction_fleet.action_construction_vehicle_sheet
+#: model:ir.ui.menu,name:construction_fleet.menu_construction_vehicle_sheets
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_vehicle_sheet_list
+msgid "Vehicle Custody Sheets"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_vehicle_sheet
+msgid "Vehicle Driver Custody Sheet"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__vehicle_expenses
+msgid "Vehicle Expenses"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.actions.act_window,name:construction_fleet.action_fleet_vehicle_rentals
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_vehicle_rentals
+msgid "Vehicle Rentals"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_vehicle_sheet_line_mixin
+msgid "Vehicle Sheet Lines Lock"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_vehicle_sheet_expense
+msgid "Vehicle Sheet Other Expense"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.res_config_settings_view_form_construction_fleet
+msgid "Vehicle Transport Cost"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_res_company__construction_transport_expense_account_id
+#: model:ir.model.fields,field_description:construction_fleet.field_res_config_settings__construction_transport_expense_account_id
+msgid "Vehicle Transport Cost Account"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model,name:construction_fleet.model_construction_vehicle_sheet_trip
+msgid "Vehicle Trip"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_fleet_dashboard__category
+msgid "Vehicle Type"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+#: model:ir.actions.act_window,name:construction_fleet.action_fleet_vehicles
+#: model:ir.ui.menu,name:construction_fleet.menu_fleet_vehicles
+msgid "Vehicles"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Vehicles Status"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "Vehicles in Transit"
+msgstr ""
+
+#. module: construction_fleet
+#: model_terms:ir.ui.view,arch_db:construction_fleet.view_construction_fleet_dashboard_form
+msgid "Vehicles, drivers, trips and transport costs of the period"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_driver__website_message_ids
+#: model:ir.model.fields,field_description:construction_fleet.field_construction_vehicle_sheet__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields,help:construction_fleet.field_construction_driver__website_message_ids
+#: model:ir.model.fields,help:construction_fleet.field_construction_vehicle_sheet__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: construction_fleet
+#: model:ir.model.fields.selection,name:construction_fleet.selection__construction_driver_document__document_type__work_permit
+msgid "Work Permit"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet.py:0
+msgid "You are not allowed to submit driver custody sheets."
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "fuel"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "maintenance"
+msgstr ""
+
+#. module: construction_fleet
+#. odoo-python
+#: code:addons/construction_fleet/models/construction_fleet_dashboard.py:0
+msgid "rental"
+msgstr ""

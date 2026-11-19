@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bidding_boq_item_form" model="ir.ui.view">
+        <field name="name">bidding.boq.item.form</field>
+        <field name="model">bidding.boq.item</field>
+        <field name="arch" type="xml">
+            <form string="BOQ Item">
+                <sheet>
+                    <field name="tender_state" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Reinforced concrete for foundations" readonly="tender_state in ('submitted', 'awarded', 'lost', 'cancelled')"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Item">
+                            <field name="tender_id" readonly="id"/>
+                            <field name="code"/>
+                            <field name="uom_id"/>
+                            <field name="quantity"/>
+                            <field name="unit_price"/>
+                            <field name="amount_total"/>
+                        </group>
+                        <group string="Cost Analysis">
+                            <field name="estimated_cost"/>
+                            <field name="unit_cost"/>
+                            <field name="profit_amount"/>
+                            <field name="weight_percent"/>
+                            <field name="cost_percent"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Contractual description of the item..."/>
+                    <notebook>
+                        <page string="Materials" name="materials">
+                            <field name="material_ids" context="{'default_component_type': 'material'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="product_id" required="1"/>
+                                    <field name="name"/>
+                                    <field name="specifications" optional="show"/>
+                                    <field name="quantity" string="Required Quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_cost" string="Estimated Unit Price"/>
+                                    <field name="total_cost" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Equipment" name="equipment">
+                            <field name="equipment_ids" context="{'default_component_type': 'equipment'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Equipment / Machinery"/>
+                                    <field name="product_id" optional="hide"/>
+                                    <field name="quantity" string="Operating Hours / Quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_cost" string="Estimated Operating Cost"/>
+                                    <field name="total_cost" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Subcontractors" name="subcontractors">
+                            <field name="subcontract_ids" context="{'default_component_type': 'subcontract'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Work Description"/>
+                                    <field name="product_id" optional="hide"/>
+                                    <field name="quantity" string="Estimated Quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_cost" string="Unit Price"/>
+                                    <field name="total_cost" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="External Labor" name="labor">
+                            <field name="labor_ids" context="{'default_component_type': 'labor'}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="component_type" column_invisible="True"/>
+                                    <field name="name" string="Labor Description"/>
+                                    <field name="product_id" optional="hide"/>
+                                    <field name="quantity" string="Required Quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_cost" string="Estimated Cost"/>
+                                    <field name="total_cost" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Cost Summary" name="summary">
+                            <group>
+                                <group>
+                                    <field name="material_cost"/>
+                                    <field name="equipment_cost"/>
+                                    <field name="subcontract_cost"/>
+                                    <field name="labor_cost"/>
+                                    <field name="estimated_cost" class="fw-bold"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_bidding_boq_item_list" model="ir.ui.view">
+        <field name="name">bidding.boq.item.list</field>
+        <field name="model">bidding.boq.item</field>
+        <field name="arch" type="xml">
+            <list string="BOQ Items">
+                <field name="tender_id"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="uom_id"/>
+                <field name="quantity"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_price"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="estimated_cost" sum="Cost"/>
+                <field name="weight_percent"/>
+                <field name="cost_percent"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_bidding_boq_item_search" model="ir.ui.view">
+        <field name="name">bidding.boq.item.search</field>
+        <field name="model">bidding.boq.item</field>
+        <field name="arch" type="xml">
+            <search string="Search BOQ Items">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="tender_id"/>
+                <group>
+                    <filter string="Tender" name="group_tender" context="{'group_by': 'tender_id'}"/>
+                    <filter string="Unit of Measure" name="group_uom" context="{'group_by': 'uom_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

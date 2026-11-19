@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_material_request_line_boq_list" model="ir.ui.view">
+        <field name="name">construction.material.request.line.boq.list</field>
+        <field name="model">construction.material.request.line</field>
+        <field name="arch" type="xml">
+            <list string="Material Request Lines" create="0" edit="0" delete="0">
+                <field name="request_id"/>
+                <field name="product_id"/>
+                <field name="boq_item_id"/>
+                <field name="quantity" sum="Total"/>
+                <field name="uom_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="purchased_quantity" sum="Purchased" optional="show"/>
+                <field name="received_quantity" sum="Received"/>
+                <field name="billed_quantity" sum="Billed" optional="show"/>
+                <field name="actual_cost" sum="Actual Cost"/>
+            </list>
+        </field>
+    </record>
+</odoo>

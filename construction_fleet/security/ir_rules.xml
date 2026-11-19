@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_construction_driver_company" model="ir.rule">
+        <field name="name">construction.driver: multi-company</field>
+        <field name="model_id" ref="model_construction_driver"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_vehicle_sheet_company" model="ir.rule">
+        <field name="name">construction.vehicle.sheet: multi-company</field>
+        <field name="model_id" ref="model_construction_vehicle_sheet"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_custody_request_drivers_construction" model="ir.rule">
+        <field name="name">Custody: driver custodies visible to construction staff</field>
+        <field name="model_id" ref="financial_custody.model_custody_request"/>
+        <field name="domain_force">[('employee_id.construction_driver_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_custody_settlement_drivers_construction" model="ir.rule">
+        <field name="name">Custody settlement: driver settlements visible to construction staff</field>
+        <field name="model_id" ref="financial_custody.model_custody_settlement"/>
+        <field name="domain_force">[('custody_id.employee_id.construction_driver_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_custody_settlement_line_drivers_construction" model="ir.rule">
+        <field name="name">custody.settlement.line: driver settlements visible to construction staff</field>
+        <field name="model_id" ref="financial_custody.model_custody_settlement_line"/>
+        <field name="domain_force">[('settlement_id.custody_id.employee_id.construction_driver_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_custody_settlement_return_drivers_construction" model="ir.rule">
+        <field name="name">custody.settlement.return: driver settlements visible to construction staff</field>
+        <field name="model_id" ref="financial_custody.model_custody_settlement_return"/>
+        <field name="domain_force">[('settlement_id.custody_id.employee_id.construction_driver_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_construction_driver_document_company" model="ir.rule">
+        <field name="name">construction.driver.document: multi-company</field>
+        <field name="model_id" ref="model_construction_driver_document"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_vehicle_sheet_expense_company" model="ir.rule">
+        <field name="name">construction.vehicle.sheet.expense: multi-company</field>
+        <field name="model_id" ref="model_construction_vehicle_sheet_expense"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_vehicle_sheet_trip_company" model="ir.rule">
+        <field name="name">construction.vehicle.sheet.trip: multi-company</field>
+        <field name="model_id" ref="model_construction_vehicle_sheet_trip"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
