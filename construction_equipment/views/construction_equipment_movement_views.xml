@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_movement_form" model="ir.ui.view">
+        <field name="name">construction.equipment.movement.form</field>
+        <field name="model">construction.equipment.movement</field>
+        <field name="arch" type="xml">
+            <form string="Equipment Movement">
+                <header>
+                    <button name="action_done" type="object" string="Confirm Movement" class="btn-primary" invisible="state != 'draft'" groups="construction_management.group_construction_transport"/>
+                    <button name="action_confirm_arrival" type="object" string="Confirm Arrival on Site" class="btn-primary" invisible="state != 'in_transit'" groups="construction_management.group_construction_transport"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state not in ('draft', 'in_transit')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_transit,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_picking" type="object" class="oe_stat_button" icon="fa-exchange" string="Inventory Transfer" invisible="not picking_id"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="equipment_id" readonly="state != 'draft'"/>
+                            <field name="from_project_id" readonly="state != 'draft'"/>
+                            <field name="to_project_id" readonly="state != 'draft'"/>
+                            <field name="move_datetime" readonly="state == 'done'"/>
+                            <field name="request_id" invisible="not request_id"/>
+                        </group>
+                        <group>
+                            <field name="driver_id" readonly="state != 'draft'"/>
+                            <field name="transport_vendor_id" readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="transport_cost" readonly="state != 'draft'"/>
+                            <field name="expense_id" invisible="not expense_id"/>
+                            <field name="picking_id" invisible="not picking_id"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Notes..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_equipment_movement_list" model="ir.ui.view">
+        <field name="name">construction.equipment.movement.list</field>
+        <field name="model">construction.equipment.movement</field>
+        <field name="arch" type="xml">
+            <list string="Equipment Movements">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="from_project_id"/>
+                <field name="to_project_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="transport_cost" sum="Total"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'in_transit'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_equipment_movement_search" model="ir.ui.view">
+        <field name="name">construction.equipment.movement.search</field>
+        <field name="model">construction.equipment.movement</field>
+        <field name="arch" type="xml">
+            <search string="Search Movements">
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="from_project_id"/>
+                <field name="to_project_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="In Transit" name="in_transit" domain="[('state', '=', 'in_transit')]"/>
+                <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+                <group>
+                    <filter string="Equipment" name="group_equipment" context="{'group_by': 'equipment_id'}"/>
+                    <filter string="Destination" name="group_to" context="{'group_by': 'to_project_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_equipment_movement" model="ir.actions.act_window">
+        <field name="name">Equipment Movements</field>
+        <field name="res_model">construction.equipment.movement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

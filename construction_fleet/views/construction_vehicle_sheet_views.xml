@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_vehicle_sheet_form" model="ir.ui.view">
+        <field name="name">construction.vehicle.sheet.form</field>
+        <field name="model">construction.vehicle.sheet</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Custody Sheet">
+                <header>
+                    <button name="action_submit" type="object" string="Submit for Settlement" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancelled')"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_settlement" type="object" class="oe_stat_button" icon="fa-money" string="Custody Settlement" invisible="not settlement_id"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Vehicle &amp; Driver">
+                            <field name="vehicle_id" domain="[('is_vehicle', '=', True), ('company_id', '=', company_id)]" readonly="state != 'draft'" options="{'no_create': True}"/>
+                            <field name="driver_id" readonly="state != 'draft'" options="{'no_create': True}"/>
+                            <field name="employee_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Custody Received">
+                            <field name="custody_id" readonly="state != 'draft'" options="{'no_create': True}"/>
+                            <field name="custody_amount"/>
+                            <field name="custody_balance"/>
+                        </group>
+                        <group string="Period">
+                            <field name="date_from" readonly="state != 'draft'"/>
+                            <field name="date_to" readonly="state != 'draft'"/>
+                            <field name="allocation_method" readonly="state != 'draft'"/>
+                        </group>
+                        <group string="Totals">
+                            <field name="trips_quantity"/>
+                            <field name="trips_amount"/>
+                            <field name="other_amount"/>
+                            <field name="total_amount" class="fw-bold"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Trips" name="trips">
+                            <field name="trip_ids" readonly="state != 'draft'">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="transport_type_id"/>
+                                    <field name="project_id" required="1"/>
+                                    <field name="equipment_id" optional="hide" options="{'no_create': True}"/>
+                                    <field name="from_location" optional="show"/>
+                                    <field name="to_location" optional="show"/>
+                                    <field name="quantity" sum="Quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="document_ref" optional="show"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Value"/>
+                                    <field name="allocated_amount" sum="Distributed"/>
+                                    <field name="total_cost" sum="Total"/>
+                                    <field name="unit_cost"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Other Expenses" name="expenses">
+                            <div class="text-muted mb-2">Other expenses added to the trips cost are distributed on the trips in proportion to the quantity of each trip divided by the total transported quantity (or by value, see the sheet). Untick "Add to Trips Cost" to charge an expense alone to the project where the vehicle was on its date.</div>
+                            <field name="expense_ids" readonly="state != 'draft'">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="expense_kind"/>
+                                    <field name="name"/>
+                                    <field name="distribute"/>
+                                    <field name="project_id" invisible="distribute" required="not distribute"/>
+                                    <field name="invoice_ref"/>
+                                    <field name="attachment" filename="attachment_name" widget="binary"/>
+                                    <field name="attachment_name" column_invisible="True"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Driver Notes" name="notes">
+                            <field name="note" placeholder="Details given by the driver..."/>
+                        </page>
+                    </notebook>
+                    <group invisible="not settlement_id">
+                        <field name="settlement_id"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_vehicle_sheet_list" model="ir.ui.view">
+        <field name="name">construction.vehicle.sheet.list</field>
+        <field name="model">construction.vehicle.sheet</field>
+        <field name="arch" type="xml">
+            <list string="Vehicle Custody Sheets">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="trips_quantity" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="trips_amount" optional="show" sum="Trips"/>
+                <field name="other_amount" optional="show" sum="Other"/>
+                <field name="total_amount" sum="Total"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-warning="state == 'submitted'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_vehicle_sheet_search" model="ir.ui.view">
+        <field name="name">construction.vehicle.sheet.search</field>
+        <field name="model">construction.vehicle.sheet</field>
+        <field name="arch" type="xml">
+            <search string="Search Vehicle Custody Sheets">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter string="Settled" name="done" domain="[('state', '=', 'done')]"/>
+                <group>
+                    <filter string="Vehicle" name="group_vehicle" context="{'group_by': 'vehicle_id'}"/>
+                    <filter string="Driver" name="group_driver" context="{'group_by': 'driver_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_vehicle_sheet" model="ir.actions.act_window">
+        <field name="name">Vehicle Custody Sheets</field>
+        <field name="res_model">construction.vehicle.sheet</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Record a vehicle custody sheet</p>
+            <p>Select the vehicle and driver, see the custody received, then enter the trips (e.g. gravel 60,000, sand 40,000) and other expenses (freight, tips...). Dates can be in the past.</p>
+        </field>
+    </record>
+</odoo>

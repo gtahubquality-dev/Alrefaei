@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_vehicle_sheet_trip_pivot" model="ir.ui.view">
+        <field name="name">construction.vehicle.sheet.trip.pivot</field>
+        <field name="model">construction.vehicle.sheet.trip</field>
+        <field name="arch" type="xml">
+            <pivot string="Trips Analysis">
+                <field name="project_id" type="row"/>
+                <field name="transport_type_id" type="col"/>
+                <field name="quantity" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="view_construction_vehicle_sheet_trip_list" model="ir.ui.view">
+        <field name="name">construction.vehicle.sheet.trip.list</field>
+        <field name="model">construction.vehicle.sheet.trip</field>
+        <field name="arch" type="xml">
+            <list string="Trips" create="0" edit="0">
+                <field name="sheet_id"/>
+                <field name="date"/>
+                <field name="transport_type_id"/>
+                <field name="project_id"/>
+                <field name="quantity" sum="Quantity"/>
+                <field name="uom_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount" sum="Value"/>
+                <field name="allocated_amount" sum="Distributed"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="unit_cost"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_construction_vehicle_trip" model="ir.actions.act_window">
+        <field name="name">Trips Analysis</field>
+        <field name="res_model">construction.vehicle.sheet.trip</field>
+        <field name="view_mode">pivot,list</field>
+    </record>
+</odoo>

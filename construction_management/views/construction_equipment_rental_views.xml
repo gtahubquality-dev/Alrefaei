@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_rental_form" model="ir.ui.view">
+        <field name="name">construction.equipment.rental.form</field>
+        <field name="model">construction.equipment.rental</field>
+        <field name="arch" type="xml">
+            <form string="Rental Contract">
+                <header>
+                    <button name="action_start" type="object" string="Start Rental" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_create_purchase_order" type="object" string="Create Purchase Order" invisible="state not in ('draft', 'running') or purchase_order_count or not product_id"/>
+                    <button name="action_return" type="object" string="Return to Vendor" class="btn-primary" invisible="state != 'running'" confirm="The equipment is returned to the vendor and leaves the project sites. Continue?"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state not in ('draft', 'running')"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,running,returned"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_purchase_orders" type="object" class="oe_stat_button" icon="fa-shopping-cart" invisible="not purchase_order_count">
+                            <field name="purchase_order_count" widget="statinfo" string="Purchase Orders"/>
+                        </button>
+                        <button name="action_view_boq_request" type="object" class="oe_stat_button" icon="fa-th-list" invisible="not request_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">BOQ Request</span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Ending Soon" bg_color="text-bg-warning" invisible="not is_expiring"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Rented From">
+                            <field name="partner_id" readonly="state not in ('draft', 'running')"/>
+                            <field name="equipment_id" readonly="state != 'draft'" context="{'default_ownership': 'rented', 'default_rental_vendor_id': partner_id}"/>
+                            <field name="category" invisible="not equipment_id"/>
+                            <field name="license_plate" invisible="not is_vehicle"/>
+                            <field name="is_vehicle" invisible="1"/>
+                            <field name="operator_included"/>
+                            <field name="fuel_included"/>
+                        </group>
+                        <group string="Period">
+                            <field name="date_start" readonly="state != 'draft'"/>
+                            <field name="date_end" readonly="state not in ('draft', 'running')"/>
+                            <field name="return_date" invisible="not return_date"/>
+                            <field name="is_expiring" invisible="1"/>
+                            <field name="project_id" readonly="state != 'draft'"/>
+                            <field name="request_id" invisible="not request_id"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                        </group>
+                        <group string="Price">
+                            <field name="rate_type" readonly="state != 'draft'"/>
+                            <field name="product_id" readonly="state != 'draft'"/>
+                            <field name="quantity" readonly="state != 'draft'"/>
+                            <field name="unit_price" readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="amount" class="fw-bold"/>
+                        </group>
+                        <group string="Purchase &amp; Billing">
+                            <field name="ordered_amount"/>
+                            <field name="billed_amount"/>
+                        </group>
+                    </group>
+                    <group string="BOQ Consumption" name="boq" invisible="not project_id">
+                        <group>
+                            <field name="boq_component_id" options="{'no_create': True}" readonly="request_id or state in ('returned', 'cancelled')" required="project_id and state == 'draft'"/>
+                            <field name="boq_item_id"/>
+                            <field name="boq_uom_id"/>
+                        </group>
+                        <group>
+                            <field name="boq_quantity"/>
+                            <field name="consumed_quantity" invisible="not request_id"/>
+                            <field name="boq_consumed_quantity"/>
+                            <field name="boq_consumption_percent" widget="progressbar"/>
+                            <field name="actual_cost" invisible="not request_id"/>
+                        </group>
+                    </group>
+                    <group string="Extend the Rental" invisible="state != 'running'">
+                        <group>
+                            <field name="extension_date"/>
+                            <field name="extension_quantity"/>
+                        </group>
+                        <group>
+                            <button name="action_extend" type="object" string="Extend" icon="fa-calendar-plus-o" class="btn-secondary"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Rental terms, insurance, operator, fuel..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_equipment_rental_list" model="ir.ui.view">
+        <field name="name">construction.equipment.rental.list</field>
+        <field name="model">construction.equipment.rental</field>
+        <field name="arch" type="xml">
+            <list string="Rental Contracts" decoration-warning="is_expiring" decoration-muted="state in ('returned', 'cancelled')">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="equipment_id"/>
+                <field name="category" optional="show"/>
+                <field name="project_id" optional="show"/>
+                <field name="boq_item_id" optional="show"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="rate_type" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="unit_price" optional="hide"/>
+                <field name="amount" sum="Total"/>
+                <field name="billed_amount" optional="show"/>
+                <field name="is_expiring" column_invisible="True"/>
+                <field name="state" widget="badge" decoration-success="state == 'running'" decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_equipment_rental_search" model="ir.ui.view">
+        <field name="name">construction.equipment.rental.search</field>
+        <field name="model">construction.equipment.rental</field>
+        <field name="arch" type="xml">
+            <search string="Search Rentals">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="equipment_id"/>
+                <field name="project_id"/>
+                <filter string="Running" name="running" domain="[('state', '=', 'running')]"/>
+                <filter string="Ending Soon" name="expiring" domain="[('is_expiring', '=', True)]"/>
+                <filter string="Returned" name="returned" domain="[('state', '=', 'returned')]"/>
+                <separator/>
+                <filter string="Vehicles" name="vehicles" domain="[('is_vehicle', '=', True)]"/>
+                <filter string="Machines &amp; Equipment" name="machines" domain="[('is_vehicle', '=', False)]"/>
+                <group>
+                    <filter string="Vendor" name="group_vendor" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_equipment_rental" model="ir.actions.act_window">
+        <field name="name">Rental Contracts</field>
+        <field name="res_model">construction.equipment.rental</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_running': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Register the equipment rented from vendors</p>
+            <p>Each rental contract gives the vendor, the rented equipment or vehicle, the project, the period, the rate,
+                the purchase orders and bills. Company owned equipment is linked to a fixed asset instead.</p>
+        </field>
+    </record>
+</odoo>

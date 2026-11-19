@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_project_list" model="ir.ui.view">
+        <field name="name">construction.project.list</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <list string="Construction Projects" decoration-muted="state == 'cancelled'" decoration-warning="state == 'suspended'">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="owner_id" optional="hide"/>
+                <field name="consultant_id" optional="hide"/>
+                <field name="manager_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="site_engineer_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="revised_date" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state in ('preliminary', 'final')" decoration-info="state == 'running'" decoration-warning="state == 'suspended'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_construction_project_kanban" model="ir.ui.view">
+        <field name="name">construction.project.kanban</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column">
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <field name="code" class="text-muted small"/>
+                        <field name="name" class="fw-bold fs-5"/>
+                        <field name="partner_id"/>
+                        <div class="d-flex justify-content-between mt-2">
+                            <field name="end_date"/>
+                            <field name="site_engineer_id" widget="many2one_avatar_user"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_construction_project_form" model="ir.ui.view">
+        <field name="name">construction.project.form</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <form string="Construction Project">
+                <header>
+                    <button name="action_start" type="object" string="Start Project" class="btn-primary" invisible="state != 'draft'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_suspend" type="object" string="Suspend" invisible="state != 'running'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_resume" type="object" string="Resume" class="btn-primary" invisible="state != 'suspended'" groups="construction_management.group_construction_manager"/>
+                    <button name="action_preliminary_handover" type="object" string="Preliminary Handover" class="btn-primary" invisible="state != 'running'" groups="construction_management.group_construction_manager" confirm="The work guarantee balance will be refunded automatically. Continue?"/>
+                    <button name="action_final_handover" type="object" string="Final Handover" class="btn-primary" invisible="state != 'preliminary'" groups="construction_management.group_construction_manager" confirm="The final insurance will be refunded automatically. Continue?"/>
+                    <button name="action_sync_material_requirements" type="object" string="Update Material List" invisible="state in ('draft', 'cancelled')"/>
+                    <button name="action_open_labor_cost_wizard" type="object" string="Allocate Labor Cost" invisible="state in ('draft', 'cancelled')" groups="construction_management.group_construction_finance,construction_management.group_construction_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('cancelled', 'final')" groups="construction_management.group_construction_manager"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state != 'cancelled'" groups="construction_management.group_construction_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,running,preliminary,final"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_boq" type="object" class="oe_stat_button" icon="fa-list-ol">
+                            <field name="boq_item_count" widget="statinfo" string="BOQ Items"/>
+                        </button>
+                        <button name="action_view_change_orders" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                            <field name="change_order_count" widget="statinfo" string="Change Orders"/>
+                        </button>
+                        <button name="action_view_owner_invoices" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="owner_invoice_count" widget="statinfo" string="Owner Invoices"/>
+                        </button>
+                        <button name="action_view_material_requirements" type="object" class="oe_stat_button" icon="fa-cubes" string="Materials"/>
+                        <button name="action_view_material_requests" type="object" class="oe_stat_button" icon="fa-truck">
+                            <field name="material_request_count" widget="statinfo" string="Material Requests"/>
+                        </button>
+                        <button name="action_view_subcontracts" type="object" class="oe_stat_button" icon="fa-handshake-o">
+                            <field name="subcontract_count" widget="statinfo" string="Subcontracts"/>
+                        </button>
+                        <button name="action_view_equipment_requests" type="object" class="oe_stat_button" icon="fa-wrench">
+                            <field name="equipment_request_count" widget="statinfo" string="Equipment Requests"/>
+                        </button>
+                        <button name="action_view_workforce" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="workforce_count" widget="statinfo" string="Workforce"/>
+                        </button>
+                        <button name="action_view_guarantees" type="object" class="oe_stat_button" icon="fa-shield">
+                            <field name="guarantee_count" widget="statinfo" string="Guarantees"/>
+                        </button>
+                        <button name="action_view_equipment" type="object" class="oe_stat_button" icon="fa-cogs">
+                            <field name="equipment_count" widget="statinfo" string="Equipment on Site"/>
+                        </button>
+                        <button name="action_view_purchases" type="object" class="oe_stat_button" icon="fa-shopping-cart" groups="purchase.group_purchase_user">
+                            <field name="purchase_count" widget="statinfo" string="Purchases"/>
+                        </button>
+                        <button name="action_view_pickings" type="object" class="oe_stat_button" icon="fa-exchange" groups="stock.group_stock_user">
+                            <field name="picking_count" widget="statinfo" string="Transfers"/>
+                        </button>
+                        <button name="action_view_moves" type="object" class="oe_stat_button" icon="fa-book" groups="account.group_account_invoice">
+                            <field name="move_count" widget="statinfo" string="Journal Entries"/>
+                        </button>
+                        <button name="action_view_analytic_lines" type="object" class="oe_stat_button" icon="fa-bar-chart" string="Cost Center" groups="account.group_account_invoice"/>
+                        <button name="action_view_odoo_project" type="object" class="oe_stat_button" icon="fa-puzzle-piece" string="Tasks" groups="project.group_project_user"/>
+                    </div>
+                    <widget name="web_ribbon" title="Suspended" bg_color="text-bg-warning" invisible="state != 'suspended'"/>
+                    <widget name="web_ribbon" title="Cancelled" bg_color="text-bg-danger" invisible="state != 'cancelled'"/>
+                    <div class="oe_title">
+                        <label for="code"/>
+                        <h1>
+                            <field name="code" readonly="1"/>
+                        </h1>
+                        <label for="name"/>
+                        <h2>
+                            <field name="name" placeholder="Official contractual project name"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Parties">
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="owner_id"/>
+                            <field name="consultant_id"/>
+                            <field name="tender_id"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Schedule">
+                            <field name="start_date"/>
+                            <field name="duration_months"/>
+                            <field name="end_date"/>
+                            <field name="revised_date"/>
+                            <field name="suspension_date"/>
+                            <field name="preliminary_handover_date"/>
+                            <field name="final_handover_date"/>
+                        </group>
+                        <group string="Integration">
+                            <field name="analytic_account_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group string="Progress">
+                            <field name="contract_amount"/>
+                            <field name="invoiced_amount"/>
+                            <field name="progress_percent" widget="progressbar"/>
+                            <field name="certified_progress_percent" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Approved BOQ" name="boq">
+                            <field name="boq_item_ids" readonly="state != 'draft'" context="{'default_project_id': id}">
+                                <list decoration-info="is_change_order_item">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="code" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity" optional="hide"/>
+                                    <field name="change_quantity" optional="hide"/>
+                                    <field name="total_quantity"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_price"/>
+                                    <field name="amount_total" sum="Total"/>
+                                    <field name="estimated_cost" sum="Cost" optional="show"/>
+                                    <field name="invoiced_quantity" optional="show"/>
+                                    <field name="remaining_quantity" optional="show"/>
+                                    <field name="weight_percent" sum="Weight"/>
+                                    <field name="cost_ratio_percent" optional="hide"/>
+                                    <field name="progress_percent" widget="progressbar" optional="show"/>
+                                    <field name="is_change_order_item" column_invisible="True"/>
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer">
+                                <field name="original_amount"/>
+                                <field name="change_order_amount"/>
+                                <field name="contract_amount" class="oe_subtotal_footer_separator"/>
+                                <field name="estimated_cost"/>
+                            </group>
+                        </page>
+                        <page string="Financial Controls" name="financial">
+                            <group>
+                                <group string="Customer Contract Terms">
+                                    <label for="advance_payment_percent"/>
+                                    <div class="o_row">
+                                        <field name="advance_payment_percent" class="oe_inline"/>
+                                        <span>%</span>
+                                        <field name="advance_payment_amount" class="oe_inline"/>
+                                    </div>
+                                    <field name="advance_deduction_percent"/>
+                                    <field name="guarantee_percent"/>
+                                    <label for="final_insurance_percent"/>
+                                    <div class="o_row">
+                                        <field name="final_insurance_percent" class="oe_inline"/>
+                                        <span>%</span>
+                                        <field name="final_insurance_amount" class="oe_inline"/>
+                                    </div>
+                                </group>
+                                <group string="Work Guarantee (Retention)">
+                                    <field name="retention_held"/>
+                                    <field name="retention_refunded"/>
+                                    <field name="retention_balance" class="fw-bold"/>
+                                </group>
+                                <group string="Advance Payment">
+                                    <field name="advance_received"/>
+                                    <field name="advance_deducted"/>
+                                    <field name="advance_balance" class="fw-bold"/>
+                                </group>
+                                <group string="Final Insurance">
+                                    <field name="insurance_paid"/>
+                                    <field name="insurance_refunded"/>
+                                    <field name="deductions_total"/>
+                                </group>
+                            </group>
+                            <separator string="Deduction Policy (Customer &amp; Subcontractors)"/>
+                            <div class="text-muted mb-2">
+                                Customer lines are deducted on the owner invoices. Subcontractor lines are copied to every
+                                new subcontract of the project, where they can still be adjusted.
+                            </div>
+                            <field name="deduction_ids" context="{'default_project_id': id}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="applies_to"/>
+                                    <field name="type_id"/>
+                                    <field name="name"/>
+                                    <field name="kind"/>
+                                    <field name="calculation"/>
+                                    <field name="value"/>
+                                    <field name="frequency"/>
+                                    <field name="account_id"/>
+                                    <field name="refundable"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="deducted_amount"/>
+                                    <field name="refunded_amount"/>
+                                    <field name="balance"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                    <button name="action_refund" type="object" string="Refund" icon="fa-undo" invisible="applies_to != 'owner' or not refundable or balance &lt;= 0" groups="construction_management.group_construction_finance"/>
+                                </list>
+                            </field>
+                            <separator string="Financial Operations"/>
+                            <field name="operation_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="operation_type"/>
+                                    <field name="name"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="move_id"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'posted'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Team" name="team">
+                            <group>
+                                <group>
+                                    <field name="manager_id"/>
+                                    <field name="site_engineer_id"/>
+                                </group>
+                            </group>
+                            <field name="member_ids" widget="many2many_tags_avatar" placeholder="Project team users..."/>
+                            <separator string="Project Workforce"/>
+                            <field name="workforce_ids" context="{'default_project_id': id}">
+                                <list decoration-muted="state == 'ended'">
+                                    <field name="name"/>
+                                    <field name="worker_type"/>
+                                    <field name="project_role"/>
+                                    <field name="job_title" optional="show"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="rate" optional="show"/>
+                                    <field name="estimated_cost" sum="Total" optional="show"/>
+                                    <field name="allocated_cost" sum="Allocated" optional="show"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'active'"/>
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer">
+                                <field name="labor_cost_allocated"/>
+                            </group>
+                        </page>
+                        <page string="Guarantees" name="guarantees">
+                            <field name="guarantee_ids" context="{'default_project_id': id}">
+                                <list decoration-danger="state == 'expired'" decoration-muted="state in ('released', 'cancelled')">
+                                    <field name="name"/>
+                                    <field name="direction"/>
+                                    <field name="guarantee_type"/>
+                                    <field name="guarantee_form"/>
+                                    <field name="bank_id"/>
+                                    <field name="reference"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="expiry_date"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'active'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="BOQ Change History" name="history">
+                            <field name="boq_history_ids" readonly="1">
+                                <list>
+                                    <field name="change_datetime"/>
+                                    <field name="change_order_id"/>
+                                    <field name="change_type"/>
+                                    <field name="boq_item_id"/>
+                                    <field name="old_quantity"/>
+                                    <field name="new_quantity"/>
+                                    <field name="quantity_change"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="value_change" sum="Total"/>
+                                    <field name="user_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_construction_project_search" model="ir.ui.view">
+        <field name="name">construction.project.search</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <search string="Search Projects">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="partner_id"/>
+                <field name="owner_id"/>
+                <field name="consultant_id"/>
+                <field name="manager_id"/>
+                <field name="site_engineer_id"/>
+                <field name="tender_id"/>
+                <filter string="My Projects" name="my_projects" domain="['|', '|', ('manager_id', '=', uid), ('site_engineer_id', '=', uid), ('member_ids', 'in', uid)]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="In Progress" name="running" domain="[('state', '=', 'running')]"/>
+                <filter string="Suspended" name="suspended" domain="[('state', '=', 'suspended')]"/>
+                <filter string="Handed Over" name="handed_over" domain="[('state', 'in', ('preliminary', 'final'))]"/>
+                <separator/>
+                <filter string="Start Date" name="filter_start_date" date="start_date"/>
+                <group>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Project Manager" name="group_manager" context="{'group_by': 'manager_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_construction_project" model="ir.actions.act_window">
+        <field name="name">Construction Projects</field>
+        <field name="res_model">construction.project</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="view_construction_project_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a construction project</p>
+            <p>Projects are usually created from awarded tenders. Each project gets its own code, cost center, warehouse and Odoo project automatically.</p>
+        </field>
+    </record>
+</odoo>

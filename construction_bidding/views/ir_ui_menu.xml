@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_bidding_root" name="Bidding" sequence="45" web_icon="construction_bidding,static/description/icon.png" groups="construction_bidding.group_bidding_user"/>
+    <menuitem id="menu_bidding_tenders" name="Tenders" parent="menu_bidding_root" action="action_bidding_tender" sequence="10"/>
+    <menuitem id="menu_bidding_analysis" name="Analysis" parent="menu_bidding_root" sequence="20" groups="construction_bidding.group_bidding_manager"/>
+    <menuitem id="menu_bidding_components" name="Cost Components" parent="menu_bidding_analysis" action="action_bidding_boq_component" sequence="10"/>
+</odoo>

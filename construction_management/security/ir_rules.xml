@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_construction_project_company" model="ir.rule">
+        <field name="name">construction.project: multi-company</field>
+        <field name="model_id" ref="model_construction_project"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_boq_item_company" model="ir.rule">
+        <field name="name">construction.boq.item: multi-company</field>
+        <field name="model_id" ref="model_construction_boq_item"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_change_order_company" model="ir.rule">
+        <field name="name">construction.change.order: multi-company</field>
+        <field name="model_id" ref="model_construction_change_order"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_owner_invoice_company" model="ir.rule">
+        <field name="name">construction.owner.invoice: multi-company</field>
+        <field name="model_id" ref="model_construction_owner_invoice"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_material_requirement_company" model="ir.rule">
+        <field name="name">construction.material.requirement: multi-company</field>
+        <field name="model_id" ref="model_construction_material_requirement"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_material_request_company" model="ir.rule">
+        <field name="name">construction.material.request: multi-company</field>
+        <field name="model_id" ref="model_construction_material_request"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_company" model="ir.rule">
+        <field name="name">construction.subcontract: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_invoice_company" model="ir.rule">
+        <field name="name">construction.subcontract.invoice: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_company" model="ir.rule">
+        <field name="name">construction.equipment: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_request_company" model="ir.rule">
+        <field name="name">construction.equipment.request: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment_request"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_customer_contract_company" model="ir.rule">
+        <field name="name">construction.customer.contract: multi-company</field>
+        <field name="model_id" ref="model_construction_customer_contract"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_rental_company" model="ir.rule">
+        <field name="name">construction.equipment.rental: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment_rental"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_project_operation_company" model="ir.rule">
+        <field name="name">construction.project.operation: multi-company</field>
+        <field name="model_id" ref="model_construction_project_operation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_project_deduction_company" model="ir.rule">
+        <field name="name">construction.project.deduction: multi-company</field>
+        <field name="model_id" ref="model_construction_project_deduction"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_project_team" model="ir.rule">
+        <field name="name">Construction project: assigned team</field>
+        <field name="model_id" ref="model_construction_project"/>
+        <field name="domain_force">['|', '|', '|', ('site_engineer_id', '=', user.id), ('manager_id', '=', user.id), ('member_ids', 'in', user.id), ('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_project_all" model="ir.rule">
+        <field name="name">Construction project: all projects</field>
+        <field name="model_id" ref="model_construction_project"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_boq_item_team" model="ir.rule">
+        <field name="name">construction.boq.item: assigned team projects</field>
+        <field name="model_id" ref="model_construction_boq_item"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_boq_item_all" model="ir.rule">
+        <field name="name">construction.boq.item: all projects</field>
+        <field name="model_id" ref="model_construction_boq_item"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_change_order_team" model="ir.rule">
+        <field name="name">construction.change.order: assigned team projects</field>
+        <field name="model_id" ref="model_construction_change_order"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_change_order_all" model="ir.rule">
+        <field name="name">construction.change.order: all projects</field>
+        <field name="model_id" ref="model_construction_change_order"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_team" model="ir.rule">
+        <field name="name">construction.owner.invoice: assigned team projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_all" model="ir.rule">
+        <field name="name">construction.owner.invoice: all projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_material_requirement_team" model="ir.rule">
+        <field name="name">construction.material.requirement: assigned team projects</field>
+        <field name="model_id" ref="model_construction_material_requirement"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_material_requirement_all" model="ir.rule">
+        <field name="name">construction.material.requirement: all projects</field>
+        <field name="model_id" ref="model_construction_material_requirement"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_material_request_team" model="ir.rule">
+        <field name="name">construction.material.request: assigned team projects</field>
+        <field name="model_id" ref="model_construction_material_request"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_material_request_all" model="ir.rule">
+        <field name="name">construction.material.request: all projects</field>
+        <field name="model_id" ref="model_construction_material_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_team" model="ir.rule">
+        <field name="name">construction.subcontract: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_all" model="ir.rule">
+        <field name="name">construction.subcontract: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_team" model="ir.rule">
+        <field name="name">construction.subcontract.invoice: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_all" model="ir.rule">
+        <field name="name">construction.subcontract.invoice: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_equipment_request_team" model="ir.rule">
+        <field name="name">construction.equipment.request: assigned team projects</field>
+        <field name="model_id" ref="model_construction_equipment_request"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_equipment_request_all" model="ir.rule">
+        <field name="name">construction.equipment.request: all projects</field>
+        <field name="model_id" ref="model_construction_equipment_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_project_operation_team" model="ir.rule">
+        <field name="name">construction.project.operation: assigned team projects</field>
+        <field name="model_id" ref="model_construction_project_operation"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_project_operation_all" model="ir.rule">
+        <field name="name">construction.project.operation: all projects</field>
+        <field name="model_id" ref="model_construction_project_operation"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_project_deduction_team" model="ir.rule">
+        <field name="name">construction.project.deduction: assigned team projects</field>
+        <field name="model_id" ref="model_construction_project_deduction"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_project_deduction_all" model="ir.rule">
+        <field name="name">construction.project.deduction: all projects</field>
+        <field name="model_id" ref="model_construction_project_deduction"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_project_employee_company" model="ir.rule">
+        <field name="name">construction.project.employee: multi-company</field>
+        <field name="model_id" ref="model_construction_project_employee"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_project_employee_team" model="ir.rule">
+        <field name="name">construction.project.employee: assigned team projects</field>
+        <field name="model_id" ref="model_construction_project_employee"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_project_employee_all" model="ir.rule">
+        <field name="name">construction.project.employee: all projects</field>
+        <field name="model_id" ref="model_construction_project_employee"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_guarantee_company" model="ir.rule">
+        <field name="name">construction.guarantee: multi-company</field>
+        <field name="model_id" ref="model_construction_guarantee"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_guarantee_team" model="ir.rule">
+        <field name="name">construction.guarantee: assigned team projects</field>
+        <field name="model_id" ref="model_construction_guarantee"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_guarantee_all" model="ir.rule">
+        <field name="name">construction.guarantee: all projects</field>
+        <field name="model_id" ref="model_construction_guarantee"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_amendment_company" model="ir.rule">
+        <field name="name">construction.subcontract.amendment: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_amendment_team" model="ir.rule">
+        <field name="name">construction.subcontract.amendment: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_amendment_all" model="ir.rule">
+        <field name="name">construction.subcontract.amendment: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_boq_history_company" model="ir.rule">
+        <field name="name">construction.boq.history: multi-company</field>
+        <field name="model_id" ref="model_construction_boq_history"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_change_order_component_company" model="ir.rule">
+        <field name="name">construction.change.order.component: multi-company</field>
+        <field name="model_id" ref="model_construction_change_order_component"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_change_order_line_company" model="ir.rule">
+        <field name="name">construction.change.order.line: multi-company</field>
+        <field name="model_id" ref="model_construction_change_order_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_deduction_type_company" model="ir.rule">
+        <field name="name">construction.deduction.type: multi-company</field>
+        <field name="model_id" ref="model_construction_deduction_type"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_guarantee_extension_company" model="ir.rule">
+        <field name="name">construction.guarantee.extension: multi-company</field>
+        <field name="model_id" ref="model_construction_guarantee_extension"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_labor_cost_line_company" model="ir.rule">
+        <field name="name">construction.labor.cost.line: multi-company</field>
+        <field name="model_id" ref="model_construction_labor_cost_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_material_request_line_company" model="ir.rule">
+        <field name="name">construction.material.request.line: multi-company</field>
+        <field name="model_id" ref="model_construction_material_request_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_owner_invoice_deduction_company" model="ir.rule">
+        <field name="name">construction.owner.invoice.deduction: multi-company</field>
+        <field name="model_id" ref="model_construction_owner_invoice_deduction"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_owner_invoice_line_company" model="ir.rule">
+        <field name="name">construction.owner.invoice.line: multi-company</field>
+        <field name="model_id" ref="model_construction_owner_invoice_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_amendment_line_company" model="ir.rule">
+        <field name="name">construction.subcontract.amendment.line: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_deduction_company" model="ir.rule">
+        <field name="name">construction.subcontract.deduction: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_deduction"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_invoice_deduction_company" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.deduction: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_deduction"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_invoice_line_company" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.line: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_subcontract_line_company" model="ir.rule">
+        <field name="name">construction.subcontract.line: multi-company</field>
+        <field name="model_id" ref="model_construction_subcontract_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_boq_component_company" model="ir.rule">
+        <field name="name">construction.boq.component: multi-company</field>
+        <field name="model_id" ref="model_construction_boq_component"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_boq_component_team" model="ir.rule">
+        <field name="name">construction.boq.component: assigned team projects</field>
+        <field name="model_id" ref="model_construction_boq_component"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_boq_component_all" model="ir.rule">
+        <field name="name">construction.boq.component: all projects</field>
+        <field name="model_id" ref="model_construction_boq_component"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_change_order_line_team" model="ir.rule">
+        <field name="name">construction.change.order.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_change_order_line"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_change_order_line_all" model="ir.rule">
+        <field name="name">construction.change.order.line: all projects</field>
+        <field name="model_id" ref="model_construction_change_order_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_change_order_component_team" model="ir.rule">
+        <field name="name">construction.change.order.component: assigned team projects</field>
+        <field name="model_id" ref="model_construction_change_order_component"/>
+        <field name="domain_force">['|', '|', ('line_id.project_id.site_engineer_id', '=', user.id), ('line_id.project_id.manager_id', '=', user.id), ('line_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_change_order_component_all" model="ir.rule">
+        <field name="name">construction.change.order.component: all projects</field>
+        <field name="model_id" ref="model_construction_change_order_component"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_line_team" model="ir.rule">
+        <field name="name">construction.owner.invoice.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice_line"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_line_all" model="ir.rule">
+        <field name="name">construction.owner.invoice.line: all projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_deduction_team" model="ir.rule">
+        <field name="name">construction.owner.invoice.deduction: assigned team projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice_deduction"/>
+        <field name="domain_force">['|', '|', ('invoice_id.project_id.site_engineer_id', '=', user.id), ('invoice_id.project_id.manager_id', '=', user.id), ('invoice_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_owner_invoice_deduction_all" model="ir.rule">
+        <field name="name">construction.owner.invoice.deduction: all projects</field>
+        <field name="model_id" ref="model_construction_owner_invoice_deduction"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_line_team" model="ir.rule">
+        <field name="name">construction.subcontract.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_line"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_line_all" model="ir.rule">
+        <field name="name">construction.subcontract.line: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_line_team" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_line"/>
+        <field name="domain_force">['|', '|', ('invoice_id.project_id.site_engineer_id', '=', user.id), ('invoice_id.project_id.manager_id', '=', user.id), ('invoice_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_line_all" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.line: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_amendment_line_team" model="ir.rule">
+        <field name="name">construction.subcontract.amendment.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment_line"/>
+        <field name="domain_force">['|', '|', ('amendment_id.project_id.site_engineer_id', '=', user.id), ('amendment_id.project_id.manager_id', '=', user.id), ('amendment_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_amendment_line_all" model="ir.rule">
+        <field name="name">construction.subcontract.amendment.line: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_amendment_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_material_request_line_team" model="ir.rule">
+        <field name="name">construction.material.request.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_material_request_line"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_material_request_line_all" model="ir.rule">
+        <field name="name">construction.material.request.line: all projects</field>
+        <field name="model_id" ref="model_construction_material_request_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_deduction_team" model="ir.rule">
+        <field name="name">construction.subcontract.deduction: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_deduction"/>
+        <field name="domain_force">['|', '|', ('contract_id.project_id.site_engineer_id', '=', user.id), ('contract_id.project_id.manager_id', '=', user.id), ('contract_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_deduction_all" model="ir.rule">
+        <field name="name">construction.subcontract.deduction: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_deduction"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_deduction_team" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.deduction: assigned team projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_deduction"/>
+        <field name="domain_force">['|', '|', ('invoice_id.project_id.site_engineer_id', '=', user.id), ('invoice_id.project_id.manager_id', '=', user.id), ('invoice_id.project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_subcontract_invoice_deduction_all" model="ir.rule">
+        <field name="name">construction.subcontract.invoice.deduction: all projects</field>
+        <field name="model_id" ref="model_construction_subcontract_invoice_deduction"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_labor_cost_line_team" model="ir.rule">
+        <field name="name">construction.labor.cost.line: assigned team projects</field>
+        <field name="model_id" ref="model_construction_labor_cost_line"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_labor_cost_line_all" model="ir.rule">
+        <field name="name">construction.labor.cost.line: all projects</field>
+        <field name="model_id" ref="model_construction_labor_cost_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_construction_manager')), (4, ref('group_construction_finance')), (4, ref('group_construction_transport'))]"/>
+    </record>
+</odoo>

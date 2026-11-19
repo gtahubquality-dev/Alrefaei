@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_fleet_app_root" name="Fleet" sequence="48" web_icon="construction_fleet,static/description/icon.png" groups="construction_management.group_construction_user"/>
+    <menuitem id="menu_fleet_dashboard" name="Dashboard" parent="menu_fleet_app_root" action="action_construction_fleet_dashboard" sequence="5" groups="construction_management.group_construction_transport,construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_equipment_app_fleet" name="Fleet" parent="menu_fleet_app_root" sequence="10"/>
+    <menuitem id="menu_fleet_vehicles" name="Vehicles" parent="menu_equipment_app_fleet" action="action_fleet_vehicles" sequence="5"/>
+    <menuitem id="menu_fleet_vehicle_rentals" name="Vehicle Rentals" parent="menu_equipment_app_fleet" action="action_fleet_vehicle_rentals" sequence="7"/>
+    <menuitem id="menu_construction_drivers" name="Drivers" parent="menu_equipment_app_fleet" action="action_construction_driver" sequence="10"/>
+    <menuitem id="menu_construction_vehicle_sheets" name="Vehicle Custody Sheets" parent="menu_equipment_app_fleet" action="action_construction_vehicle_sheet" sequence="20"/>
+    <menuitem id="menu_equipment_app_reporting" name="Reporting" parent="menu_fleet_app_root" sequence="80" groups="construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_construction_report_trips" name="Trips Analysis" parent="menu_equipment_app_reporting" action="action_construction_vehicle_trip" sequence="10"/>
+    <menuitem id="menu_fleet_app_config" name="Configuration" parent="menu_fleet_app_root" sequence="90" groups="construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_fleet_app_settings" name="Settings" parent="menu_fleet_app_config" action="construction_management.action_construction_config_settings" sequence="5" groups="base.group_system"/>
+    <menuitem id="menu_construction_transport_types" name="Trip Types" parent="menu_fleet_app_config" action="action_construction_transport_type" sequence="20"/>
+</odoo>

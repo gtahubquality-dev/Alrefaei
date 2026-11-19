@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_purchase_construction_material_requests" name="Project Material Requests" parent="purchase.menu_procurement_management" action="action_construction_material_request_purchase" sequence="15" groups="purchase.group_purchase_user"/>
+</odoo>

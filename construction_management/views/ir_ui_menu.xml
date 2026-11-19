@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_construction_root" name="Construction" sequence="46" web_icon="construction_management,static/description/icon.png" groups="construction_management.group_construction_user"/>
+    <menuitem id="menu_construction_projects_main" name="Projects" parent="menu_construction_root" sequence="10"/>
+    <menuitem id="menu_construction_projects" name="Construction Projects" parent="menu_construction_projects_main" action="action_construction_project" sequence="10"/>
+    <menuitem id="menu_construction_boq" name="Approved BOQ" parent="menu_construction_projects_main" action="action_construction_boq_item" sequence="20"/>
+    <menuitem id="menu_construction_change_orders" name="Change Orders" parent="menu_construction_projects_main" action="action_construction_change_order" sequence="30"/>
+    <menuitem id="menu_construction_workforce" name="Project Workforce" parent="menu_construction_projects_main" action="action_construction_project_employee" sequence="35"/>
+    <menuitem id="menu_construction_tenders" name="Tenders" parent="menu_construction_projects_main" action="construction_bidding.action_bidding_tender" sequence="40" groups="construction_bidding.group_bidding_user"/>
+    <menuitem id="menu_construction_billing" name="Billing" parent="menu_construction_root" sequence="20"/>
+    <menuitem id="menu_construction_customer_contracts" name="Customer Contracts" parent="menu_construction_billing" action="action_construction_customer_contract" sequence="5"/>
+    <menuitem id="menu_construction_owner_invoices" name="Owner Invoices" parent="menu_construction_billing" action="action_construction_owner_invoice" sequence="10"/>
+    <menuitem id="menu_construction_guarantees" name="Bank &amp; Cash Guarantees" parent="menu_construction_billing" action="action_construction_guarantee" sequence="15"/>
+    <menuitem id="menu_construction_operations" name="Guarantees, Advances &amp; Refunds" parent="menu_construction_billing" action="action_construction_project_operation" sequence="20" groups="construction_management.group_construction_finance,construction_management.group_construction_manager"/>
+    <menuitem id="menu_construction_materials" name="Materials" parent="menu_construction_root" sequence="30"/>
+    <menuitem id="menu_construction_material_requirements" name="Material Requirements" parent="menu_construction_materials" action="action_construction_material_requirement" sequence="10"/>
+    <menuitem id="menu_construction_material_requests" name="Material Requests" parent="menu_construction_materials" action="action_construction_material_request" sequence="20"/>
+    <menuitem id="menu_construction_subcontracting" name="Subcontractors" parent="menu_construction_root" sequence="40"/>
+    <menuitem id="menu_construction_subcontracts" name="Contracts" parent="menu_construction_subcontracting" action="action_construction_subcontract" sequence="10"/>
+    <menuitem id="menu_construction_subcontract_amendments" name="Contract Amendments" parent="menu_construction_subcontracting" action="action_construction_subcontract_amendment" sequence="15"/>
+    <menuitem id="menu_construction_subcontract_invoices" name="Subcontractor Invoices" parent="menu_construction_subcontracting" action="action_construction_subcontract_invoice" sequence="20"/>
+    <menuitem id="menu_construction_equipment_main" name="Equipment" parent="menu_construction_root" sequence="50"/>
+    <menuitem id="menu_construction_equipment" name="Equipment Register" parent="menu_construction_equipment_main" action="action_construction_equipment" sequence="10"/>
+    <menuitem id="menu_construction_equipment_requests" name="Equipment Requests" parent="menu_construction_equipment_main" action="action_construction_equipment_request" sequence="20"/>
+    <menuitem id="menu_construction_equipment_rentals" name="Rental Contracts" parent="menu_construction_equipment_main" action="action_construction_equipment_rental" sequence="30"/>
+    <menuitem id="menu_construction_reporting" name="Reporting" parent="menu_construction_root" sequence="80" groups="construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_construction_report_cost_revenue" name="Project Cost &amp; Revenue" parent="menu_construction_reporting" action="action_construction_project_cost_report" sequence="5"/>
+    <menuitem id="menu_construction_report_components" name="BOQ Cost Components" parent="menu_construction_reporting" action="action_construction_boq_component" sequence="10"/>
+    <menuitem id="menu_construction_report_labor" name="Allocated Labor Costs" parent="menu_construction_reporting" action="action_construction_labor_cost_line" sequence="30"/>
+    <menuitem id="menu_construction_report_history" name="BOQ Change History" parent="menu_construction_reporting" action="action_construction_boq_history" sequence="20"/>
+    <menuitem id="menu_construction_report_overview" name="Projects Overview" parent="menu_construction_reporting" action="action_construction_report_overview" sequence="40"/>
+    <menuitem id="menu_construction_report_boq" name="BOQ Progress &amp; Cost" parent="menu_construction_reporting" action="action_construction_report_boq" sequence="41"/>
+    <menuitem id="menu_construction_report_owner_invoices" name="Owner Invoices Analysis" parent="menu_construction_reporting" action="action_construction_report_owner_invoices" sequence="42"/>
+    <menuitem id="menu_construction_report_subcontracts" name="Subcontractors Report" parent="menu_construction_reporting" action="action_construction_report_subcontracts" sequence="43"/>
+    <menuitem id="menu_construction_report_materials" name="Material Consumption" parent="menu_construction_reporting" action="action_construction_report_materials" sequence="44"/>
+    <menuitem id="menu_construction_report_equipment" name="Equipment Operation &amp; Cost" parent="menu_construction_reporting" action="action_construction_report_equipment" sequence="45"/>
+    <menuitem id="menu_construction_report_guarantees" name="Guarantees &amp; Retention" parent="menu_construction_reporting" action="action_construction_report_guarantees" sequence="46"/>
+    <menuitem id="menu_construction_report_budget" name="Budget vs Actual by Cost Type" parent="menu_construction_reporting" action="action_construction_report_budget" sequence="47"/>
+    <menuitem id="menu_construction_config" name="Configuration" parent="menu_construction_root" sequence="90" groups="construction_management.group_construction_manager,construction_management.group_construction_finance"/>
+    <menuitem id="menu_construction_settings" name="Settings" parent="menu_construction_config" action="action_construction_config_settings" sequence="5" groups="base.group_system"/>
+    <menuitem id="menu_construction_deduction_types" name="Deduction Types" parent="menu_construction_config" action="action_construction_deduction_type" sequence="10"/>
+</odoo>

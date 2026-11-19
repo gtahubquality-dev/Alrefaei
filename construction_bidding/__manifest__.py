@@ -1,0 +1,21 @@
+{
+    'name': 'Construction Bidding',
+    'version': '19.0.1.1.2',
+    'category': 'Services/Construction',
+    'summary': 'Tenders, estimated BOQ, cost analysis and profitability before awarding',
+    'author': 'Mahmoud Gaber',
+    'license': 'LGPL-3',
+    'depends': ['base', 'mail', 'product', 'uom'],
+    'data': [
+        'security/res_groups.xml',
+        'security/ir_rules.xml',
+        'security/ir.model.access.csv',
+        'data/ir_sequence.xml',
+        'views/bidding_tender_views.xml',
+        'views/bidding_boq_item_views.xml',
+        'views/bidding_boq_component_views.xml',
+        'views/ir_ui_menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

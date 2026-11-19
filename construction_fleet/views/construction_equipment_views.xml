@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_equipment_form_fleet" model="ir.ui.view">
+        <field name="name">construction.equipment.form.fleet</field>
+        <field name="model">construction.equipment</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_form"/>
+        <field name="arch" type="xml">
+            <field name="model_year" position="after">
+                <field name="driver_id" required="is_vehicle" invisible="not is_vehicle"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_construction_equipment_list_fleet" model="ir.ui.view">
+        <field name="name">construction.equipment.list.fleet</field>
+        <field name="model">construction.equipment</field>
+        <field name="inherit_id" ref="construction_management.view_construction_equipment_list"/>
+        <field name="arch" type="xml">
+            <field name="license_plate" position="after">
+                <field name="driver_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

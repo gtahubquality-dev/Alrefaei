@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_equipment_machine_rentals" model="ir.actions.act_window">
+        <field name="name">Rental Contracts</field>
+        <field name="res_model">construction.equipment.rental</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">['|', ('equipment_id', '=', False), ('equipment_id.is_vehicle', '=', False)]</field>
+        <field name="context">{'search_default_running': 1}</field>
+    </record>
+</odoo>

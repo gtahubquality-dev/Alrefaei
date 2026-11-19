@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bidding_tender_list" model="ir.ui.view">
+        <field name="name">bidding.tender.list</field>
+        <field name="model">bidding.tender</field>
+        <field name="arch" type="xml">
+            <list string="Tenders" decoration-success="state == 'awarded'" decoration-muted="state in ('lost', 'cancelled')" decoration-info="state == 'submitted'">
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="owner_id" optional="hide"/>
+                <field name="consultant_id" optional="hide"/>
+                <field name="submission_date"/>
+                <field name="start_date" optional="show"/>
+                <field name="end_date" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="total_cost" sum="Total Cost"/>
+                <field name="offer_amount" sum="Total Offer"/>
+                <field name="profit_percent" optional="show"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'awarded'" decoration-info="state == 'submitted'" decoration-warning="state == 'in_progress'" decoration-danger="state == 'lost'"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_bidding_tender_form" model="ir.ui.view">
+        <field name="name">bidding.tender.form</field>
+        <field name="model">bidding.tender</field>
+        <field name="arch" type="xml">
+            <form string="Tender">
+                <header>
+                    <button name="action_start_study" type="object" string="Start Study" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_submit" type="object" string="Submit Offer" class="btn-primary" invisible="state not in ('draft', 'in_progress')" groups="construction_bidding.group_bidding_manager"/>
+                    <button name="action_award" type="object" string="Mark as Awarded" class="btn-primary" invisible="state != 'submitted'" groups="construction_bidding.group_bidding_manager"/>
+                    <button name="action_mark_lost" type="object" string="Mark as Lost" invisible="state != 'submitted'" groups="construction_bidding.group_bidding_manager"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state not in ('in_progress', 'lost', 'cancelled')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('awarded', 'cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,submitted,awarded"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_boq_items" type="object" class="oe_stat_button" icon="fa-list-ol">
+                            <field name="boq_item_count" widget="statinfo" string="BOQ Items"/>
+                        </button>
+                        <button name="action_view_components" type="object" class="oe_stat_button" icon="fa-cubes" string="Cost Components"/>
+                    </div>
+                    <widget name="web_ribbon" title="Awarded" bg_color="text-bg-success" invisible="state != 'awarded'"/>
+                    <widget name="web_ribbon" title="Lost" bg_color="text-bg-danger" invisible="state != 'lost'"/>
+                    <div class="oe_title">
+                        <label for="reference"/>
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                        <label for="name"/>
+                        <h2>
+                            <field name="name" placeholder="e.g. Administrative Building Construction" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Parties">
+                            <field name="partner_id" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="owner_id" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="consultant_id" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="user_id"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Dates">
+                            <field name="submission_date" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="start_date" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="duration_months" readonly="state in ('awarded', 'lost', 'cancelled')"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Estimated BOQ" name="boq">
+                            <field name="boq_item_ids" readonly="state in ('submitted', 'awarded', 'lost', 'cancelled')" context="{'default_tender_id': id}">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="code" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="unit_price"/>
+                                    <field name="amount_total" sum="Total"/>
+                                    <field name="material_cost" optional="hide" sum="Materials"/>
+                                    <field name="equipment_cost" optional="hide" sum="Equipment"/>
+                                    <field name="subcontract_cost" optional="hide" sum="Subcontractors"/>
+                                    <field name="labor_cost" optional="hide" sum="Labor"/>
+                                    <field name="estimated_cost" sum="Cost"/>
+                                    <field name="weight_percent" sum="Weight"/>
+                                    <field name="cost_percent" sum="Cost %"/>
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer">
+                                <field name="total_weight"/>
+                            </group>
+                        </page>
+                        <page string="Cost &amp; Financial Analysis" name="financial">
+                            <group>
+                                <group string="Estimated Cost Breakdown">
+                                    <field name="material_cost"/>
+                                    <field name="equipment_cost"/>
+                                    <field name="subcontract_cost"/>
+                                    <field name="labor_cost"/>
+                                    <field name="total_cost" class="fw-bold"/>
+                                </group>
+                                <group string="Profitability">
+                                    <field name="offer_amount"/>
+                                    <field name="total_cost" string="Estimated Cost"/>
+                                    <field name="profit_amount" class="fw-bold"/>
+                                    <field name="profit_percent"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Tender notes, conditions, clarifications..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_bidding_tender_search" model="ir.ui.view">
+        <field name="name">bidding.tender.search</field>
+        <field name="model">bidding.tender</field>
+        <field name="arch" type="xml">
+            <search string="Search Tenders">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('reference', 'ilike', self)]"/>
+                <field name="partner_id"/>
+                <field name="owner_id"/>
+                <field name="consultant_id"/>
+                <field name="user_id"/>
+                <filter string="My Tenders" name="my_tenders" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Under Study" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter string="Awarded" name="awarded" domain="[('state', '=', 'awarded')]"/>
+                <filter string="Lost" name="lost" domain="[('state', '=', 'lost')]"/>
+                <separator/>
+                <filter string="Submission Date" name="filter_submission_date" date="submission_date"/>
+                <group>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Responsible" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Submission Month" name="group_submission" context="{'group_by': 'submission_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_bidding_tender_pivot" model="ir.ui.view">
+        <field name="name">bidding.tender.pivot</field>
+        <field name="model">bidding.tender</field>
+        <field name="arch" type="xml">
+            <pivot string="Tender Analysis">
+                <field name="state" type="row"/>
+                <field name="total_cost" type="measure"/>
+                <field name="offer_amount" type="measure"/>
+                <field name="profit_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="action_bidding_tender" model="ir.actions.act_window">
+        <field name="name">Tenders</field>
+        <field name="res_model">bidding.tender</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="search_view_id" ref="view_bidding_tender_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first tender</p>
+            <p>Register tenders, prepare the estimated BOQ and review the expected cost and profit before submitting your offer.</p>
+        </field>
+    </record>
+</odoo>

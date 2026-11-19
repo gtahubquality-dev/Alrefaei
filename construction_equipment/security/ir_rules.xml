@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_construction_equipment_movement_company" model="ir.rule">
+        <field name="name">construction.equipment.movement: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment_movement"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_usage_company" model="ir.rule">
+        <field name="name">construction.equipment.usage: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment_usage"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_expense_company" model="ir.rule">
+        <field name="name">construction.equipment.expense: multi-company</field>
+        <field name="model_id" ref="model_construction_equipment_expense"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_construction_equipment_usage_team" model="ir.rule">
+        <field name="name">construction.equipment.usage: assigned team projects</field>
+        <field name="model_id" ref="model_construction_equipment_usage"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_equipment_usage_all" model="ir.rule">
+        <field name="name">construction.equipment.usage: all projects</field>
+        <field name="model_id" ref="model_construction_equipment_usage"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_manager')), (4, ref('construction_management.group_construction_finance')), (4, ref('construction_management.group_construction_transport'))]"/>
+    </record>
+    <record id="rule_construction_equipment_expense_team" model="ir.rule">
+        <field name="name">construction.equipment.expense: assigned team projects</field>
+        <field name="model_id" ref="model_construction_equipment_expense"/>
+        <field name="domain_force">['|', '|', ('project_id.site_engineer_id', '=', user.id), ('project_id.manager_id', '=', user.id), ('project_id.member_ids', 'in', user.id)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_user'))]"/>
+    </record>
+    <record id="rule_construction_equipment_expense_all" model="ir.rule">
+        <field name="name">construction.equipment.expense: all projects</field>
+        <field name="model_id" ref="model_construction_equipment_expense"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('construction_management.group_construction_manager')), (4, ref('construction_management.group_construction_finance')), (4, ref('construction_management.group_construction_transport'))]"/>
+    </record>
+</odoo>

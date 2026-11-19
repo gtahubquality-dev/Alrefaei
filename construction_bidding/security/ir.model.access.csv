@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bidding_tender_user,bidding.tender.user,model_bidding_tender,group_bidding_user,1,1,1,0
+access_bidding_tender_manager,bidding.tender.manager,model_bidding_tender,group_bidding_manager,1,1,1,1
+access_bidding_boq_item_user,bidding.boq.item.user,model_bidding_boq_item,group_bidding_user,1,1,1,1
+access_bidding_boq_component_user,bidding.boq.component.user,model_bidding_boq_component,group_bidding_user,1,1,1,1

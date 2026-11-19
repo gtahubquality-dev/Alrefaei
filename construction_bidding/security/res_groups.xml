@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_construction" model="ir.module.category">
+        <field name="name">Construction</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="res_groups_privilege_bidding" model="res.groups.privilege">
+        <field name="name">Bidding</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="module_category_construction"/>
+    </record>
+    <record id="group_bidding_user" model="res.groups">
+        <field name="name">Estimator</field>
+        <field name="comment">Can prepare tenders and estimated BOQs.</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_bidding"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_bidding_manager" model="res.groups">
+        <field name="name">Bidding Manager</field>
+        <field name="comment">Can review costs, submit, award and delete tenders.</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_bidding"/>
+        <field name="implied_ids" eval="[(4, ref('group_bidding_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

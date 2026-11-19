@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_construction" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.construction</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Construction" string="Construction" name="construction_management" groups="construction_management.group_construction_manager,construction_management.group_construction_finance">
+                    <block title="Owner Contracts" name="construction_owner_setting_container">
+                        <setting id="construction_auto_customer_contract" string="Customer Contract on Project Creation" company_dependent="1" help="Create the draft customer contract automatically when a construction project is created.">
+                            <field name="construction_auto_customer_contract"/>
+                        </setting>
+                        <setting id="construction_customer_contract_terms" string="Default Contract Terms" company_dependent="1" help="Terms &amp; conditions copied to every new customer contract.">
+                            <field name="construction_customer_contract_terms" class="oe_inline w-100" placeholder="Default terms and conditions..."/>
+                        </setting>
+                        <setting id="construction_journal" string="Miscellaneous Journal" company_dependent="1" help="Journal for retention, insurance and suspense refunds and equipment cost allocation.">
+                            <field name="construction_journal_id"/>
+                        </setting>
+                        <setting id="construction_revenue_account" string="Owner Invoice Revenue" company_dependent="1" help="Income account of owner invoice lines (optional).">
+                            <field name="construction_revenue_account_id"/>
+                        </setting>
+                        <setting id="construction_owner_taxes" string="Owner Invoice Taxes" company_dependent="1" help="Taxes (e.g. VAT) of the works invoiced to the owner (credited on the customer invoice).">
+                            <field name="construction_owner_tax_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        </setting>
+                        <setting id="construction_retention_account" string="Owner Work Guarantee" company_dependent="1" help="Current asset account holding the retention deducted by the owner (not a receivable account).">
+                            <field name="construction_retention_account_id"/>
+                        </setting>
+                        <setting id="construction_advance_account" string="Owner Advance Payment" company_dependent="1" help="Liability account for advance payments received from the owner.">
+                            <field name="construction_advance_account_id"/>
+                        </setting>
+                        <setting id="construction_insurance_account" string="Final Insurance" company_dependent="1" help="Asset account holding the final insurance paid to the owner.">
+                            <field name="construction_insurance_account_id"/>
+                        </setting>
+                    </block>
+                    <block title="Subcontractors" name="construction_subcontract_setting_container">
+                        <setting id="construction_sub_expense_account" string="Subcontracted Works Expense" company_dependent="1">
+                            <field name="construction_sub_expense_account_id"/>
+                        </setting>
+                        <setting id="construction_sub_taxes" string="Subcontractor Invoice Taxes" company_dependent="1" help="Taxes (e.g. VAT) of the subcontracted works (debited on the vendor bill).">
+                            <field name="construction_sub_tax_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        </setting>
+                        <setting id="construction_sub_retention_account" string="Subcontractor Work Guarantee" company_dependent="1" help="Liability account holding the retention withheld from subcontractors.">
+                            <field name="construction_sub_retention_account_id"/>
+                        </setting>
+                        <setting id="construction_sub_advance_account" string="Subcontractor Advances" company_dependent="1" help="Asset account for advances paid to subcontractors.">
+                            <field name="construction_sub_advance_account_id"/>
+                        </setting>
+                    </block>
+                    <block title="Deduction Policies" name="construction_deduction_setting_container">
+                        <setting id="construction_deduction_types" string="Deduction Types" help="Deductions of customer and subcontractor contracts: percentage or fixed amount per invoice, applied once or on every invoice, with their account.">
+                            <button name="%(construction_management.action_construction_deduction_type)d" type="action" string="Deduction Types" icon="oi-arrow-right" class="btn-link"/>
+                        </setting>
+                    </block>
+                    <block title="Project Workforce" name="construction_labor_setting_container">
+                        <setting id="construction_labor_expense_account" string="Project Labor Cost" company_dependent="1" help="Expense account charged with the cost of the project workforce.">
+                            <field name="construction_labor_expense_account_id"/>
+                        </setting>
+                        <setting id="construction_labor_accrual_account" string="Accrued Salaries" company_dependent="1" help="Liability account credited when labor costs are allocated to projects.">
+                            <field name="construction_labor_accrual_account_id"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_construction_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'construction_management', 'bin_size': False}</field>
+    </record>
+</odoo>

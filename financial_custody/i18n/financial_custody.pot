@@ -1,0 +1,1250 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-16 17:36+0000\n"
+"PO-Revision-Date: 2026-11-16 17:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "A disbursed custody cannot be cancelled. Settle it instead."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_res_company__custody_account_id
+#: model:ir.model.fields,help:financial_custody.field_res_config_settings__custody_account_id
+msgid ""
+"Account holding the cash advanced to employees until it is settled (employee"
+" custody receivable)."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Account holding the cash advanced to employees until settlement."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Accounting"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_needaction
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_state
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_type_icon
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__amount
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__amount
+msgid "Amount"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_res_company__custody_settlement_threshold
+#: model:ir.model.fields,help:financial_custody.field_res_config_settings__custody_settlement_threshold
+msgid ""
+"An employee cannot request a new custody while the previous one is settled "
+"below this percentage."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__approved_date
+msgid "Approval Date"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Approve"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__approved
+msgid "Approved"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__approved_by_id
+msgid "Approved By"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_attachment_count
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Cancel"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__cancelled
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Cash"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__cash_journal_id
+msgid "Cash Return Journal"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__cash_returned
+msgid "Cash Returned"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Cash returned - %s"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__company_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__company_id
+msgid "Company"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.ui.menu,name:financial_custody.menu_custody_config
+msgid "Configuration"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Confirm Disbursement"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__create_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__create_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__currency_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__currency_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.ui.menu,name:financial_custody.menu_custody_requests
+msgid "Custodies"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_id
+#: model:ir.ui.menu,name:financial_custody.menu_custody_root
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Custody"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Custody %(ref)s - %(employee)s"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Custody %s is not open for settlement."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_account_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_account_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Custody Account"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_amount
+msgid "Custody Amount"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__custody_balance
+msgid "Custody Balance"
+msgstr ""
+
+#. module: financial_custody
+#: model:res.groups,name:financial_custody.group_custody_manager
+msgid "Custody Manager"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: model:ir.model,name:financial_custody.model_custody_settlement
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__custody_settlement_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Custody Settlement"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_line
+msgid "Custody Settlement Expense"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_settlement_journal_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_settlement_journal_id
+msgid "Custody Settlement Journal"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_lock_mixin
+msgid "Custody Settlement Lines Lock"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_settlement_return
+msgid "Custody Settlement Returned Item"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Custody Settlements"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Custody refused by %(user)s. Reason: %(reason)s"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Custody settlement %s"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_journal_id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_journal_id
+msgid "Default Disbursement Journal"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Default bank or cash journal used to pay custodies."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__description
+msgid "Description"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__paid
+msgid "Disbursed"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__paid_by_id
+msgid "Disbursed By"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__payment_date
+msgid "Disbursement Date"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__move_id
+msgid "Disbursement Entry"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__journal_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Disbursement Journal"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_lock_mixin__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__draft
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__employee_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__employee_id
+#: model:res.groups,name:financial_custody.group_custody_user
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Employee"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"Employee %s has no contact. Please set the employee contact on the custody."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__partner_id
+msgid "Employee Contact"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__account_id
+msgid "Expense Account"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__date
+msgid "Expense Date"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Expense amounts must be positive (%s)."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__line_ids
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Expenses"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.actions.act_window,help:financial_custody.action_custody_request
+msgid ""
+"Explain the purpose of the custody and submit it to your manager. A new "
+"custody can only be requested once at least 50% of the previous one is "
+"settled."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Explain why the custody is needed..."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.actions.act_window,name:financial_custody.action_custody_request
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_list
+msgid "Financial Custodies"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_custody_request
+#: model:ir.module.category,name:financial_custody.module_category_custody
+#: model:res.groups.privilege,name:financial_custody.res_groups_privilege_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Financial Custody"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_follower_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_partner_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_type_icon
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__has_message
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_lock_mixin__id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__id
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__id
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__id
+#: model:ir.model.fields,field_description:financial_custody.field_stock_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_exception_icon
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_exception_icon
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_needaction
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_error
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_sms_error
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_error
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__attachment
+msgid "Invoice Copy"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__invoice_date
+msgid "Invoice Date"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__attachment_name
+msgid "Invoice File Name"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__invoice_ref
+msgid "Invoice Number"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_is_follower
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement_return__product_id
+msgid ""
+"Item returned to the warehouse, e.g. the old brake pads that were replaced."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Journal Entry"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__write_uid
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__write_date
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Lines of a posted settlement cannot be modified."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"Lines of a submitted settlement can only be modified by the custody manager."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_error
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Minimum Settlement Before New Custody"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_res_company__custody_settlement_threshold
+#: model:ir.model.fields,field_description:financial_custody.field_res_config_settings__custody_settlement_threshold
+msgid "Minimum Settlement Before New Custody (%)"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Miscellaneous journal of settlement entries."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "My Custodies"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "New"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_date_deadline
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_summary
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_type_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__note
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Notes"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_needaction_counter
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_error_counter
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_needaction_counter
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__message_has_error_counter
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only approved custodies can be disbursed."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only custodies waiting for review or disbursement can be refused."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only disbursed custodies can be settled."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only draft custodies can be submitted."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only draft or cancelled settlements can be deleted."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only draft settlements can be submitted."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only draft, refused or cancelled custodies can be deleted."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only refused or cancelled custodies can be reset to draft."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only submitted custodies can be approved."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only submitted or cancelled settlements can be reset to draft."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only submitted settlements can be validated."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only the custody manager can change the employee contact of a custody."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Only the custody manager can review and disburse custodies."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Only the custody manager can validate settlements."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Open (Disbursed)"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__partner_id
+msgid "Partner used on the accounting entries of the custody."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid ""
+"Percentage of the previous custody that must be settled before a new "
+"request."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Please configure the custody account in Financial Custody settings."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please configure the custody settlement journal."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please enter the expenses or the cash returned."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please enter the invoice number or attach the invoice for expense \"%s\"."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "Please select a bank or cash journal with a default account."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please select the journal receiving the cash returned."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Please set the expense account of \"%s\"."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__posted
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Posted"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"Posted settlements cannot be cancelled. Reverse the journal entry from "
+"Accounting."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Product %s has no inventory adjustment location."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__purpose
+msgid "Purpose"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__rating_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Reason for refusal..."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__name
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__name
+msgid "Reference"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refusal"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__refuse_reason
+msgid "Refusal Reason"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refuse"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__refused
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Refused"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__balance
+msgid "Remaining Balance"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Request"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__date
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Request Date"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.actions.act_window,help:financial_custody.action_custody_request
+msgid "Request a financial custody"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__requested_by_id
+msgid "Requested By"
+msgstr ""
+
+#. module: financial_custody
+#: model:res.groups,comment:financial_custody.group_custody_user
+msgid "Requests custodies and submits their settlements."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__activity_user_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__warehouse_id
+msgid "Return to Warehouse"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__product_id
+msgid "Returned Item"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__return_line_ids
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Returned Items"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Returned quantities must be positive (%s)."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__picking_ids
+msgid "Returns"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Review & Disbursement"
+msgstr ""
+
+#. module: financial_custody
+#: model:res.groups,comment:financial_custody.group_custody_manager
+msgid ""
+"Reviews custody requests, confirms disbursement and validates settlements."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Rules"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__message_has_sms_error
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Search Custodies"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Search Settlements"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.actions.act_window,name:financial_custody.action_custody_config_settings
+#: model:ir.ui.menu,name:financial_custody.menu_custody_settings
+msgid "Settings"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settle"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__closed
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Settled"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settled_percent
+msgid "Settled (%)"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settled_amount
+msgid "Settled Amount"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__settlement_id
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__settlement_id
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settlement"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "Settlement %(ref)s of custody %(custody)s"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__date
+msgid "Settlement Date"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__move_id
+msgid "Settlement Entry"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.res_config_settings_view_form_custody
+msgid "Settlement Journal"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+#: model:ir.actions.act_window,name:financial_custody.action_custody_settlement
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settlement_ids
+#: model:ir.ui.menu,name:financial_custody.menu_custody_settlements
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Settlements"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__settlement_count
+msgid "Settlements Count"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__state
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__state
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "Status"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_state
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Submit"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid "Submit Request"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__submitted_by_id
+msgid "Submitted By"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"The amount and employee of custody %s cannot be changed after submission."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The cash returned cannot be negative."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody amount must be positive."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+msgid ""
+"The custody amount will be paid to the employee and the accounting entry "
+"posted. Continue?"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody has not been disbursed yet."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "The custody is fully settled."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The lines of a posted settlement cannot be changed."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"The lines of a submitted settlement can only be changed by the custody "
+"manager."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid "The settlement has not been posted yet."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_settlement.py:0
+msgid ""
+"The settlement total (%(total)s) exceeds the remaining custody balance "
+"(%(available)s)."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"This employee already has a custody request waiting for review or "
+"disbursement."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+msgid "To Disburse"
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_list
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_list
+msgid "Total"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__total_expenses
+msgid "Total Expenses"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__total_settled
+msgid "Total Settled"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model,name:financial_custody.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__activity_exception_decoration
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_return__uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__cash_returned
+msgid "Unused cash given back by the employee."
+msgstr ""
+
+#. module: financial_custody
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_form
+msgid "Validate & Post"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__posted_by_id
+msgid "Validated By"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement_line__vendor_id
+msgid "Vendor"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_request__state__submitted
+#: model:ir.model.fields.selection,name:financial_custody.selection__custody_settlement__state__submitted
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_request_search
+#: model_terms:ir.ui.view,arch_db:financial_custody.view_custody_settlement_search
+msgid "Waiting Review"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,field_description:financial_custody.field_custody_request__website_message_ids
+#: model:ir.model.fields,field_description:financial_custody.field_custody_settlement__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: financial_custody
+#: model:ir.model.fields,help:financial_custody.field_custody_request__website_message_ids
+#: model:ir.model.fields,help:financial_custody.field_custody_settlement__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "You can only request a custody for yourself."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid ""
+"You cannot request a new custody: custody %(ref)s is only %(pct)s%% settled."
+" At least %(min)s%% of the previous custody must be settled first."
+msgstr ""
+
+#. module: financial_custody
+#. odoo-python
+#: code:addons/financial_custody/models/custody_request.py:0
+msgid "custody_id"
+msgstr ""

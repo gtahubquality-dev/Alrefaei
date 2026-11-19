@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_custody_root" name="Custody" sequence="47" web_icon="financial_custody,static/description/icon.png" groups="financial_custody.group_custody_user"/>
+    <menuitem id="menu_custody_requests" name="Custodies" parent="menu_custody_root" action="action_custody_request" sequence="10"/>
+    <menuitem id="menu_custody_settlements" name="Settlements" parent="menu_custody_root" action="action_custody_settlement" sequence="20"/>
+    <menuitem id="menu_custody_config" name="Configuration" parent="menu_custody_root" sequence="90" groups="base.group_system"/>
+    <menuitem id="menu_custody_settings" name="Settings" parent="menu_custody_config" action="action_custody_config_settings" sequence="10"/>
+</odoo>

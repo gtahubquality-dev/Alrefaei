@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_customer_contract_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"/>
+            <div class="page">
+                <h2>Customer Contract <span t-field="o.name"/>
+                </h2>
+                <div class="row mt-3 mb-3">
+                    <div class="col-6">
+                        <strong>Customer:</strong>
+                        <span t-field="o.partner_id"/>
+                        <br/>
+                        <t t-if="o.owner_id">
+                            <strong>Project Owner:</strong>
+                            <span t-field="o.owner_id"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.consultant_id">
+                            <strong>Consultant:</strong>
+                            <span t-field="o.consultant_id"/>
+                            <br/>
+                        </t>
+                    </div>
+                    <div class="col-6">
+                        <strong>Project:</strong>
+                        <span t-field="o.project_id"/>
+                        <br/>
+                        <strong>Contract Date:</strong>
+                        <span t-field="o.date"/>
+                        <br/>
+                        <t t-if="o.start_date">
+                            <strong>Start Date:</strong>
+                            <span t-field="o.start_date"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.duration_months">
+                            <strong>Duration (Months):</strong>
+                            <span t-field="o.duration_months"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.end_date">
+                            <strong>End Date:</strong>
+                            <span t-field="o.end_date"/>
+                            <br/>
+                        </t>
+                    </div>
+                </div>
+                <h4>Contract Value</h4>
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <td>Contract Value</td>
+                            <td class="text-end">
+                                <span t-if="o.signed_amount" t-field="o.signed_amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                <span t-else="" t-field="o.contract_amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr t-if="o.advance_payment_percent or o.advance_payment_amount">
+                            <td>Advance Payment (<span t-field="o.advance_payment_percent"/>%)</td>
+                            <td class="text-end">
+                                <span t-field="o.advance_payment_amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr t-if="o.advance_deduction_percent">
+                            <td>Advance Recovery per Invoice</td>
+                            <td class="text-end">
+                                <span t-field="o.advance_deduction_percent"/>%</td>
+                        </tr>
+                        <tr t-if="o.guarantee_percent">
+                            <td>Retention</td>
+                            <td class="text-end">
+                                <span t-field="o.guarantee_percent"/>%</td>
+                        </tr>
+                        <tr t-if="o.final_insurance_percent or o.final_insurance_amount">
+                            <td>Final Insurance (<span t-field="o.final_insurance_percent"/>%)</td>
+                            <td class="text-end">
+                                <span t-field="o.final_insurance_amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <t t-if="o.boq_item_ids">
+                    <h4>Bill of Quantities</h4>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Item</th>
+                                <th>Unit</th>
+                                <th class="text-end">Quantity</th>
+                                <th class="text-end">Unit Price</th>
+                                <th class="text-end">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.boq_item_ids" t-as="item">
+                                <td>
+                                    <span t-field="item.code"/>
+                                </td>
+                                <td>
+                                    <span t-field="item.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="item.uom_id"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="item.total_quantity"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="item.unit_price" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="item.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+                <t t-set="customer_deductions" t-value="o.deduction_ids.filtered(lambda d: d.applies_to == 'owner')"/>
+                <t t-if="customer_deductions">
+                    <h4>Deductions</h4>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Calculation</th>
+                                <th class="text-end">Value</th>
+                                <th>Applied</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="customer_deductions" t-as="ded">
+                                <td>
+                                    <span t-field="ded.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="ded.calculation"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="ded.value"/>
+                                </td>
+                                <td>
+                                    <span t-field="ded.frequency"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+                <t t-if="o.terms">
+                    <h4>Terms &amp; Conditions</h4>
+                    <div t-field="o.terms"/>
+                </t>
+                <div class="row mt-5" style="page-break-inside: avoid;">
+                    <div class="col-6 text-center">
+                        <strong>For the Contractor</strong>
+                        <p class="mt-5">______________________</p>
+                        <span t-field="o.company_id"/>
+                    </div>
+                    <div class="col-6 text-center">
+                        <strong>For the Customer</strong>
+                        <p class="mt-5">______________________</p>
+                        <span t-field="o.partner_id"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="report_customer_contract">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="construction_management.report_customer_contract_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>
